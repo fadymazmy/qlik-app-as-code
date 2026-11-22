@@ -1,0 +1,140 @@
+[
+ {
+  "qInfo": {"qId": "vLatestDate", "qType": "variable"},
+  "qName": "vLatestDate",
+  "qDefinition": "Max(If(Sales, Date))",
+  "qComment": "The Latest Date: the last Date with Sales in the current selection. Every window ends on it."
+ },
+ {
+  "qInfo": {"qId": "vLastDay", "qType": "variable"},
+  "qName": "vLastDay",
+  "qDefinition": "$(=Floor($(vLatestDate)))",
+  "qComment": "Last day of YTD and Rolling 12 Months: the Latest Date, as a day number."
+ },
+ {
+  "qInfo": {"qId": "vPriorYearLastDay", "qType": "variable"},
+  "qName": "vPriorYearLastDay",
+  "qDefinition": "$(=Floor(AddYears($(vLatestDate), -1)))",
+  "qComment": "Last day of the Prior Year windows: the Latest Date one year earlier (29 February becomes 28 February)."
+ },
+ {
+  "qInfo": {"qId": "vYTDFirstDay", "qType": "variable"},
+  "qName": "vYTDFirstDay",
+  "qDefinition": "$(=Floor(YearStart($(vLatestDate))))",
+  "qComment": "First day of YTD: 1 January of the Latest Date's year."
+ },
+ {
+  "qInfo": {"qId": "vYTDPriorYearFirstDay", "qType": "variable"},
+  "qName": "vYTDPriorYearFirstDay",
+  "qDefinition": "$(=Floor(YearStart($(vLatestDate), -1)))",
+  "qComment": "First day of YTD Prior Year: 1 January of the year before."
+ },
+ {
+  "qInfo": {"qId": "vRolling12MonthsFirstDay", "qType": "variable"},
+  "qName": "vRolling12MonthsFirstDay",
+  "qDefinition": "$(=Floor(AddYears($(vLatestDate), -1)) + 1)",
+  "qComment": "First day of Rolling 12 Months: the day after the Latest Date one year earlier."
+ },
+ {
+  "qInfo": {"qId": "vRolling12MonthsPriorYearFirstDay", "qType": "variable"},
+  "qName": "vRolling12MonthsPriorYearFirstDay",
+  "qDefinition": "$(=Floor(AddYears($(vLatestDate), -2)) + 1)",
+  "qComment": "First day of Rolling 12 Months Prior Year: the day after the Latest Date two years earlier."
+ },
+ {
+  "qInfo": {"qId": "vDays", "qType": "variable"},
+  "qName": "vDays",
+  "qDefinition": "Year=, Quarter=, Month=, [Year Month]=, Date={\">=$(=Date($1))<=$(=Date($2))\"}",
+  "qComment": "Set modifier for the days $1 to $2 (day numbers): replaces any selection in the calendar fields and keeps all other selections. Use as {<$(vDays(first, last))>}."
+ },
+ {
+  "qInfo": {"qId": "vYTD", "qType": "variable"},
+  "qName": "vYTD",
+  "qDefinition": "$(vDays($(vYTDFirstDay), $(vLastDay)))",
+  "qComment": "Set modifier for YTD: Sum({<$(vYTD)>} Sales)."
+ },
+ {
+  "qInfo": {"qId": "vYTDPriorYear", "qType": "variable"},
+  "qName": "vYTDPriorYear",
+  "qDefinition": "$(vDays($(vYTDPriorYearFirstDay), $(vPriorYearLastDay)))",
+  "qComment": "Set modifier for YTD Prior Year."
+ },
+ {
+  "qInfo": {"qId": "vRolling12Months", "qType": "variable"},
+  "qName": "vRolling12Months",
+  "qDefinition": "$(vDays($(vRolling12MonthsFirstDay), $(vLastDay)))",
+  "qComment": "Set modifier for Rolling 12 Months."
+ },
+ {
+  "qInfo": {"qId": "vRolling12MonthsPriorYear", "qType": "variable"},
+  "qName": "vRolling12MonthsPriorYear",
+  "qDefinition": "$(vDays($(vRolling12MonthsPriorYearFirstDay), $(vPriorYearLastDay)))",
+  "qComment": "Set modifier for Rolling 12 Months Prior Year."
+ },
+ {
+  "qInfo": {"qId": "vBudget", "qType": "variable"},
+  "qName": "vBudget",
+  "qDefinition": "Sum({<Year=, Quarter=, Month=, [Year Month]=, Date={\">=$(=Date(MonthStart($1)))<=$(=Date($2))\"}>} Budget * (RangeMin(Floor(MonthEnd(Date)), $2) - RangeMax(Date, $1) + 1) / Day(MonthEnd(Date)))",
+  "qComment": "Budget for the days $1 to $2 (day numbers): each month's Budget spread evenly over its days, so a window that starts or ends mid-month gets that share of the month. Use as $(vBudget($(vYTDFirstDay), $(vLastDay)))."
+ },
+ {
+  "qInfo": {"qId": "vBudgetDefined", "qType": "variable"},
+  "qName": "vBudgetDefined",
+  "qDefinition": "(Count(DISTINCT Customer) = Count({<Customer=>} DISTINCT Customer) and Count(DISTINCT [Production Site]) = Count({<[Production Site]=>} DISTINCT [Production Site]))",
+  "qComment": "True unless the selection narrows Customer or Production Site, levels Budget is not planned at. Every Budget measure is null when it is false: If($(vBudgetDefined), ...)."
+ },
+ {
+  "qInfo": {"qId": "vVolumeEffectYTD", "qType": "variable"},
+  "qName": "vVolumeEffectYTD",
+  "qDefinition": "(If(Sum({<$(vYTDPriorYear)>} Volume) > 0, (Sum({<$(vYTD)>} Volume) - Sum({<$(vYTDPriorYear)>} Volume)) * Sum({<$(vYTDPriorYear)>} Sales) / Sum({<$(vYTDPriorYear)>} Volume), Sum({<$(vYTD)>} Sales) - Sum({<$(vYTDPriorYear)>} Sales)))",
+  "qComment": "Volume Effect of Sales YTD against YTD Prior Year in EUR: the change in Volume at the Prior Year average price (all of the change when there is no Prior Year Volume). See docs/measures.md, Sales Bridge."
+ },
+ {
+  "qInfo": {"qId": "vPriceEffectYTD", "qType": "variable"},
+  "qName": "vPriceEffectYTD",
+  "qDefinition": "Sum({<$(vYTD)>} Aggr({<$(vYTD)>} If(Sum({<$(vYTDPriorYear)>} Volume) > 0, Sum({<$(vYTD)>} Sales) - Sum({<$(vYTD)>} Volume) * Sum({<$(vYTDPriorYear)>} Sales) / Sum({<$(vYTDPriorYear)>} Volume)), [Product Line ID], [Customer ID]))",
+  "qComment": "Price Effect of Sales YTD against YTD Prior Year in EUR: for each Product Line by Customer with Volume in both windows, YTD Volume times the change in its price. See docs/measures.md, Sales Bridge."
+ },
+ {
+  "qInfo": {"qId": "vPriceChange", "qType": "variable"},
+  "qName": "vPriceChange",
+  "qDefinition": "0",
+  "qComment": "What-If price change in percent (5 = net prices 5% higher, volume and cost unchanged). Set by the What-If Controls."
+ },
+ {
+  "qInfo": {"qId": "vVolumeChange", "qType": "variable"},
+  "qName": "vVolumeChange",
+  "qDefinition": "0",
+  "qComment": "What-If volume change in percent (5 = 5% more units at the same prices and unit cost). Set by the What-If Controls."
+ },
+ {
+  "qInfo": {"qId": "vExchangeRateChange", "qType": "variable"},
+  "qName": "vExchangeRateChange",
+  "qDefinition": "0",
+  "qComment": "What-If EUR exchange rate change in percent (5 = the euro buys 5% more of every other currency, so amounts in them are worth 1/1.05 in EUR). Set by the What-If Controls."
+ },
+ {
+  "qInfo": {"qId": "vEuroArea", "qType": "variable"},
+  "qName": "vEuroArea",
+  "qDefinition": "Germany, France, Spain, Italy",
+  "qComment": "What-If exchange rate assumption: the Countries that invoice in EUR; Sales to every other Country is in its local currency. Used as a set element list (Country -= {$(vEuroArea)}) and shown on the Sheet, so the names carry no quotes; a name with a space would need them."
+ },
+ {
+  "qInfo": {"qId": "vLocalCostShare", "qType": "variable"},
+  "qName": "vLocalCostShare",
+  "qDefinition": "0.6",
+  "qComment": "What-If exchange rate assumption: the share of the cost of Sales outside the euro area that is in local currency; the rest is bought in EUR."
+ },
+ {
+  "qInfo": {"qId": "vSimulatedSalesYTD", "qType": "variable"},
+  "qName": "vSimulatedSalesYTD",
+  "qDefinition": "(1 + $(vPriceChange) / 100) * (1 + $(vVolumeChange) / 100) * (Sum({<$(vYTD)>} Sales) + Sum({<$(vYTD), Country -= {$(vEuroArea)}>} Sales) * (100 / (100 + $(vExchangeRateChange)) - 1))",
+  "qComment": "Simulated Sales YTD in EUR: Sales YTD at the What-If price and volume, with Sales outside the euro area translated at the What-If exchange rate."
+ },
+ {
+  "qInfo": {"qId": "vSimulatedCostYTD", "qType": "variable"},
+  "qName": "vSimulatedCostYTD",
+  "qDefinition": "(1 + $(vVolumeChange) / 100) * (Sum({<$(vYTD)>} Cost) + Sum({<$(vYTD), Country -= {$(vEuroArea)}>} Cost) * $(vLocalCostShare) * (100 / (100 + $(vExchangeRateChange)) - 1))",
+  "qComment": "Simulated cost YTD in EUR: cost YTD at the What-If volume (a price change leaves it unchanged), with the local share of cost outside the euro area translated at the What-If exchange rate."
+ }
+]

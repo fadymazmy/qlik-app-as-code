@@ -1,0 +1,8 @@
+[
+  {"qInfo":{"qId":"m_sales","qType":"measure"},
+   "qMeasure":{"qLabel":"Sales","qDef":"Sum(Sales)","qNumFormat":{"qType":"M","qFmt":"€#,##0.00","qDec":".","qThou":","},"coloring":{"baseColor":{"color":"#1aa865"}}},
+   "qMetaDef":{"title":"Sales","description":"Invoiced revenue in EUR","tags":[]}},
+  {"qInfo":{"qId":"m_budget","qType":"measure"},
+   "qMeasure":{"qLabel":"Budget","qDef":"Sum(Budget)"},
+   "qMetaDef":{"title":"Budget","description":"","tags":[]}}
+]

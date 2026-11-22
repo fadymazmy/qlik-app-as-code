@@ -1,0 +1,11 @@
+[
+ {
+  "qInfo": {
+   "qId": "v_growth",
+   "qType": "variable"
+  },
+  "qName": "vGrowth",
+  "qDefinition": "0.05",
+  "qComment": "what-if growth"
+ }
+]

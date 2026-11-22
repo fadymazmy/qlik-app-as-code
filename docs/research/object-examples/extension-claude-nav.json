@@ -1,0 +1,12 @@
+{
+ "qProperty": {
+  "qInfo": {
+   "qId": "exec-nav",
+   "qType": "claude-nav"
+  },
+  "visualization": "claude-nav",
+  "showTitles": false,
+  "qSelectionObjectDef": {}
+ },
+ "qChildren": []
+}

@@ -1,0 +1,58 @@
+{
+ "qMetaDef": {},
+ "qHyperCubeDef": {
+  "qDimensions": [],
+  "qMeasures": [],
+  "qInterColumnSortOrder": [],
+  "qSuppressMissing": true,
+  "qInitialDataFetch": [
+   {
+    "qLeft": 0,
+    "qTop": 0,
+    "qWidth": 50,
+    "qHeight": 50
+   }
+  ],
+  "qReductionMode": "N",
+  "qMode": "P",
+  "qPseudoDimPos": -1,
+  "qNoOfLeftDims": -1,
+  "qMaxStackedCells": 5000,
+  "qShowTotalsAbove": true,
+  "qCalcCond": {},
+  "qTitle": {},
+  "qCalcCondition": {
+   "qCond": {},
+   "qMsg": {}
+  },
+  "qColumnOrder": [],
+  "qExpansionState": [],
+  "qDynamicScript": [],
+  "indentModeColumnWidth": {
+   "type": "auto",
+   "pixels": 200,
+   "percentage": 20
+  }
+ },
+ "filter": null,
+ "search": {
+  "sorting": "auto"
+ },
+ "showTitles": true,
+ "title": "",
+ "subtitle": "",
+ "footnote": "",
+ "disableNavMenu": false,
+ "showDetails": true,
+ "showDetailsExpression": false,
+ "components": [],
+ "enableChartExploration": null,
+ "chartExploration": {
+  "menuVisibility": "auto"
+ },
+ "visualization": "sn-pivot-table",
+ "version": "7.78.0",
+ "nullValueRepresentation": {
+  "text": "-"
+ }
+}

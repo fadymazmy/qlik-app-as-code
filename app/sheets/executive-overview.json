@@ -1,0 +1,194 @@
+{
+ "qProperty": {
+  "qInfo": {"qId": "executive-overview", "qType": "sheet"},
+  "qMetaDef": {"title": "Executive Overview", "description": ""},
+  "rank": 0,
+  "columns": 24,
+  "rows": 12,
+  "cells": [
+   {"name": "eo-hero-kpi-strip", "type": "hero-kpi-strip", "col": 0, "row": 2, "colspan": 24, "rowspan": 2},
+   {"name": "eo-sales-trend", "type": "combochart", "col": 0, "row": 4, "colspan": 16, "rowspan": 4},
+   {"name": "eo-sales-bridge", "type": "sales-bridge", "col": 16, "row": 4, "colspan": 8, "rowspan": 4},
+   {"name": "eo-sales-by-business-group", "type": "barchart", "col": 0, "row": 8, "colspan": 8, "rowspan": 4},
+   {"name": "eo-sales-by-region", "type": "barchart", "col": 8, "row": 8, "colspan": 7, "rowspan": 4},
+   {"name": "eo-top-customers", "type": "sn-table", "col": 15, "row": 8, "colspan": 9, "rowspan": 4}
+  ]
+ },
+ "qChildren": [
+  {
+   "qProperty": {
+    "qInfo": {"qId": "eo-hero-kpi-strip", "qType": "hero-kpi-strip"},
+    "visualization": "hero-kpi-strip",
+    "showTitles": false,
+    "disableNavMenu": true,
+    "qHyperCubeDef": {
+     "qMeasures": [
+      {"qLibraryId": "m_sales_ytd", "qDef": {}},
+      {"qLibraryId": "m_sales_ytd_vs_prior_year_pct", "qDef": {}},
+      {"qLibraryId": "m_sales_ytd_vs_budget_pct", "qDef": {}},
+      {"qLibraryId": "m_gross_margin_ytd", "qDef": {}},
+      {"qLibraryId": "m_gross_margin_ytd_vs_prior_year", "qDef": {}},
+      {"qLibraryId": "m_order_intake_ytd", "qDef": {}},
+      {"qLibraryId": "m_order_intake_ytd_vs_prior_year_pct", "qDef": {}},
+      {"qLibraryId": "m_budget_attainment_ytd", "qDef": {}},
+      {"qLibraryId": "m_sales_ytd_vs_budget", "qDef": {}},
+      {"qLibraryId": "m_book_to_bill_ytd", "qDef": {}}
+     ],
+     "qInitialDataFetch": [{"qLeft": 0, "qTop": 0, "qWidth": 10, "qHeight": 1}]
+    },
+    "sparkline": {
+     "qHyperCubeDef": {
+      "qDimensions": [{"qLibraryId": "d_year_month", "qDef": {"qSortCriterias": [{"qSortByNumeric": 1}]}}],
+      "qMeasures": [
+       {"qLibraryId": "m_sales_ytd", "qDef": {}},
+       {"qLibraryId": "m_gross_margin_ytd", "qDef": {}},
+       {"qLibraryId": "m_order_intake_ytd", "qDef": {}},
+       {"qLibraryId": "m_budget_attainment_ytd", "qDef": {}}
+      ],
+      "qSuppressZero": true,
+      "qInterColumnSortOrder": [0],
+      "qInitialDataFetch": [{"qLeft": 0, "qTop": 0, "qWidth": 5, "qHeight": 12}]
+     }
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {"qId": "eo-sales-trend", "qType": "combochart"},
+    "visualization": "combochart",
+    "title": "Sales vs Budget vs Prior Year",
+    "subtitle": {"qStringExpression": {"qExpr": "='By month, EUR bn: Sales bars, ' & If(IsNull([Budget YTD]), 'no Budget by Customer or Production Site', 'Budget blue line') & ', Prior Year orange line'"}},
+    "qHyperCubeDef": {
+     "qDimensions": [{"qLibraryId": "d_month", "qDef": {}}],
+     "qMeasures": [
+      {"qLibraryId": "m_sales_ytd", "qDef": {"qLabelExpression": "='Sales'", "series": {"type": "bar", "axis": 0},
+       "numFormatFromTemplate": false, "isCustomFormatted": true,
+       "qNumFormat": {"qType": "F", "qnDec": 2, "qUseThou": 0, "qFmt": "€#,##0.00", "qDec": ".", "qThou": ","}}},
+      {"qLibraryId": "m_budget_ytd", "qDef": {"qLabelExpression": "='Budget'", "series": {"type": "line", "axis": 0},
+       "numFormatFromTemplate": false, "isCustomFormatted": true,
+       "qNumFormat": {"qType": "F", "qnDec": 2, "qUseThou": 0, "qFmt": "€#,##0.00", "qDec": ".", "qThou": ","}}},
+      {"qLibraryId": "m_sales_ytd_prior_year", "qDef": {"qLabelExpression": "='Prior Year'", "series": {"type": "line", "axis": 0},
+       "numFormatFromTemplate": false, "isCustomFormatted": true,
+       "qNumFormat": {"qType": "F", "qnDec": 2, "qUseThou": 0, "qFmt": "€#,##0.00", "qDec": ".", "qThou": ","}}}
+     ],
+     "qSuppressZero": true,
+     "qInitialDataFetch": [{"qLeft": 0, "qTop": 0, "qWidth": 4, "qHeight": 500}]
+    },
+    "legend": {"show": true, "dock": "top", "showTitle": false},
+    "dimensionAxis": {"axisDisplayMode": "custom", "maxVisibleItems": 12},
+    "components": [{"key": "bar", "style": {"width": 0.56}}],
+    "preferContinuousAxis": false
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {"qId": "eo-sales-bridge", "qType": "sales-bridge"},
+    "visualization": "sales-bridge",
+    "showTitles": true,
+    "title": "Sales Bridge: volume, price, mix",
+    "subtitle": {"qStringExpression": {"qExpr": "=Year($(vLatestDate)) & ' YTD vs Prior Year YTD, EUR bn'"}},
+    "disableNavMenu": true,
+    "qHyperCubeDef": {
+     "qMeasures": [
+      {"qLibraryId": "m_sales_ytd_prior_year", "qDef": {}},
+      {"qLibraryId": "m_volume_effect_ytd_vs_prior_year", "qDef": {}},
+      {"qLibraryId": "m_price_effect_ytd_vs_prior_year", "qDef": {}},
+      {"qLibraryId": "m_mix_effect_ytd_vs_prior_year", "qDef": {}},
+      {"qLibraryId": "m_sales_ytd", "qDef": {}},
+      {"qDef": {"qDef": "Year($(vLatestDate))"}}
+     ],
+     "qInitialDataFetch": [{"qLeft": 0, "qTop": 0, "qWidth": 6, "qHeight": 1}]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {"qId": "eo-sales-by-business-group", "qType": "barchart"},
+    "visualization": "barchart",
+    "title": "Sales by Business Group",
+    "subtitle": {"qStringExpression": {"qExpr": "=Year($(vLatestDate)) & ' YTD, EUR bn'"}},
+    "orientation": "horizontal",
+    "dataPoint": {"showLabels": true},
+    "gridLine": {"auto": false, "spacing": 0},
+    "measureAxis": {"show": "none"},
+    "legend": {"show": false},
+    "components": [
+     {"key": "label", "label": {"value": {"color": {"color": "#e6eeea", "index": -1}, "fontSize": "12px", "useContrastColor": false}}},
+     {"key": "bar", "style": {"width": 0.35}}
+    ],
+    "qHyperCubeDef": {
+     "qDimensions": [{"qLibraryId": "d_business_group", "qDef": {}}],
+     "qMeasures": [{"qLibraryId": "m_sales_ytd", "qSortBy": {"qSortByNumeric": -1},
+      "qDef": {"qLabelExpression": "='Sales'", "numFormatFromTemplate": false, "isCustomFormatted": true,
+       "qNumFormat": {"qType": "F", "qnDec": 2, "qUseThou": 0, "qFmt": "€#,##0.00", "qDec": ".", "qThou": ","}}}],
+     "qInterColumnSortOrder": [1, 0],
+     "qInitialDataFetch": [{"qLeft": 0, "qTop": 0, "qWidth": 2, "qHeight": 500}]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {"qId": "eo-sales-by-region", "qType": "barchart"},
+    "visualization": "barchart",
+    "title": "Sales by Region",
+    "subtitle": {"qStringExpression": {"qExpr": "=Year($(vLatestDate)) & ' YTD, EUR bn'"}},
+    "orientation": "horizontal",
+    "dataPoint": {"showLabels": true},
+    "gridLine": {"auto": false, "spacing": 0},
+    "measureAxis": {"show": "none"},
+    "legend": {"show": false},
+    "components": [
+     {"key": "label", "label": {"value": {"color": {"color": "#e6eeea", "index": -1}, "fontSize": "12px", "useContrastColor": false}}},
+     {"key": "bar", "style": {"width": 0.5}}
+    ],
+    "qHyperCubeDef": {
+     "qDimensions": [{"qLibraryId": "d_region", "qDef": {}}],
+     "qMeasures": [{"qLibraryId": "m_sales_ytd", "qSortBy": {"qSortByNumeric": -1},
+      "qDef": {"qLabelExpression": "='Sales'", "numFormatFromTemplate": false, "isCustomFormatted": true,
+       "qNumFormat": {"qType": "F", "qnDec": 2, "qUseThou": 0, "qFmt": "€#,##0.00", "qDec": ".", "qThou": ","}}}],
+     "qInterColumnSortOrder": [1, 0],
+     "qInitialDataFetch": [{"qLeft": 0, "qTop": 0, "qWidth": 2, "qHeight": 500}]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {"qId": "eo-top-customers", "qType": "sn-table"},
+    "visualization": "sn-table",
+    "title": "Top Customers",
+    "subtitle": {"qStringExpression": {"qExpr": "='By Sales, ' & Year($(vLatestDate)) & ' YTD'"}},
+    "totals": {"show": false, "position": "noTotals"},
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {"qLibraryId": "d_customer", "qDef": {"columnWidth": {"type": "percentage", "percentage": 37}},
+       "qOtherTotalSpec": {"qOtherMode": "OTHER_COUNTED", "qOtherCounted": {"qv": "6"}, "qSuppressOther": true,
+        "qOtherSortMode": "OTHER_SORT_DESCENDING"}}
+     ],
+     "qMeasures": [
+      {"qLibraryId": "m_sales_ytd",
+       "qDef": {"qLabelExpression": "='Sales'", "columnWidth": {"type": "percentage", "percentage": 21}},
+       "qSortBy": {"qSortByNumeric": -1}},
+      {"qLibraryId": "m_sales_ytd_vs_prior_year_pct",
+       "qDef": {"qLabelExpression": "='vs Prior Year'", "columnWidth": {"type": "percentage", "percentage": 21},
+        "numFormatFromTemplate": false, "isCustomFormatted": true,
+        "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "▲ 0.0%;▼ 0.0%", "qDec": ".", "qThou": ","}},
+       "qAttributeExpressions": [
+        {"qExpression": "If([Sales YTD vs Prior Year %] < 0, '@neg', '@pos')",
+         "id": "cellForegroundColor"}
+       ]},
+      {"qLibraryId": "m_gross_margin_ytd",
+       "qDef": {"qLabelExpression": "='Gross Margin'", "columnWidth": {"type": "percentage", "percentage": 21}}}
+     ],
+     "qInterColumnSortOrder": [1, 0, 2, 3],
+     "qInitialDataFetch": [{"qLeft": 0, "qTop": 0, "qWidth": 4, "qHeight": 50}]
+    }
+   },
+   "qChildren": []
+  }
+ ]
+}

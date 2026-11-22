@@ -1,0 +1,101 @@
+{
+ "qProperty": {
+  "qMetaDef": {},
+  "columns": null,
+  "filter": null,
+  "qHyperCubeDef": {
+   "qDimensions": [
+    {
+     "qDef": {
+      "qFieldDefs": [
+       "Customer"
+      ],
+      "qFieldLabels": [
+       "Customer"
+      ]
+     }
+    }
+   ],
+   "qMeasures": [
+    {
+     "qDef": {
+      "qDef": "Sum({<Year={2026}>} Sales)/1e9",
+      "qLabel": "Sales",
+      "numFormatFromTemplate": false,
+      "isCustomFormatted": true,
+      "qNumFormat": {
+       "qType": "F",
+       "qFmt": "\u20ac#,##0.00 bn",
+       "qDec": ".",
+       "qThou": ","
+      }
+     }
+    },
+    {
+     "qDef": {
+      "qDef": "Dual(If(Sum({<Year={2026}>} Sales)>=Sum({<Year={2025}>} Sales),'\u25b2 ','\u25bc ')&Num(Sum({<Year={2026}>} Sales)/Sum({<Year={2025}>} Sales)-1,'0.0%'),Sum({<Year={2026}>} Sales)/Sum({<Year={2025}>} Sales)-1)",
+      "qLabel": "vs prior year"
+     },
+     "qAttributeExpressions": [
+      {
+       "qExpression": "If(Sum({<Year={2026}>} Sales)>=Sum({<Year={2025}>} Sales),'#1aa865','#ff6b6b')",
+       "id": "cellForegroundColor"
+      }
+     ]
+    }
+   ],
+   "qInterColumnSortOrder": [],
+   "qInitialDataFetch": [
+    {
+     "qWidth": 3,
+     "qHeight": 500
+    }
+   ],
+   "qReductionMode": "N",
+   "qMode": "S",
+   "qPseudoDimPos": -1,
+   "qNoOfLeftDims": -1,
+   "qMaxStackedCells": 5000,
+   "qCalcCond": {},
+   "qTitle": {},
+   "qCalcCondition": {
+    "qCond": {},
+    "qMsg": {}
+   },
+   "qColumnOrder": [],
+   "qExpansionState": [],
+   "qDynamicScript": []
+  },
+  "showTitles": true,
+  "title": "Top Customers",
+  "subtitle": "",
+  "footnote": "",
+  "disableNavMenu": false,
+  "showDetails": true,
+  "showDetailsExpression": false,
+  "components": [],
+  "totals": {
+   "show": true,
+   "position": "noTotals",
+   "label": "Totals"
+  },
+  "usePagination": false,
+  "accessibleHeader": false,
+  "multiline": {
+   "wrapTextInHeaders": true,
+   "wrapTextInCells": true
+  },
+  "hideHeader": false,
+  "enableChartExploration": false,
+  "chartExploration": {
+   "menuVisibility": "auto"
+  },
+  "visualization": "sn-table",
+  "version": "\"6.78.0\"",
+  "qInfo": {
+   "qId": "exec-table",
+   "qType": "sn-table"
+  }
+ },
+ "qChildren": []
+}

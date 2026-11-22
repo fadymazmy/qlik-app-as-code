@@ -1,0 +1,5 @@
+[
+  {"qInfo":{"qId":"d_bg","qType":"dimension"},
+   "qDim":{"qGrouping":"N","qFieldDefs":["BusinessGroup"],"qFieldLabels":["Business Group"],"title":"Business Group"},
+   "qMetaDef":{"title":"Business Group","description":"","tags":[]}}
+]

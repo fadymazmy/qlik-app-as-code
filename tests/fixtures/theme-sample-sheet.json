@@ -1,0 +1,478 @@
+{
+ "qProperty": {
+  "qInfo": {
+   "qId": "theme-sample",
+   "qType": "sheet"
+  },
+  "qMetaDef": {
+   "title": "Theme sample",
+   "description": "One of each native object type (the filter pane comes with the shared header), to check the theme."
+  },
+  "rank": 98,
+  "columns": 24,
+  "rows": 12,
+  "cells": [
+   {
+    "name": "ts-kpi",
+    "type": "kpi",
+    "col": 0,
+    "row": 2,
+    "colspan": 5,
+    "rowspan": 4
+   },
+   {
+    "name": "ts-bar",
+    "type": "barchart",
+    "col": 5,
+    "row": 2,
+    "colspan": 7,
+    "rowspan": 4
+   },
+   {
+    "name": "ts-line",
+    "type": "linechart",
+    "col": 12,
+    "row": 2,
+    "colspan": 8,
+    "rowspan": 4
+   },
+   {
+    "name": "ts-button",
+    "type": "action-button",
+    "col": 20,
+    "row": 2,
+    "colspan": 4,
+    "rowspan": 2
+   },
+   {
+    "name": "ts-text",
+    "type": "sn-text",
+    "col": 20,
+    "row": 4,
+    "colspan": 4,
+    "rowspan": 2
+   },
+   {
+    "name": "ts-combo",
+    "type": "combochart",
+    "col": 0,
+    "row": 6,
+    "colspan": 10,
+    "rowspan": 6
+   },
+   {
+    "name": "ts-table",
+    "type": "sn-table",
+    "col": 10,
+    "row": 6,
+    "colspan": 7,
+    "rowspan": 6
+   },
+   {
+    "name": "ts-pivot",
+    "type": "sn-pivot-table",
+    "col": 17,
+    "row": 6,
+    "colspan": 7,
+    "rowspan": 6
+   }
+  ]
+ },
+ "qChildren": [
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "ts-button",
+     "qType": "action-button"
+    },
+    "visualization": "action-button",
+    "actions": [
+     {
+      "actionType": "clearAll",
+      "softLock": false,
+      "cId": "ts1"
+     }
+    ],
+    "style": {
+     "label": "Clear selections"
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "ts-text",
+     "qType": "sn-text"
+    },
+    "visualization": "sn-text",
+    "text": "{\"root\": {\"children\": [{\"children\": [{\"detail\": 0, \"format\": 1, \"mode\": \"normal\", \"style\": \"color: #e6eeea; font-size: 13px;\", \"text\": \"Synthetic Data\", \"type\": \"text\", \"version\": 1}, {\"detail\": 0, \"format\": 0, \"mode\": \"normal\", \"style\": \"color: #e6eeea; font-size: 13px;\", \"text\": \" — theme sample Sheet: one of each native object type.\", \"type\": \"text\", \"version\": 1}], \"direction\": \"ltr\", \"format\": \"\", \"indent\": 0, \"type\": \"paragraph\", \"version\": 1, \"textFormat\": 0, \"textStyle\": \"\"}], \"direction\": \"ltr\", \"format\": \"\", \"indent\": 0, \"type\": \"root\", \"version\": 1}}"
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "ts-kpi",
+     "qType": "kpi"
+    },
+    "visualization": "kpi",
+    "title": "Sales",
+    "showTitles": true,
+    "qHyperCubeDef": {
+     "qDimensions": [],
+     "qMeasures": [
+      {
+       "qDef": {
+        "qDef": "Sum(Sales)/1e6",
+        "qLabel": "Sales",
+        "numFormatFromTemplate": false,
+        "isCustomFormatted": true,
+        "qNumFormat": {
+         "qType": "F",
+         "qFmt": "€#,##0.0 M",
+         "qDec": ".",
+         "qThou": ","
+        },
+        "conditionalColoring": {
+         "useConditionalColoring": false,
+         "paletteSingleColor": {
+          "index": -1,
+          "color": "#e6eeea"
+         }
+        }
+       }
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 1,
+       "qHeight": 1
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "ts-bar",
+     "qType": "barchart"
+    },
+    "visualization": "barchart",
+    "title": "Sales by Business Group",
+    "subtitle": "Bar chart",
+    "orientation": "horizontal",
+    "dataPoint": {
+     "showLabels": true
+    },
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {
+       "qDef": {
+        "qFieldDefs": [
+         "Business Group"
+        ],
+        "qFieldLabels": [
+         "Business Group"
+        ]
+       }
+      }
+     ],
+     "qMeasures": [
+      {
+       "qDef": {
+        "qDef": "Sum(Sales)/1e6",
+        "qLabel": "Sales",
+        "numFormatFromTemplate": false,
+        "isCustomFormatted": true,
+        "qNumFormat": {
+         "qType": "F",
+         "qFmt": "€#,##0.0 M",
+         "qDec": ".",
+         "qThou": ","
+        }
+       }
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 2,
+       "qHeight": 500
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "ts-line",
+     "qType": "linechart"
+    },
+    "visualization": "linechart",
+    "title": "Sales by month",
+    "subtitle": "Line chart",
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {
+       "qDef": {
+        "qFieldDefs": [
+         "Month"
+        ],
+        "qFieldLabels": [
+         "Month"
+        ]
+       }
+      }
+     ],
+     "qMeasures": [
+      {
+       "qDef": {
+        "qDef": "Sum(Sales)/1e6",
+        "qLabel": "Sales",
+        "numFormatFromTemplate": false,
+        "isCustomFormatted": true,
+        "qNumFormat": {
+         "qType": "F",
+         "qFmt": "€#,##0.0 M",
+         "qDec": ".",
+         "qThou": ","
+        }
+       }
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 2,
+       "qHeight": 500
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "ts-combo",
+     "qType": "combochart"
+    },
+    "visualization": "combochart",
+    "title": "Sales vs Prior Year by month",
+    "subtitle": "Combo chart: bars and two solid lines",
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {
+       "qDef": {
+        "qFieldDefs": [
+         "Month"
+        ],
+        "qFieldLabels": [
+         "Month"
+        ]
+       }
+      }
+     ],
+     "qMeasures": [
+      {
+       "qDef": {
+        "qDef": "Sum({<Year={$(=Max(Year))}>} Sales)/1e6",
+        "qLabel": "Sales",
+        "numFormatFromTemplate": false,
+        "isCustomFormatted": true,
+        "qNumFormat": {
+         "qType": "F",
+         "qFmt": "€#,##0.0 M",
+         "qDec": ".",
+         "qThou": ","
+        },
+        "series": {
+         "type": "bar",
+         "axis": 0
+        }
+       }
+      },
+      {
+       "qDef": {
+        "qDef": "Sum({<Year={$(=Max(Year)-1)}>} Sales)*1.05/1e6",
+        "qLabel": "Prior Year +5%",
+        "numFormatFromTemplate": false,
+        "isCustomFormatted": true,
+        "qNumFormat": {
+         "qType": "F",
+         "qFmt": "€#,##0.0 M",
+         "qDec": ".",
+         "qThou": ","
+        },
+        "series": {
+         "type": "line",
+         "axis": 0
+        }
+       }
+      },
+      {
+       "qDef": {
+        "qDef": "Sum({<Year={$(=Max(Year)-1)}>} Sales)/1e6",
+        "qLabel": "Prior Year",
+        "numFormatFromTemplate": false,
+        "isCustomFormatted": true,
+        "qNumFormat": {
+         "qType": "F",
+         "qFmt": "€#,##0.0 M",
+         "qDec": ".",
+         "qThou": ","
+        },
+        "series": {
+         "type": "line",
+         "axis": 0
+        }
+       }
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 4,
+       "qHeight": 500
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "ts-table",
+     "qType": "sn-table"
+    },
+    "visualization": "sn-table",
+    "title": "Business Groups",
+    "subtitle": "Straight table",
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {
+       "qDef": {
+        "qFieldDefs": [
+         "Business Group"
+        ],
+        "qFieldLabels": [
+         "Business Group"
+        ]
+       }
+      }
+     ],
+     "qMeasures": [
+      {
+       "qDef": {
+        "qDef": "Sum({<Year={$(=Max(Year))}>} Sales)/1e6",
+        "qLabel": "Sales",
+        "numFormatFromTemplate": false,
+        "isCustomFormatted": true,
+        "qNumFormat": {
+         "qType": "F",
+         "qFmt": "€#,##0.0 M",
+         "qDec": ".",
+         "qThou": ","
+        }
+       }
+      },
+      {
+       "qDef": {
+        "qDef": "Dual(If(Sum({<Year={$(=Max(Year))}>} Sales)>=Sum({<Year={$(=Max(Year)-1)}>} Sales),'▲ ','▼ ')&Num(Sum({<Year={$(=Max(Year))}>} Sales)/Sum({<Year={$(=Max(Year)-1)}>} Sales)-1,'0.0%'),Sum({<Year={$(=Max(Year))}>} Sales)/Sum({<Year={$(=Max(Year)-1)}>} Sales)-1)",
+        "qLabel": "vs Prior Year"
+       },
+       "qAttributeExpressions": [
+        {
+         "qExpression": "If(Sum({<Year={$(=Max(Year))}>} Sales)>=Sum({<Year={$(=Max(Year)-1)}>} Sales),'@pos','@neg')",
+         "id": "cellForegroundColor"
+        }
+       ]
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 3,
+       "qHeight": 500
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "ts-pivot",
+     "qType": "sn-pivot-table"
+    },
+    "visualization": "sn-pivot-table",
+    "title": "Sales by Business Group and Year",
+    "subtitle": "Pivot table",
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {
+       "qDef": {
+        "qFieldDefs": [
+         "Business Group"
+        ],
+        "qFieldLabels": [
+         "Business Group"
+        ]
+       }
+      },
+      {
+       "qDef": {
+        "qFieldDefs": [
+         "Year"
+        ],
+        "qFieldLabels": [
+         "Year"
+        ]
+       }
+      }
+     ],
+     "qMeasures": [
+      {
+       "qDef": {
+        "qDef": "Sum(Sales)/1e6",
+        "qLabel": "Sales",
+        "numFormatFromTemplate": false,
+        "isCustomFormatted": true,
+        "qNumFormat": {
+         "qType": "F",
+         "qFmt": "€#,##0.0 M",
+         "qDec": ".",
+         "qThou": ","
+        }
+       }
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 3,
+       "qHeight": 50
+      }
+     ],
+     "qNoOfLeftDims": 2,
+     "qAlwaysFullyExpanded": true
+    }
+   },
+   "qChildren": []
+  }
+ ]
+}

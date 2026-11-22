@@ -1,0 +1,22 @@
+{
+ "qInfo": {"qId": "valtera-appprops", "qType": "appprops"},
+ "theme": "<set by the build to the theme name>",
+ "presets": [
+  {
+   "id": "valtera",
+   "name": "valtera",
+   "navigationBar": {
+    "components": {
+     "logo": {"show": false},
+     "pendo": {"show": false},
+     "mainNavigation": {"show": false},
+     "notificationMenu": {"show": false},
+     "profile": {"show": false}
+    }
+   },
+   "toolbar": {"show": false},
+   "sheetHeader": {"show": false}
+  }
+ ],
+ "activePreset": "valtera"
+}

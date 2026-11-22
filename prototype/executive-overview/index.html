@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROTOTYPE - Executive Overview</title>
+<!--
+  PROTOTYPE, throwaway. Not production code.
+  Question: what should the Executive Overview Sheet look like, so the visual direction can be approved before any Qlik work?
+  Plan: three structurally different layouts of the same Sheet on one 24-column x 12-row Qlik grid,
+  switchable via ?variant=A|B|C (floating bar at the bottom, or the left/right arrow keys).
+  T (or the "Object types" button) outlines each object as Custom Extension or native object + theme JSON.
+  ?bar=0 hides the bar (used for screenshots). Open by double-clicking; no network requests.
+  Target: desktop 1440x900. All numbers are invented (Synthetic Data).
+-->
+<style>
+  /* ---- Theme tokens. Everything under "native" maps to a theme JSON property; see NOTES.md ---- */
+  :root {
+    --sheet-bg: #0a0f0d;          /* sheet.backgroundColor */
+    --sheet-gap: 8px;             /* sheet.margin / grid spacing */
+    --obj-bg: #111815;            /* object.backgroundColor */
+    --obj-border: #1d2723;        /* object.borderColor */
+    --obj-border-w: 1px;          /* object.borderWidth */
+    --obj-radius: 10px;           /* object.borderRadius */
+    --obj-pad: 12px 14px;         /* object.padding */
+    --obj-shadow: 0 6px 20px rgba(0,0,0,.35); /* object.shadow.boxShadow */
+    --text: #e6eeea;              /* object.title.main.color, label colours */
+    --text-2: #a3b1ab;            /* subtitle, axis labels */
+    --muted: #6c7a74;             /* axis lines, footnotes */
+    --grid: #1c2622;              /* gridlines */
+    --accent: #2fd38a;            /* brand accent (UI only) */
+    --s-sales: #1aa865;           /* dataColors / measure colour: Sales */
+    --s-budget: #3987e5;          /* measure colour: Budget */
+    --s-py: #d95926;              /* measure colour: prior year */
+    --pos: #4ade9b;               /* favourable variance (always with a glyph) */
+    --neg: #ff7a7a;               /* unfavourable variance (always with a glyph) */
+    --total: #7f918a;             /* bridge totals */
+    --sel: #2fd38a;               /* selected value in a listbox */
+    --synthetic: #f2b84b;
+    --font: "Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--sheet-bg); color: var(--text); font-family: var(--font); }
+  body { overflow: hidden; -webkit-font-smoothing: antialiased; }
+  .num { font-variant-numeric: tabular-nums; }
+
+  /* ---- The Qlik sheet grid: 24 columns x 12 rows ---- */
+  .sheet {
+    width: 100vw; height: 100vh; padding: var(--sheet-gap);
+    display: grid; gap: var(--sheet-gap);
+    grid-template-columns: repeat(24, minmax(0, 1fr));
+    grid-template-rows: repeat(12, minmax(0, 1fr));
+  }
+  .cell { position: relative; min-width: 0; min-height: 0; }
+
+  /* ---- Native object card: only properties a theme JSON can set ---- */
+  .obj {
+    height: 100%; display: flex; flex-direction: column;
+    background: var(--obj-bg); border: var(--obj-border-w) solid var(--obj-border);
+    border-radius: var(--obj-radius); box-shadow: var(--obj-shadow); padding: var(--obj-pad);
+    overflow: hidden;
+  }
+  .obj-h { flex: none; margin-bottom: 6px; }
+  .obj-h h2 { margin: 0; font-size: 13px; font-weight: 600; color: var(--text); line-height: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .obj-h p { margin: 1px 0 0; font-size: 11px; color: var(--text-2); line-height: 15px; white-space: nowrap; }
+  .plot { flex: 1; min-height: 0; position: relative; }
+  .plot > svg { position: absolute; inset: 0; display: block; }
+  .foot { flex: none; font-size: 10.5px; color: var(--muted); margin-top: 4px; white-space: nowrap; }
+
+  /* ---- Custom Extension: Navigation bar ---- */
+  .nav {
+    height: 100%; display: flex; align-items: center; gap: 18px; padding: 0 16px;
+    background: linear-gradient(180deg, #121a17, #0e1412);
+    border: 1px solid var(--obj-border); border-radius: var(--obj-radius);
+  }
+  .brand { display: flex; align-items: center; gap: 10px; flex: none; }
+  .brand-name { font-size: 16px; font-weight: 700; letter-spacing: .01em; }
+  .brand-sub { font-size: 11px; color: var(--text-2); border-left: 1px solid #2a3631; padding-left: 10px; }
+  .tabs { display: flex; gap: 4px; margin: 0; padding: 0; list-style: none; flex: none; height: 100%; }
+  .tabs li { display: flex; align-items: center; padding: 0 11px; font-size: 13px; color: var(--text-2); position: relative; white-space: nowrap; cursor: default; }
+  .tabs li.active { color: var(--text); font-weight: 600; }
+  .tabs li.active::after { content: ""; position: absolute; left: 11px; right: 11px; bottom: 0; height: 2px; border-radius: 2px 2px 0 0; background: var(--accent); }
+  .nav-right { margin-left: auto; display: flex; align-items: center; gap: 12px; flex: none; }
+  .sel-label { font-size: 11px; color: var(--muted); }
+  .sel-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 4px 6px 4px 9px; border-radius: 6px; background: rgba(47,211,138,.12); border: 1px solid rgba(47,211,138,.35); white-space: nowrap; }
+  .sel-chip b { font-weight: 600; }
+  .sel-chip i { font-style: normal; color: var(--text-2); padding: 0 3px; }
+  .sel-clear { font-size: 12px; color: var(--text-2); }
+  .synthetic { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 600; color: var(--synthetic); padding: 4px 9px; border: 1px solid rgba(242,184,75,.45); border-radius: 999px; white-space: nowrap; }
+  .synthetic::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--synthetic); }
+
+  /* ---- Custom Extension: hero KPI strip ---- */
+  .kpis {
+    height: 100%; display: grid; border: 1px solid #22312b; border-radius: var(--obj-radius); overflow: hidden;
+    background: radial-gradient(120% 140% at 0% 0%, rgba(47,211,138,.10), transparent 55%), var(--obj-bg);
+    box-shadow: var(--obj-shadow);
+  }
+  .kpis.row { grid-template-columns: repeat(4, minmax(0,1fr)); }
+  .kpis.col { grid-template-rows: auto repeat(4, minmax(0,1fr)); }
+  .kpi { padding: 14px 18px; display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto 1fr; column-gap: 12px; min-width: 0; min-height: 0; }
+  .kpis.row .kpi + .kpi { border-left: 1px solid #1f2b26; }
+  .kpis.col .kpi { border-top: 1px solid #1f2b26; }
+  .kpis-h { padding: 12px 18px 10px; font-size: 11px; color: var(--text-2); }
+  .kpi-label { grid-column: 1 / 3; font-size: 12px; font-weight: 600; color: var(--text-2); display: flex; justify-content: space-between; }
+  .kpi-label span { font-weight: 400; color: var(--muted); }
+  .kpi-value { font-size: 30px; font-weight: 700; line-height: 38px; margin-top: 4px; letter-spacing: -.01em; white-space: nowrap; }
+  .kpi-value small { font-size: 15px; font-weight: 600; color: var(--text-2); margin-left: 2px; }
+  .spark { width: 112px; height: 38px; margin-top: 6px; position: relative; }
+  .kpis.col .kpi { grid-template-columns: minmax(0,1fr); grid-template-rows: auto auto minmax(0,1fr) auto; }
+  .kpis.col .kpi-label, .kpis.col .kpi-var { grid-column: 1; }
+  .kpis.col .spark { width: 100%; height: auto; margin: 8px 0 12px; }
+  .kpi-var { grid-column: 1 / 3; align-self: end; display: flex; flex-direction: column; gap: 3px; font-size: 12px; color: var(--text-2); white-space: nowrap; }
+  .kpi-var .pos { color: var(--pos); font-weight: 600; }
+  .kpi-var .neg { color: var(--neg); font-weight: 600; }
+  .kpi-var .neu { color: var(--text); font-weight: 600; }
+  .bar100 { height: 4px; border-radius: 2px; background: #22302a; margin-top: 2px; overflow: hidden; width: 100%; }
+  .bar100 > div { height: 100%; background: var(--accent); border-radius: 2px; }
+
+  /* ---- Bridge extension ---- */
+  .ext-card { height: 100%; display: flex; flex-direction: column; background: var(--obj-bg); border: 1px solid var(--obj-border); border-radius: var(--obj-radius); box-shadow: var(--obj-shadow); padding: var(--obj-pad); overflow: hidden; }
+
+  /* ---- Native filter pane ---- */
+  .fp-row { height: 100%; display: flex; gap: 8px; }
+  .lb-c { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; padding: 0 12px; border: 1px solid #24302b; border-radius: 6px; background: #0e1412; position: relative; overflow: hidden; }
+  .lb-c .t { font-size: 11px; color: var(--text-2); }
+  .lb-c .v { font-size: 13px; color: var(--text); margin-top: 1px; white-space: nowrap; }
+  .lb-c .v.all { color: var(--muted); }
+  .lb-c.has-sel::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--sel); }
+  .lb-c .chev { position: absolute; right: 12px; top: 50%; margin-top: -4px; width: 7px; height: 7px; border-right: 1.5px solid var(--muted); border-bottom: 1.5px solid var(--muted); transform: rotate(45deg); }
+  .fp-col { height: 100%; display: flex; flex-direction: column; gap: 14px; }
+  .lb-x .t { font-size: 12px; font-weight: 600; margin-bottom: 4px; display: flex; justify-content: space-between; }
+  .lb-x .t span { font-weight: 400; color: var(--muted); }
+  .lb-x .r { font-size: 12.5px; height: 28px; line-height: 28px; padding: 0 10px; border-bottom: 1px solid #18211e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lb-x .r.s { background: var(--sel); color: #06130d; font-weight: 600; border-radius: 4px; border-bottom-color: transparent; }
+  .lb-x .r.a { color: #7f8b86; background: #1a2420; }
+
+  /* ---- Native table ---- */
+  table.tbl { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .tbl th { font-size: 11px; font-weight: 600; color: var(--text-2); text-align: right; padding: 0 0 6px 8px; border-bottom: 1px solid #26332e; white-space: nowrap; }
+  .tbl th:first-child, .tbl td:first-child { text-align: left; padding-left: 0; }
+  .tbl td { height: 27px; padding: 0 0 0 8px; text-align: right; border-bottom: 1px solid #18211e; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .tbl td.pos { color: var(--pos); } .tbl td.neg { color: var(--neg); }
+  .tbl tr:last-child td { border-bottom: 0; }
+
+  /* ---- SVG chart text ---- */
+  svg text { font-family: var(--font); }
+  .ax { font-size: 10.5px; fill: var(--text-2); }
+  .ax-m { font-size: 10.5px; fill: var(--muted); }
+  .lbl { font-size: 11.5px; fill: var(--text); font-weight: 600; }
+  .cat { font-size: 12px; fill: var(--text); }
+  .legend { display: flex; gap: 14px; font-size: 11px; color: var(--text-2); position: absolute; top: 0; right: 0; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
+  .sw-l { display: inline-block; width: 16px; height: 0; border-top: 2px solid; }
+
+  /* ---- Object-type tags (prototype aid, toggle with T) ---- */
+  body.tags .cell::after {
+    content: attr(data-tag); position: absolute; top: 4px; right: 4px; z-index: 5;
+    font: 600 10px/1 var(--font); padding: 4px 6px; border-radius: 4px; pointer-events: none;
+    background: #f4f4f0; color: #111;
+  }
+  body.tags .cell[data-kind="ext"]::after { background: var(--synthetic); }
+  body.tags .cell::before { content: ""; position: absolute; inset: -2px; border: 2px dashed rgba(244,244,240,.55); border-radius: 12px; z-index: 4; pointer-events: none; }
+  body.tags .cell[data-kind="ext"]::before { border-color: rgba(242,184,75,.8); }
+
+  /* ---- Prototype switcher: deliberately NOT part of the design ---- */
+  #switcher {
+    position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 50;
+    display: flex; align-items: center; gap: 4px; padding: 5px; border-radius: 999px;
+    background: #f4f4f0; color: #111; font: 600 12px/1 system-ui, sans-serif;
+    box-shadow: 0 8px 30px rgba(0,0,0,.6), 0 0 0 1px rgba(0,0,0,.2);
+  }
+  #switcher button { font: inherit; border: 0; background: #e2e2dc; color: #111; height: 28px; min-width: 28px; padding: 0 10px; border-radius: 999px; cursor: pointer; }
+  #switcher button:hover { background: #d2d2ca; }
+  #switcher .lab { padding: 0 10px; white-space: nowrap; }
+  #switcher .proto { font-size: 10px; letter-spacing: .06em; color: #8a2b00; padding-left: 8px; }
+  body.nobar #switcher { display: none; }
+</style>
+</head>
+<body>
+<main id="sheet" class="sheet"></main>
+<div id="switcher" role="toolbar" aria-label="Prototype variant switcher">
+  <span class="proto">PROTOTYPE</span>
+  <button id="prev" aria-label="Previous variant">&larr;</button>
+  <span class="lab" id="vlabel"></span>
+  <button id="next" aria-label="Next variant">&rarr;</button>
+  <button id="tagbtn" title="Outline objects by type (T)">Object types</button>
+</div>
+<script>
+/* ===================== PLACEHOLDER NAMES: change them here, and only here ===================== */
+const COMPANY = "Valtera";
+const BUSINESS_GROUPS = ["Propulsion", "Driving Intelligence", "Lighting"];
+/* ============================================================================================== */
+
+/* ---- Synthetic Data (invented, EUR bn unless noted). Year 2026, actuals through October. ---- */
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const D = {
+  sales:  [1.68,1.74,1.92,1.79,1.81,1.88,1.66,1.32,1.90,1.92],            // YTD 17.62
+  budget: [1.70,1.76,1.95,1.83,1.85,1.90,1.70,1.36,1.94,1.96,1.90,1.62],  // YTD 17.95
+  py:     [1.62,1.70,1.88,1.74,1.77,1.84,1.63,1.30,1.86,1.87,1.83,1.58],  // YTD 17.21
+  gm:     [19.1,19.0,18.9,18.8,18.7,18.6,18.5,18.3,18.4,18.3],             // Gross Margin %
+  oi:     [1.84,1.90,2.05,1.93,1.96,2.02,1.80,1.47,2.11,2.23],            // Order Intake, YTD 19.31
+  bg:     [7.48, 5.71, 4.43],                                              // by Business Group, same order as BUSINESS_GROUPS
+  region: [["Europe",8.21],["North America",3.65],["China",3.12],["Asia excl. China",1.71],["South America",0.61],["Africa & Middle East",0.32]],
+  bridge: { py: 17.21, volume: 0.52, price: -0.19, mix: 0.08, cy: 17.62 },
+  customers: [ // name, Sales, vs prior year %, Gross Margin %
+    ["Kestova Motors",2.31,3.1,18.2],["Aurelion Motors",2.18,-1.4,19.1],["Caldon Motor Group",1.64,4.8,17.6],
+    ["Brevane Automotive",1.27,2.2,20.3],["Dravena Motors",1.12,-0.6,21.0],["Elvara Automobile",0.98,1.9,16.4],
+    ["Fenmark Motors",0.91,7.3,18.9],["Halvern Motors",0.84,5.5,17.2],["Gorvan Auto",0.62,11.8,15.9],["Lumeris Motors",0.47,24.6,14.8]],
+};
+const cum = a => a.reduce((o,v,i) => (o.push((o[i-1]||0)+v), o), []);
+const cs = cum(D.sales), cb = cum(D.budget);
+D.attain = cs.map((v,i) => v / cb[i] * 100);
+const eur = v => "€" + v.toFixed(2);
+
+/* ---- small SVG helpers ---- */
+const NS = 'xmlns="http://www.w3.org/2000/svg"';
+const svg = (w,h,inner) => `<svg ${NS} width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${inner}</svg>`;
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+
+/* ---- object renderers (HTML) ---- */
+function navBar() {
+  const sheets = ["Executive Overview","Sales Performance","Customer and Region","Product Line and Margin","What-If Simulator"];
+  return `<nav class="nav">
+    <div class="brand">
+      <svg ${NS} width="26" height="26" viewBox="0 0 26 26"><rect width="26" height="26" rx="7" fill="#16251f"/><path d="M6 8l7 11 7-11" fill="none" stroke="#2fd38a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="brand-name">${esc(COMPANY)}</span><span class="brand-sub">Sales analytics</span>
+    </div>
+    <ul class="tabs">${sheets.map((s,i) => `<li class="${i===0?"active":""}">${s}</li>`).join("")}</ul>
+    <div class="nav-right">
+      <span class="sel-label">Current selections</span>
+      <span class="sel-chip">Year <b>2026</b><i>&times;</i></span>
+      <span class="sel-clear">Clear all</span>
+      <span class="synthetic" title="All figures are Synthetic Data">Synthetic Data</span>
+    </div>
+  </nav>`;
+}
+
+function kpiStrip(dir) {
+  const tiles = [
+    { label: "Sales", val: eur(17.62), unit: "bn", spark: D.sales,
+      v: [`<span><span class="pos">&#9650; 2.4%</span> vs prior year</span>`, `<span><span class="neg">&#9660; 1.8%</span> vs Budget</span>`] },
+    { label: "Gross Margin", val: "18.6", unit: "%", spark: D.gm,
+      v: [`<span><span class="neg">&#9660; 0.4 pp</span> vs prior year</span>`, `<span><span class="neg">&#9660; 0.6 pp</span> vs Budget</span>`] },
+    { label: "Order Intake", val: eur(19.31), unit: "bn", spark: D.oi,
+      v: [`<span><span class="pos">&#9650; 6.1%</span> vs prior year</span>`, `<span>Book-to-bill <span class="neu">1.10</span></span>`] },
+    { label: "Budget attainment", val: "98.2", unit: "%", spark: D.attain,
+      v: [`<span><span class="neg">&#9660; ${eur(0.33)} bn</span> short of Budget</span>`, `<div class="bar100"><div style="width:98.2%"></div></div>`] },
+  ];
+  const head = dir === "col" ? `<div class="kpis-h">Year to date, Jan to Oct 2026</div>` : "";
+  return `<div class="kpis ${dir}">${head}${tiles.map((t,i) => `
+    <div class="kpi">
+      <div class="kpi-label">${t.label}${dir==="row" && i===0 ? `<span>YTD Oct 2026</span>` : `<span>YTD</span>`}</div>
+      <div class="kpi-value num">${t.val}<small>${t.unit}</small></div>
+      <div class="spark" data-chart="spark" data-i="${i}"></div>
+      <div class="kpi-var num">${t.v.join("")}</div>
+    </div>`).join("")}</div>`;
+}
+
+function nativeObj(title, sub, chart, extra="", foot="") {
+  return `<section class="obj"><header class="obj-h"><h2>${title}</h2>${sub ? `<p>${sub}</p>` : ""}</header>
+    <div class="plot" data-chart="${chart}" ${extra}></div>${foot ? `<div class="foot">${foot}</div>` : ""}</section>`;
+}
+
+function bridgeObj() {
+  return `<section class="ext-card"><header class="obj-h"><h2>Sales bridge: volume, price, mix</h2><p>2026 YTD vs prior year YTD, EUR bn</p></header>
+    <div class="plot" data-chart="bridge"></div><div class="foot">Axis starts at &euro;16.80 bn</div></section>`;
+}
+
+function filterRow() {
+  const f = [["Year","2026",true],["Business Group","All",false],["Region","All",false],["Channel","All",false]];
+  return `<section class="obj" style="padding:8px"><div class="fp-row">${f.map(([t,v,s]) =>
+    `<div class="lb-c ${s?"has-sel":""}"><div class="t">${t}</div><div class="v ${s?"":"all"}">${v}</div><span class="chev"></span></div>`).join("")}</div></section>`;
+}
+
+function filterCol() {
+  const lb = (t, rows, note="") => `<div class="lb-x"><div class="t">${t}<span>${note}</span></div>${rows.map(([v,c]) => `<div class="r ${c||""}">${esc(v)}</div>`).join("")}</div>`;
+  return `<section class="obj"><div class="fp-col">
+    ${lb("Year", [["2026","s"],["2025","a"],["2024","a"]], "1 selected")}
+    ${lb("Business Group", BUSINESS_GROUPS.map(b => [b]))}
+    ${lb("Region", D.region.map(r => [r[0]]))}
+    ${lb("Channel", [["Original Equipment"],["Aftermarket"]])}
+  </div></section>`;
+}
+
+function customersObj(n) {
+  const rows = D.customers.slice(0, n).map(([c,s,v,g]) =>
+    `<tr><td>${c}</td><td>${eur(s)} bn</td><td class="${v>=0?"pos":"neg"}">${v>=0?"&#9650;":"&#9660;"} ${Math.abs(v).toFixed(1)}%</td><td>${g.toFixed(1)}%</td></tr>`).join("");
+  return `<section class="obj"><header class="obj-h"><h2>Top Customers</h2><p>By Sales, 2026 YTD</p></header>
+    <table class="tbl"><thead><tr><th>Customer</th><th>Sales</th><th>vs prior year</th><th>Gross Margin</th></tr></thead><tbody>${rows}</tbody></table></section>`;
+}
+
+const comboObj = () => nativeObj("Sales vs Budget vs prior year", "By month, EUR bn", "combo");
+const bgObj    = () => nativeObj("Sales by Business Group", "2026 YTD, EUR bn", "bars", 'data-src="bg"');
+const regObj   = () => nativeObj("Sales by Region", "2026 YTD, EUR bn", "bars", 'data-src="region"');
+
+/* ---- chart renderers (SVG sized to the measured plot box) ---- */
+const R = {
+  spark(el) {
+    const a = [D.sales, D.gm, D.oi, D.attain][+el.dataset.i];
+    const w = el.clientWidth, h = el.clientHeight, p = 4;
+    const mn = Math.min(...a), mx = Math.max(...a);
+    const x = i => p + i * (w - 2*p) / (a.length - 1), y = v => h - p - (v - mn) / (mx - mn || 1) * (h - 2*p);
+    const pts = a.map((v,i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+    const area = `M${x(0)},${h} L${pts.split(" ").join(" L")} L${x(a.length-1)},${h} Z`;
+    return svg(w, h, `<defs><linearGradient id="g${el.dataset.i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2fd38a" stop-opacity=".28"/><stop offset="1" stop-color="#2fd38a" stop-opacity="0"/></linearGradient></defs>
+      <path d="${area}" fill="url(#g${el.dataset.i})"/><polyline points="${pts}" fill="none" stroke="#2fd38a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="${x(a.length-1)}" cy="${y(a[a.length-1])}" r="3.5" fill="#2fd38a" stroke="#111815" stroke-width="2"/>`);
+  },
+
+  combo(el) {
+    const w = el.clientWidth, h = el.clientHeight;
+    const L = 34, Rr = 6, T = 24, B = 20, pw = w - L - Rr, ph = h - T - B, max = 2.2;
+    const y = v => T + ph - v / max * ph, bw = pw / 12, x = i => L + bw * i + bw / 2;
+    let g = "";
+    [0, 0.5, 1, 1.5, 2].forEach(t => {
+      g += `<line x1="${L}" x2="${w-Rr}" y1="${y(t)}" y2="${y(t)}" stroke="${t===0?"#33423c":"#1c2622"}"/>`;
+      g += `<text class="ax" x="${L-8}" y="${y(t)+3.5}" text-anchor="end">${t.toFixed(1)}</text>`;
+    });
+    D.sales.forEach((v,i) => { const bwid = bw * 0.56; g += `<rect x="${x(i)-bwid/2}" y="${y(v)}" width="${bwid}" height="${y(0)-y(v)}" fill="#1aa865"/>`; });
+    const line = (a, col, dash) => `<polyline points="${a.map((v,i)=>`${x(i)},${y(v)}`).join(" ")}" fill="none" stroke="${col}" stroke-width="2" ${dash?'stroke-dasharray="5 4"':""} stroke-linejoin="round"/>`;
+    g += line(D.py, "#d95926") + line(D.budget, "#3987e5", true);
+    MONTHS.forEach((m,i) => {
+      g += `<text class="ax" x="${x(i)}" y="${h-5}" text-anchor="middle">${m}</text>`;
+      const tip = `${m} 2026 - Sales ${D.sales[i]!=null?eur(D.sales[i])+" bn":"n/a"} - Budget ${eur(D.budget[i])} bn - prior year ${eur(D.py[i])} bn`;
+      g += `<rect x="${L+bw*i}" y="${T}" width="${bw}" height="${ph}" fill="transparent"><title>${tip}</title></rect>`;
+    });
+    return svg(w, h, g) + `<div class="legend"><span><i class="sw" style="background:#1aa865"></i>Sales</span><span><i class="sw-l" style="border-color:#3987e5;border-top-style:dashed"></i>Budget</span><span><i class="sw-l" style="border-color:#d95926"></i>Prior year</span></div>`;
+  },
+
+  bars(el) {
+    const data = el.dataset.src === "bg" ? BUSINESS_GROUPS.map((b,i) => [b, D.bg[i]]) : D.region;
+    const w = el.clientWidth, h = el.clientHeight, lw = Math.min(140, w * .45), vw = 62;
+    const band = h / data.length, th = Math.min(20, band * .62), max = Math.max(...data.map(d => d[1]));
+    let g = `<line x1="${lw}" x2="${lw}" y1="0" y2="${h}" stroke="#33423c"/>`;
+    data.forEach(([k,v],i) => {
+      const cy = band * i + band / 2, bl = (w - lw - vw) * v / max;
+      g += `<text class="cat" x="${lw-10}" y="${cy+4}" text-anchor="end">${esc(k)}</text>`;
+      g += `<rect x="${lw+1}" y="${cy-th/2}" width="${bl}" height="${th}" fill="#1aa865"><title>${esc(k)}: ${eur(v)} bn</title></rect>`;
+      g += `<text class="lbl num" x="${lw+bl+8}" y="${cy+4}">${eur(v)}</text>`;
+    });
+    return svg(w, h, g);
+  },
+
+  bridge(el) {
+    const b = D.bridge, w = el.clientWidth, h = el.clientHeight;
+    const T = 22, B = 24, L = 4, Rr = 4, lo = 16.8, hi = 17.75, ph = h - T - B;
+    const y = v => T + ph - (v - lo) / (hi - lo) * ph;
+    const steps = [["Prior year", 0, b.py, "t"], ["Volume", b.py, b.py + b.volume], ["Price", b.py + b.volume, b.py + b.volume + b.price], ["Mix", b.py + b.volume + b.price, b.cy], ["2026 YTD", 0, b.cy, "t"]];
+    const n = steps.length, band = (w - L - Rr) / n, bwid = Math.min(64, band * .58);
+    let g = "";
+    steps.forEach(([k, a, z, t], i) => {
+      const cx = L + band * i + band / 2;
+      const top = t ? y(z) : y(Math.max(a, z)), bot = t ? y(lo) : y(Math.min(a, z));
+      const up = z >= a, col = t ? "#7f918a" : (up ? "#2fd38a" : "#ff7a7a");
+      const r = 4;
+      // rounded top (and rounded bottom for floating steps)
+      g += t
+        ? `<path d="M${cx-bwid/2},${bot} V${top+r} q0,-${r} ${r},-${r} H${cx+bwid/2-r} q${r},0 ${r},${r} V${bot} Z" fill="${col}"/>`
+        : `<rect x="${cx-bwid/2}" y="${top}" width="${bwid}" height="${Math.max(2, bot-top)}" rx="3" fill="${col}"/>`;
+      if (t) g += `<path d="M${cx-bwid/2-3},${bot-9} l${bwid+6},-5 M${cx-bwid/2-3},${bot-4} l${bwid+6},-5" stroke="#111815" stroke-width="3"/>`;
+      const val = t ? eur(z) : (z - a >= 0 ? "+" : "−") + Math.abs(z - a).toFixed(2);
+      g += `<text class="lbl num" x="${cx}" y="${top-7}" text-anchor="middle" ${t?"":`fill="${up?"#4ade9b":"#ff7a7a"}"`}>${val}</text>`;
+      g += `<text class="ax" x="${cx}" y="${h-6}" text-anchor="middle">${k}</text>`;
+      if (i < n - 1) { const nx = L + band * (i+1) + band / 2 - bwid / 2; g += `<line x1="${cx+bwid/2}" x2="${nx}" y1="${y(z)}" y2="${y(z)}" stroke="#56655f" stroke-dasharray="2 3"/>`; }
+    });
+    g += `<line x1="${L}" x2="${w-Rr}" y1="${y(lo)}" y2="${y(lo)}" stroke="#33423c"/>`;
+    return svg(w, h, g);
+  },
+};
+
+/* ---- Layouts: [render, kind, col, colspan, row, rowspan] on the 24 x 12 grid (1-based) ---- */
+const EXT = "Custom Extension", NAT = "native + theme JSON";
+const VARIANTS = {
+  A: { name: "Trend-led", cells: [
+    [navBar, "ext", 1, 24, 1, 1],
+    [filterRow, "nat", 1, 24, 2, 1],
+    [() => kpiStrip("row"), "ext", 1, 24, 3, 2],
+    [comboObj, "nat", 1, 16, 5, 4],
+    [bridgeObj, "ext", 17, 8, 5, 4],
+    [bgObj, "nat", 1, 7, 9, 4],
+    [regObj, "nat", 8, 8, 9, 4],
+    [() => customersObj(6), "nat", 16, 9, 9, 4],
+  ]},
+  B: { name: "Filter rail", cells: [
+    [navBar, "ext", 1, 24, 1, 1],
+    [filterCol, "nat", 1, 4, 2, 11],
+    [() => kpiStrip("row"), "ext", 5, 20, 2, 2],
+    [bridgeObj, "ext", 5, 10, 4, 5],
+    [comboObj, "nat", 15, 10, 4, 5],
+    [bgObj, "nat", 5, 6, 9, 4],
+    [regObj, "nat", 11, 7, 9, 4],
+    [() => customersObj(6), "nat", 18, 7, 9, 4],
+  ]},
+  C: { name: "KPI column", cells: [
+    [navBar, "ext", 1, 24, 1, 1],
+    [() => kpiStrip("col"), "ext", 1, 5, 2, 11],
+    [filterRow, "nat", 6, 19, 2, 1],
+    [bridgeObj, "ext", 6, 19, 3, 4],
+    [comboObj, "nat", 6, 6, 7, 6],
+    [bgObj, "nat", 12, 6, 7, 3],
+    [regObj, "nat", 12, 6, 10, 3],
+    [() => customersObj(10), "nat", 18, 7, 7, 6],
+  ]},
+};
+const KEYS = Object.keys(VARIANTS);
+
+function render() {
+  const params = new URLSearchParams(location.search);
+  let v = (params.get("variant") || "A").toUpperCase(); if (!VARIANTS[v]) v = "A";
+  document.body.classList.toggle("nobar", params.get("bar") === "0");
+  if (params.get("tags") === "1") document.body.classList.add("tags");
+  const sheet = document.getElementById("sheet");
+  sheet.innerHTML = VARIANTS[v].cells.map(([fn, kind, c, cspan, r, rspan]) =>
+    `<div class="cell" data-kind="${kind}" data-tag="${kind==="ext"?EXT:NAT}" style="grid-column:${c} / span ${cspan};grid-row:${r} / span ${rspan}">${fn()}</div>`).join("");
+  sheet.querySelectorAll("[data-chart]").forEach(el => { el.innerHTML = R[el.dataset.chart](el); });
+  document.getElementById("vlabel").textContent = `${v} (${VARIANTS[v].name})`;
+  document.title = `PROTOTYPE - Executive Overview - ${v}`;
+  return v;
+}
+function go(step) {
+  const params = new URLSearchParams(location.search);
+  const cur = KEYS.indexOf((params.get("variant") || "A").toUpperCase());
+  params.set("variant", KEYS[(Math.max(cur,0) + step + KEYS.length) % KEYS.length]);
+  history.replaceState(null, "", "?" + params.toString());
+  render();
+}
+document.getElementById("prev").onclick = () => go(-1);
+document.getElementById("next").onclick = () => go(1);
+document.getElementById("tagbtn").onclick = () => document.body.classList.toggle("tags");
+addEventListener("keydown", e => {
+  if (e.target.closest && e.target.closest("input,textarea,[contenteditable]")) return;
+  if (e.key === "ArrowLeft") go(-1);
+  if (e.key === "ArrowRight") go(1);
+  if (e.key === "t" || e.key === "T") document.body.classList.toggle("tags");
+});
+addEventListener("resize", render);
+render();
+</script>
+</body>
+</html>

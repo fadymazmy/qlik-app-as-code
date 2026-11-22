@@ -1,0 +1,65 @@
+[
+ {
+  "qInfo": {
+   "qId": "m_sales",
+   "qType": "measure"
+  },
+  "qMeasure": {
+   "qLabel": "Sales",
+   "qDef": "Sum({<Year={2026}>} Sales)",
+   "coloring": {
+    "baseColor": {
+     "color": "#1aa865",
+     "index": -1
+    }
+   }
+  },
+  "qMetaDef": {
+   "title": "Sales",
+   "description": "",
+   "tags": []
+  }
+ },
+ {
+  "qInfo": {
+   "qId": "m_budget",
+   "qType": "measure"
+  },
+  "qMeasure": {
+   "qLabel": "Budget",
+   "qDef": "Sum({<Year={2026}>} Budget)",
+   "coloring": {
+    "baseColor": {
+     "color": "#3987e5",
+     "index": -1
+    }
+   }
+  },
+  "qMetaDef": {
+   "title": "Budget",
+   "description": "",
+   "tags": []
+  }
+ },
+ {
+  "qInfo": {
+   "qId": "m_py",
+   "qType": "measure"
+  },
+  "qMeasure": {
+   "qLabel": "Prior Year",
+   "qDef": "Sum({<Year={2025}>} Sales)",
+   "coloring": {
+    "baseColor": {
+     "color": "#d95926",
+     "index": -1
+    }
+   }
+  },
+  "qMetaDef": {
+   "title": "Prior Year",
+   "description": "",
+   "tags": []
+  }
+ }
+]

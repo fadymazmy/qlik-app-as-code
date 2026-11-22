@@ -1,0 +1,179 @@
+{
+ "qProperty": {
+  "qMetaDef": {},
+  "objects": [
+   {
+    "childRefId": "c-kpi",
+    "label": "KPI",
+    "bounds": {
+     "x": 5,
+     "y": 5,
+     "width": 60,
+     "height": 60
+    },
+    "condition": {
+     "qValueExpression": {}
+    }
+   },
+   {
+    "childRefId": "c-btn",
+    "label": "Button",
+    "bounds": {
+     "x": 50,
+     "y": 50,
+     "width": 45,
+     "height": 40
+    },
+    "condition": {
+     "qValueExpression": {}
+    }
+   }
+  ],
+  "showTitles": false,
+  "title": "",
+  "subtitle": "",
+  "footnote": "",
+  "disableNavMenu": true,
+  "showDetails": false,
+  "showDetailsExpression": false,
+  "components": [],
+  "constrainToContainer": false,
+  "showGridLines": false,
+  "gridRowCount": 24,
+  "gridColumnCount": 36,
+  "snapToGrid": false,
+  "visualization": "sn-layout-container",
+  "qChildListDef": {
+   "qData": {
+    "visualization": "/visualization",
+    "qExtendsId": "/qExtendsId",
+    "title": "/title",
+    "childRefId": "/childRefId",
+    "visible": "/visible"
+   }
+  },
+  "version": "4.4.0",
+  "qInfo": {
+   "qId": "perf-container",
+   "qType": "sn-layout-container"
+  }
+ },
+ "qChildren": [
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "perf-container-kpi",
+     "qType": "kpi"
+    },
+    "visualization": "kpi",
+    "childRefId": "c-kpi",
+    "showTitles": true,
+    "title": "KPI inside container",
+    "qHyperCubeDef": {
+     "qDimensions": [],
+     "qMeasures": [
+      {
+       "qLibraryId": "m_sales",
+       "qDef": {}
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qWidth": 1,
+       "qHeight": 1
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qMetaDef": {},
+    "runtimeExpressionEvaluation": false,
+    "actions": [],
+    "navigation": {
+     "action": "goToSheet",
+     "appId": "",
+     "sheet": "exec",
+     "chartId": "",
+     "story": "",
+     "websiteUrl": "",
+     "sameWindow": false,
+     "odagLink": ""
+    },
+    "useEnabledCondition": false,
+    "enabledCondition": 1,
+    "showTitles": false,
+    "title": "",
+    "subtitle": "",
+    "footnote": "",
+    "disableNavMenu": true,
+    "showDetails": false,
+    "showDetailsExpression": false,
+    "style": {
+     "label": "Back to Overview",
+     "showLabel": true,
+     "icon": {
+      "useIcon": false,
+      "iconType": "",
+      "position": "left"
+     },
+     "font": {
+      "fontFamily": "Source Sans Pro",
+      "useColorExpression": false,
+      "color": {
+       "index": -1,
+       "color": "#ffffff"
+      },
+      "colorExpression": "",
+      "size": 0.5,
+      "sizeFixed": 20,
+      "sizeBehavior": "responsive",
+      "style": {
+       "bold": true,
+       "italic": false,
+       "underline": false
+      },
+      "align": "center"
+     },
+     "background": {
+      "useColorExpression": false,
+      "color": {
+       "index": -1,
+       "color": "none"
+      },
+      "colorExpression": "",
+      "mode": "none",
+      "useImage": false,
+      "url": {
+       "qStaticContentUrlDef": {}
+      },
+      "size": "auto",
+      "position": "centerCenter"
+     },
+     "border": {
+      "useColorExpression": false,
+      "color": {
+       "index": -1,
+       "color": "none"
+      },
+      "colorExpression": "",
+      "useBorder": false,
+      "radius": 0,
+      "width": 0
+     }
+    },
+    "components": null,
+    "visualization": "action-button",
+    "version": "2.7.0",
+    "qInfo": {
+     "qId": "perf-container-btn",
+     "qType": "action-button"
+    },
+    "childRefId": "c-btn"
+   },
+   "qChildren": []
+  }
+ ]
+}

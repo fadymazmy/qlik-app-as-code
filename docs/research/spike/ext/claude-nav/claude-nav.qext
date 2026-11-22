@@ -1,0 +1,9 @@
+{
+  "name": "claude-nav",
+  "version": "0.0.1",
+  "description": "Spike: nebula.js navigation, selections and theme probe",
+  "author": "claude",
+  "icon": "extension",
+  "type": "visualization",
+  "supernova": true
+}

@@ -1,0 +1,37 @@
+{
+ "qProperty": {
+  "qInfo": {
+   "qId": "fjspfWH",
+   "qType": "sn-tabbed-container"
+  },
+  "qMetaDef": {},
+  "objects": [],
+  "showTitles": true,
+  "title": "",
+  "subtitle": "",
+  "footnote": "",
+  "disableNavMenu": true,
+  "showDetails": false,
+  "showDetailsExpression": false,
+  "showTabs": true,
+  "useDropdown": false,
+  "useScrollButton": true,
+  "showIcons": false,
+  "orientation": "top",
+  "defaultTabId": "",
+  "visualization": "sn-tabbed-container",
+  "qChildListDef": {
+   "qData": {
+    "visualization": "/visualization",
+    "qExtendsId": "/qExtendsId",
+    "title": "/title",
+    "childRefId": "/childRefId",
+    "showCondition": "/showCondition",
+    "visible": "/visible"
+   }
+  },
+  "components": [],
+  "fontsUsed": []
+ },
+ "qChildren": []
+}

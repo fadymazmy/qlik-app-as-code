@@ -1,0 +1,59 @@
+{
+ "qProperty": {
+  "qInfo": {
+   "qId": "example-sheet",
+   "qType": "sheet"
+  },
+  "qMetaDef": {
+   "title": "Example",
+   "description": ""
+  },
+  "rank": 0,
+  "columns": 24,
+  "rows": 12,
+  "cells": [
+   {
+    "name": "example-kpi",
+    "type": "kpi",
+    "col": 0,
+    "row": 0,
+    "colspan": 6,
+    "rowspan": 2,
+    "bounds": {
+     "x": 0,
+     "y": 0,
+     "width": 25,
+     "height": 16.667
+    }
+   }
+  ]
+ },
+ "qChildren": [
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "example-kpi",
+     "qType": "kpi"
+    },
+    "visualization": "kpi",
+    "showTitles": true,
+    "title": "Sales",
+    "qHyperCubeDef": {
+     "qMeasures": [
+      {
+       "qLibraryId": "m_sales",
+       "qDef": {}
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qWidth": 1,
+       "qHeight": 1
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+///$tab Main
+SET ThousandSep=',';
+SET DecimalSep='.';
+SET MoneyThousandSep=',';
+SET MoneyDecimalSep='.';
+SET MoneyFormat='€#,##0.00;-€#,##0.00';
+SET DateFormat='YYYY-MM-DD';
+SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
+SET NumericalAbbreviation='3: k;6: M;9: bn;12: T';
+
+Sales:
+LOAD Date(Date#(Date,'YYYY-MM-DD')) as Date, Year, Month, BusinessGroup, Region, Customer, Sales, Budget, Cost
+FROM [lib://:DataFiles/sales.csv] (txt, utf8, embedded labels, delimiter is ',');

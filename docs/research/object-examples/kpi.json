@@ -1,0 +1,27 @@
+{
+ "qProperty": {
+  "qInfo": {
+   "qId": "exec-kpi-auto",
+   "qType": "kpi"
+  },
+  "visualization": "kpi",
+  "showTitles": true,
+  "title": "Sales (auto format)",
+  "qHyperCubeDef": {
+   "qDimensions": [],
+   "qMeasures": [
+    {
+     "qLibraryId": "m_sales",
+     "qDef": {}
+    }
+   ],
+   "qInitialDataFetch": [
+    {
+     "qWidth": 1,
+     "qHeight": 1
+    }
+   ]
+  }
+ },
+ "qChildren": []
+}

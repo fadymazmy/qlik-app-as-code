@@ -1,0 +1,8 @@
+.DS_Store
+node_modules/
+__pycache__/
+.env
+.venv/
+.build/
+extensions/*/dist/
+.claude/worktrees/

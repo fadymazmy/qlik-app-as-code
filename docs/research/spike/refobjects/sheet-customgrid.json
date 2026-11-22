@@ -1,0 +1,76 @@
+{
+ "qInfo": {
+  "qId": "r1",
+  "qType": "sheet"
+ },
+ "qMetaDef": {
+  "title": "R1"
+ },
+ "rank": 0,
+ "columns": 48,
+ "rows": 24,
+ "cells": [
+  {
+   "name": "pSAtN",
+   "type": "filterpane",
+   "visible": true,
+   "col": 0,
+   "row": 0,
+   "colspan": 24,
+   "rowspan": 12,
+   "bounds": {
+    "y": 0,
+    "x": 0,
+    "width": 50,
+    "height": 50
+   }
+  },
+  {
+   "name": "DAjypAW",
+   "type": "sn-layout-container",
+   "visible": true,
+   "col": 24,
+   "row": 0,
+   "colspan": 24,
+   "rowspan": 12,
+   "bounds": {
+    "y": 0,
+    "x": 50,
+    "width": 50,
+    "height": 50
+   }
+  },
+  {
+   "name": "QjHVk",
+   "type": "sn-slider",
+   "visible": true,
+   "col": 0,
+   "row": 12,
+   "colspan": 24,
+   "rowspan": 12,
+   "bounds": {
+    "y": 50,
+    "x": 0,
+    "width": 50,
+    "height": 50
+   }
+  },
+  {
+   "name": "Aparbt",
+   "type": "qlik-variable-input",
+   "visible": true,
+   "col": 24,
+   "row": 12,
+   "colspan": 24,
+   "rowspan": 12,
+   "bounds": {
+    "y": 50,
+    "x": 50,
+    "width": 50,
+    "height": 50
+   }
+  }
+ ],
+ "gridResolution": "customrows",
+ "customRowBase": 24
+}

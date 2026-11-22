@@ -1,0 +1,192 @@
+{
+ "qProperty": {
+  "qMetaDef": {},
+  "qHyperCubeDef": {
+   "qDimensions": [
+    {
+     "qDef": {
+      "qFieldDefs": [
+       "Month"
+      ],
+      "qFieldLabels": [
+       "Month"
+      ]
+     }
+    }
+   ],
+   "qMeasures": [
+    {
+     "qLibraryId": "m_sales",
+     "qDef": {
+      "series": {
+       "type": "bar",
+       "axis": 0
+      }
+     }
+    },
+    {
+     "qLibraryId": "m_budget",
+     "qDef": {
+      "series": {
+       "type": "line",
+       "axis": 0,
+       "marker": "none"
+      }
+     }
+    },
+    {
+     "qLibraryId": "m_py",
+     "qDef": {
+      "series": {
+       "type": "line",
+       "axis": 0,
+       "marker": "none"
+      }
+     }
+    }
+   ],
+   "qInterColumnSortOrder": [],
+   "qSuppressMissing": true,
+   "qInitialDataFetch": [
+    {
+     "qWidth": 4,
+     "qHeight": 500
+    }
+   ],
+   "qReductionMode": "N",
+   "qMode": "S",
+   "qPseudoDimPos": -1,
+   "qNoOfLeftDims": -1,
+   "qAlwaysFullyExpanded": true,
+   "qMaxStackedCells": 5000,
+   "qCalcCond": {},
+   "qTitle": {},
+   "qCalcCondition": {
+    "qCond": {},
+    "qMsg": {}
+   },
+   "qColumnOrder": [],
+   "qExpansionState": [],
+   "qDynamicScript": []
+  },
+  "filter": null,
+  "refLine": {
+   "refLines": [],
+   "refLines2": [],
+   "dimRefLines": []
+  },
+  "plugins": [],
+  "showTitles": true,
+  "title": "Sales vs Budget vs Prior Year",
+  "subtitle": "By month, EUR",
+  "footnote": "",
+  "disableNavMenu": false,
+  "showDetails": true,
+  "showDetailsExpression": false,
+  "barGrouping": {
+   "grouping": "grouped"
+  },
+  "lineType": "line",
+  "stackedArea": false,
+  "separateStacking": true,
+  "orientation": "vertical",
+  "scrollStartPos": 0,
+  "nullMode": "gap",
+  "dataPoint": {
+   "show": false,
+   "showLineLabels": false,
+   "showBarLabels": false,
+   "showBarSegmentLabels": false,
+   "showBarTotalLabels": true,
+   "showMarkerLabels": false
+  },
+  "gridLine": {
+   "auto": true,
+   "axis": 0,
+   "spacing": 2
+  },
+  "color": {
+   "auto": false,
+   "mode": "primary",
+   "formatting": {
+    "numFormatFromTemplate": true
+   },
+   "useBaseColors": "measure",
+   "paletteColor": {
+    "index": 6
+   },
+   "useDimColVal": true,
+   "useMeasureGradient": true,
+   "persistent": false,
+   "expressionIsColor": true,
+   "expressionLabel": "",
+   "measureScheme": "sg",
+   "reverseScheme": false,
+   "dimensionScheme": "12",
+   "autoMinMax": true,
+   "measureMin": 0,
+   "measureMax": 10
+  },
+  "legend": {
+   "show": true,
+   "dock": "top",
+   "showTitle": true
+  },
+  "dimensionAxis": {
+   "continuousAuto": true,
+   "show": "all",
+   "label": "auto",
+   "dock": "near",
+   "axisDisplayMode": "auto",
+   "maxVisibleItems": 10
+  },
+  "preferContinuousAxis": true,
+  "showMiniChartForContinuousAxis": true,
+  "measureAxes": [
+   {
+    "show": "all",
+    "dock": "near",
+    "spacing": 1,
+    "autoMinMax": true,
+    "minMax": "min",
+    "min": 0,
+    "max": 10
+   },
+   {
+    "show": "all",
+    "spacing": 1,
+    "autoMinMax": true,
+    "minMax": "min",
+    "min": 0,
+    "max": 10,
+    "dock": "far"
+   }
+  ],
+  "tooltip": {
+   "auto": true,
+   "hideBasic": false,
+   "chart": {
+    "style": {
+     "size": "medium"
+    }
+   },
+   "title": "",
+   "description": ""
+  },
+  "visualization": "combochart",
+  "version": "2.0.0",
+  "components": [
+   {
+    "key": "line",
+    "style": {
+     "lineType": "dashed"
+    }
+   }
+  ],
+  "qInfo": {
+   "qId": "exec-combo",
+   "qType": "combochart"
+  }
+ },
+ "qChildren": []
+}

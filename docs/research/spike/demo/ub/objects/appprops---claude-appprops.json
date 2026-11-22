@@ -1,0 +1,40 @@
+{
+  "qInfo": {
+    "qId": "claude-appprops",
+    "qType": "appprops"
+  },
+  "qMetaDef": {},
+  "theme": "claude-dark",
+  "presets": [
+    {
+      "id": "claude",
+      "name": "claude",
+      "navigationBar": {
+        "components": {
+          "logo": {
+            "show": false
+          },
+          "pendo": {
+            "show": false
+          },
+          "mainNavigation": {
+            "show": false
+          },
+          "notificationMenu": {
+            "show": false
+          },
+          "profile": {
+            "show": false
+          }
+        }
+      },
+      "toolbar": {
+        "show": false
+      },
+      "sheetHeader": {
+        "show": false
+      }
+    }
+  ],
+  "activePreset": "claude"
+}

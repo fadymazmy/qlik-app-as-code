@@ -1,0 +1,1167 @@
+{
+ "qProperty": {
+  "qInfo": {
+   "qId": "customer-and-region",
+   "qType": "sheet"
+  },
+  "qMetaDef": {
+   "title": "Customer and Region",
+   "description": ""
+  },
+  "rank": 2,
+  "columns": 24,
+  "rows": 12,
+  "cells": [
+   {
+    "name": "cr-pareto",
+    "type": "combochart",
+    "col": 0,
+    "row": 2,
+    "colspan": 15,
+    "rowspan": 4
+   },
+   {
+    "name": "cr-customers",
+    "type": "sn-table",
+    "col": 15,
+    "row": 2,
+    "colspan": 9,
+    "rowspan": 4
+   },
+   {
+    "name": "cr-regions",
+    "type": "sn-pivot-table",
+    "col": 0,
+    "row": 6,
+    "colspan": 12,
+    "rowspan": 6
+   },
+   {
+    "name": "cr-a",
+    "type": "sn-layout-container",
+    "col": 12,
+    "row": 6,
+    "colspan": 6,
+    "rowspan": 6
+   },
+   {
+    "name": "cr-b",
+    "type": "sn-layout-container",
+    "col": 18,
+    "row": 6,
+    "colspan": 6,
+    "rowspan": 6
+   }
+  ]
+ },
+ "qChildren": [
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "cr-pareto",
+     "qType": "combochart"
+    },
+    "visualization": "combochart",
+    "title": "Customer concentration",
+    "subtitle": {
+     "qStringExpression": {
+      "qExpr": "='Top 10 Customers by Sales YTD; the line is the cumulative share of all Customers.  Largest: ' & FirstSortedValue(Customer, -Aggr(Sum({<$(vYTD)>} Sales), Customer)) & ', ' & Num(Max(Aggr(Sum({<$(vYTD)>} Sales), Customer)) / Sum({<$(vYTD)>} Sales), '0.0%') & ' of Sales YTD'"
+     }
+    },
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {
+       "qLibraryId": "d_customer",
+       "qNullSuppression": true,
+       "qDef": {
+        "qSortCriterias": [
+         {
+          "qSortByExpression": -1,
+          "qExpression": {
+           "qv": "Sum({<$(vYTD)>} Sales)"
+          }
+         }
+        ]
+       },
+       "qOtherTotalSpec": {
+        "qOtherMode": "OTHER_COUNTED",
+        "qOtherCounted": {
+         "qv": "10"
+        },
+        "qSuppressOther": true,
+        "qOtherSortMode": "OTHER_SORT_DESCENDING"
+       }
+      }
+     ],
+     "qMeasures": [
+      {
+       "qLibraryId": "m_sales_ytd",
+       "qDef": {
+        "series": {
+         "type": "bar",
+         "axis": 0
+        }
+       }
+      },
+      {
+       "qLibraryId": "m_customer_cumulative_share",
+       "qDef": {
+        "series": {
+         "type": "line",
+         "axis": 1
+        }
+       }
+      }
+     ],
+     "qInterColumnSortOrder": [
+      0,
+      1,
+      2
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 3,
+       "qHeight": 100
+      }
+     ]
+    },
+    "color": {
+     "auto": false,
+     "mode": "primary",
+     "useBaseColors": "off",
+     "paletteColor": {
+      "index": -1,
+      "color": "#1aa865"
+     }
+    },
+    "legend": {
+     "show": true,
+     "dock": "top",
+     "showTitle": false
+    },
+    "dimensionAxis": {
+     "show": "labels",
+     "label": "layered",
+     "dock": "near"
+    },
+    "measureAxes": [
+     {
+      "show": "labels",
+      "dock": "near",
+      "spacing": 1,
+      "autoMinMax": true
+     },
+     {
+      "show": "labels",
+      "dock": "far",
+      "spacing": 1,
+      "autoMinMax": false,
+      "minMax": "minMax",
+      "min": 0,
+      "max": 1
+     }
+    ],
+    "refLine": {
+     "refLines": [],
+     "dimRefLines": [],
+     "refLines2": [
+      {
+       "show": true,
+       "showLabel": true,
+       "showValue": false,
+       "label": "A 80%",
+       "refLineExpr": {
+        "value": 0.8,
+        "label": "A 80%"
+       },
+       "paletteColor": {
+        "index": -1,
+        "color": "#6c7a74"
+       },
+       "style": {
+        "lineThickness": 1,
+        "lineType": "dashed"
+       },
+       "cId": "abc-a"
+      },
+      {
+       "show": true,
+       "showLabel": true,
+       "showValue": false,
+       "label": "B 95%",
+       "refLineExpr": {
+        "value": 0.95,
+        "label": "B 95%"
+       },
+       "paletteColor": {
+        "index": -1,
+        "color": "#6c7a74"
+       },
+       "style": {
+        "lineThickness": 1,
+        "lineType": "dashed"
+       },
+       "cId": "abc-b"
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "cr-customers",
+     "qType": "sn-table"
+    },
+    "visualization": "sn-table",
+    "title": "Customers by ABC class",
+    "subtitle": "Sales YTD, largest first.  A: cumulative share up to 80%, B: up to 95%, C: the rest",
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {
+       "qLibraryId": "d_customer",
+       "qNullSuppression": true,
+       "qDef": {
+        "qSortCriterias": [
+         {
+          "qSortByExpression": -1,
+          "qExpression": {
+           "qv": "Sum({<$(vYTD)>} Sales)"
+          }
+         }
+        ],
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 175
+        }
+       }
+      }
+     ],
+     "qMeasures": [
+      {
+       "qLibraryId": "m_sales_ytd",
+       "qDef": {
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 84
+        }
+       }
+      },
+      {
+       "qLibraryId": "m_customer_share",
+       "qDef": {
+        "qLabelExpression": "='Share'",
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 70
+        }
+       },
+       "qAttributeExpressions": [
+        {
+         "qExpression": "If([Customer Share] > 0.25, '#f2b84b')",
+         "id": "cellForegroundColor"
+        }
+       ]
+      },
+      {
+       "qLibraryId": "m_customer_cumulative_share",
+       "qDef": {
+        "qLabelExpression": "='Cumulative'",
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 90
+        }
+       }
+      },
+      {
+       "qLibraryId": "m_customer_abc_class",
+       "qDef": {
+        "qLabelExpression": "='Class'",
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 60
+        }
+       },
+       "qAttributeExpressions": [
+        {
+         "qExpression": "Pick(Num([Customer ABC Class]), '@pos', '#f2b84b', '#a3b1ab')",
+         "id": "cellForegroundColor"
+        }
+       ]
+      }
+     ],
+     "qInterColumnSortOrder": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 5,
+       "qHeight": 100
+      }
+     ]
+    },
+    "totals": {
+     "show": false,
+     "position": "noTotals",
+     "label": "Totals"
+    },
+    "multiline": {
+     "wrapTextInHeaders": false,
+     "wrapTextInCells": false
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "cr-regions",
+     "qType": "sn-pivot-table"
+    },
+    "visualization": "sn-pivot-table",
+    "title": "Sales and Gross Margin by Region and Country",
+    "subtitle": {
+     "qStringExpression": {
+      "qExpr": "=Year($(vLatestDate)) & ' YTD; change against Prior Year'"
+     }
+    },
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {
+       "qLibraryId": "d_region",
+       "qDef": {
+        "qSortCriterias": [
+         {
+          "qSortByExpression": -1,
+          "qExpression": {
+           "qv": "Sum({<$(vYTD)>} Sales)"
+          }
+         }
+        ],
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 118
+        }
+       },
+       "qNullSuppression": true
+      },
+      {
+       "qLibraryId": "d_country",
+       "qDef": {
+        "qSortCriterias": [
+         {
+          "qSortByExpression": -1,
+          "qExpression": {
+           "qv": "Sum({<$(vYTD)>} Sales)"
+          }
+         }
+        ],
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 136
+        }
+       },
+       "qNullSuppression": true
+      }
+     ],
+     "qMeasures": [
+      {
+       "qLibraryId": "m_sales_ytd",
+       "qDef": {
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 92
+        }
+       }
+      },
+      {
+       "qLibraryId": "m_sales_ytd_vs_prior_year_pct",
+       "qDef": {
+        "qLabelExpression": "='Sales change'",
+        "numFormatFromTemplate": false,
+        "isCustomFormatted": true,
+        "qNumFormat": {
+         "qType": "F",
+         "qnDec": 1,
+         "qUseThou": 0,
+         "qFmt": "▲ 0.0%;▼ 0.0%",
+         "qDec": ".",
+         "qThou": ","
+        },
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 104
+        }
+       },
+       "qAttributeExpressions": [
+        {
+         "qExpression": "If([Sales YTD vs Prior Year %] >= 0, '@pos', '@neg')",
+         "id": "cellForegroundColor"
+        }
+       ]
+      },
+      {
+       "qLibraryId": "m_gross_margin_ytd",
+       "qDef": {
+        "qLabelExpression": "='Gross Margin'",
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 104
+        }
+       }
+      },
+      {
+       "qLibraryId": "m_gross_margin_ytd_vs_prior_year",
+       "qDef": {
+        "qLabelExpression": "='Margin change'",
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 120
+        }
+       },
+       "qAttributeExpressions": [
+        {
+         "qExpression": "If([Gross Margin YTD vs Prior Year] >= 0, '@pos', '@neg')",
+         "id": "cellForegroundColor"
+        }
+       ]
+      }
+     ],
+     "qMode": "P",
+     "qNoOfLeftDims": 2,
+     "qAlwaysFullyExpanded": true,
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 6,
+       "qHeight": 100
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "cr-a",
+     "qType": "sn-layout-container"
+    },
+    "visualization": "sn-layout-container",
+    "version": "4.4.0",
+    "showTitles": true,
+    "title": "A  ·  Comparison A",
+    "subtitle": "Its own Business Group and Region: the filters at the top do not apply here",
+    "footnote": "",
+    "disableNavMenu": true,
+    "showDetails": false,
+    "showDetailsExpression": false,
+    "components": [],
+    "constrainToContainer": true,
+    "showGridLines": false,
+    "gridRowCount": 24,
+    "gridColumnCount": 36,
+    "snapToGrid": false,
+    "objects": [
+     {
+      "childRefId": "cr-a-filters",
+      "label": "filters",
+      "bounds": {
+       "x": 0,
+       "y": 0,
+       "width": 100,
+       "height": 50
+      },
+      "condition": {
+       "qValueExpression": {}
+      }
+     },
+     {
+      "childRefId": "cr-a-sales",
+      "label": "sales",
+      "bounds": {
+       "x": 0,
+       "y": 50,
+       "width": 50,
+       "height": 25
+      },
+      "condition": {
+       "qValueExpression": {}
+      }
+     },
+     {
+      "childRefId": "cr-a-growth",
+      "label": "growth",
+      "bounds": {
+       "x": 50,
+       "y": 50,
+       "width": 50,
+       "height": 25
+      },
+      "condition": {
+       "qValueExpression": {}
+      }
+     },
+     {
+      "childRefId": "cr-a-margin",
+      "label": "margin",
+      "bounds": {
+       "x": 0,
+       "y": 75,
+       "width": 50,
+       "height": 25
+      },
+      "condition": {
+       "qValueExpression": {}
+      }
+     },
+     {
+      "childRefId": "cr-a-budget",
+      "label": "budget",
+      "bounds": {
+       "x": 50,
+       "y": 75,
+       "width": 50,
+       "height": 25
+      },
+      "condition": {
+       "qValueExpression": {}
+      }
+     }
+    ],
+    "qChildListDef": {
+     "qData": {
+      "visualization": "/visualization",
+      "qExtendsId": "/qExtendsId",
+      "title": "/title",
+      "childRefId": "/childRefId",
+      "visible": "/visible"
+     }
+    }
+   },
+   "qChildren": [
+    {
+     "qProperty": {
+      "qInfo": {
+       "qId": "cr-a-filters",
+       "qType": "filterpane"
+      },
+      "visualization": "filterpane",
+      "qStateName": "A",
+      "childRefId": "cr-a-filters"
+     },
+     "qChildren": [
+      {
+       "qProperty": {
+        "qInfo": {
+         "qId": "cr-a-filter-business-group",
+         "qType": "listbox"
+        },
+        "visualization": "listbox",
+        "qStateName": "A",
+        "showTitles": true,
+        "title": "Business Group",
+        "qListObjectDef": {
+         "qStateName": "A",
+         "qDef": {
+          "qFieldDefs": [
+           "Business Group"
+          ],
+          "qFieldLabels": [
+           "Business Group"
+          ]
+         },
+         "qInitialDataFetch": [
+          {
+           "qWidth": 1,
+           "qHeight": 100
+          }
+         ],
+         "qShowAlternatives": true
+        },
+        "layoutOptions": {
+         "dense": true
+        }
+       },
+       "qChildren": []
+      },
+      {
+       "qProperty": {
+        "qInfo": {
+         "qId": "cr-a-filter-region",
+         "qType": "listbox"
+        },
+        "visualization": "listbox",
+        "qStateName": "A",
+        "showTitles": true,
+        "title": "Region",
+        "qListObjectDef": {
+         "qStateName": "A",
+         "qDef": {
+          "qFieldDefs": [
+           "Region"
+          ],
+          "qFieldLabels": [
+           "Region"
+          ]
+         },
+         "qInitialDataFetch": [
+          {
+           "qWidth": 1,
+           "qHeight": 100
+          }
+         ],
+         "qShowAlternatives": true
+        },
+        "layoutOptions": {
+         "dense": true
+        }
+       },
+       "qChildren": []
+      }
+     ]
+    },
+    {
+     "qProperty": {
+      "qInfo": {
+       "qId": "cr-a-sales",
+       "qType": "kpi"
+      },
+      "visualization": "kpi",
+      "qStateName": "A",
+      "showTitles": true,
+      "title": "Sales YTD",
+      "qHyperCubeDef": {
+       "qStateName": "A",
+       "qMeasures": [
+        {
+         "qLibraryId": "m_sales_ytd",
+         "qDef": {
+          "conditionalColoring": {
+           "useConditionalColoring": false,
+           "paletteSingleColor": {
+            "index": -1,
+            "color": "@comparisonA"
+           }
+          }
+         }
+        }
+       ],
+       "qInitialDataFetch": [
+        {
+         "qLeft": 0,
+         "qTop": 0,
+         "qWidth": 1,
+         "qHeight": 1
+        }
+       ]
+      },
+      "childRefId": "cr-a-sales"
+     },
+     "qChildren": []
+    },
+    {
+     "qProperty": {
+      "qInfo": {
+       "qId": "cr-a-growth",
+       "qType": "kpi"
+      },
+      "visualization": "kpi",
+      "qStateName": "A",
+      "showTitles": true,
+      "title": "Sales vs Prior Year",
+      "qHyperCubeDef": {
+       "qStateName": "A",
+       "qMeasures": [
+        {
+         "qLibraryId": "m_sales_ytd_vs_prior_year_pct",
+         "qDef": {
+          "conditionalColoring": {
+           "useConditionalColoring": true,
+           "paletteSingleColor": {
+            "index": -1,
+            "color": "#e6eeea"
+           },
+           "segments": {
+            "limits": [
+             {
+              "value": 0,
+              "gradient": false
+             }
+            ],
+            "paletteColors": [
+             {
+              "index": -1,
+              "color": "@neg"
+             },
+             {
+              "index": -1,
+              "color": "@pos"
+             }
+            ]
+           }
+          }
+         }
+        }
+       ],
+       "qInitialDataFetch": [
+        {
+         "qLeft": 0,
+         "qTop": 0,
+         "qWidth": 1,
+         "qHeight": 1
+        }
+       ]
+      },
+      "childRefId": "cr-a-growth"
+     },
+     "qChildren": []
+    },
+    {
+     "qProperty": {
+      "qInfo": {
+       "qId": "cr-a-margin",
+       "qType": "kpi"
+      },
+      "visualization": "kpi",
+      "qStateName": "A",
+      "showTitles": true,
+      "title": "Gross Margin YTD",
+      "qHyperCubeDef": {
+       "qStateName": "A",
+       "qMeasures": [
+        {
+         "qLibraryId": "m_gross_margin_ytd",
+         "qDef": {
+          "conditionalColoring": {
+           "useConditionalColoring": false,
+           "paletteSingleColor": {
+            "index": -1,
+            "color": "@comparisonA"
+           }
+          }
+         }
+        }
+       ],
+       "qInitialDataFetch": [
+        {
+         "qLeft": 0,
+         "qTop": 0,
+         "qWidth": 1,
+         "qHeight": 1
+        }
+       ]
+      },
+      "childRefId": "cr-a-margin"
+     },
+     "qChildren": []
+    },
+    {
+     "qProperty": {
+      "qInfo": {
+       "qId": "cr-a-budget",
+       "qType": "kpi"
+      },
+      "visualization": "kpi",
+      "qStateName": "A",
+      "showTitles": true,
+      "title": "Budget Attainment",
+      "qHyperCubeDef": {
+       "qStateName": "A",
+       "qMeasures": [
+        {
+         "qLibraryId": "m_budget_attainment_ytd",
+         "qDef": {
+          "conditionalColoring": {
+           "useConditionalColoring": false,
+           "paletteSingleColor": {
+            "index": -1,
+            "color": "@comparisonA"
+           }
+          }
+         }
+        }
+       ],
+       "qInitialDataFetch": [
+        {
+         "qLeft": 0,
+         "qTop": 0,
+         "qWidth": 1,
+         "qHeight": 1
+        }
+       ]
+      },
+      "childRefId": "cr-a-budget"
+     },
+     "qChildren": []
+    }
+   ]
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "cr-b",
+     "qType": "sn-layout-container"
+    },
+    "visualization": "sn-layout-container",
+    "version": "4.4.0",
+    "showTitles": true,
+    "title": "B  ·  Comparison B",
+    "subtitle": "Its own Business Group and Region: the filters at the top do not apply here",
+    "footnote": "",
+    "disableNavMenu": true,
+    "showDetails": false,
+    "showDetailsExpression": false,
+    "components": [],
+    "constrainToContainer": true,
+    "showGridLines": false,
+    "gridRowCount": 24,
+    "gridColumnCount": 36,
+    "snapToGrid": false,
+    "objects": [
+     {
+      "childRefId": "cr-b-filters",
+      "label": "filters",
+      "bounds": {
+       "x": 0,
+       "y": 0,
+       "width": 100,
+       "height": 50
+      },
+      "condition": {
+       "qValueExpression": {}
+      }
+     },
+     {
+      "childRefId": "cr-b-sales",
+      "label": "sales",
+      "bounds": {
+       "x": 0,
+       "y": 50,
+       "width": 50,
+       "height": 25
+      },
+      "condition": {
+       "qValueExpression": {}
+      }
+     },
+     {
+      "childRefId": "cr-b-growth",
+      "label": "growth",
+      "bounds": {
+       "x": 50,
+       "y": 50,
+       "width": 50,
+       "height": 25
+      },
+      "condition": {
+       "qValueExpression": {}
+      }
+     },
+     {
+      "childRefId": "cr-b-margin",
+      "label": "margin",
+      "bounds": {
+       "x": 0,
+       "y": 75,
+       "width": 50,
+       "height": 25
+      },
+      "condition": {
+       "qValueExpression": {}
+      }
+     },
+     {
+      "childRefId": "cr-b-budget",
+      "label": "budget",
+      "bounds": {
+       "x": 50,
+       "y": 75,
+       "width": 50,
+       "height": 25
+      },
+      "condition": {
+       "qValueExpression": {}
+      }
+     }
+    ],
+    "qChildListDef": {
+     "qData": {
+      "visualization": "/visualization",
+      "qExtendsId": "/qExtendsId",
+      "title": "/title",
+      "childRefId": "/childRefId",
+      "visible": "/visible"
+     }
+    }
+   },
+   "qChildren": [
+    {
+     "qProperty": {
+      "qInfo": {
+       "qId": "cr-b-filters",
+       "qType": "filterpane"
+      },
+      "visualization": "filterpane",
+      "qStateName": "B",
+      "childRefId": "cr-b-filters"
+     },
+     "qChildren": [
+      {
+       "qProperty": {
+        "qInfo": {
+         "qId": "cr-b-filter-business-group",
+         "qType": "listbox"
+        },
+        "visualization": "listbox",
+        "qStateName": "B",
+        "showTitles": true,
+        "title": "Business Group",
+        "qListObjectDef": {
+         "qStateName": "B",
+         "qDef": {
+          "qFieldDefs": [
+           "Business Group"
+          ],
+          "qFieldLabels": [
+           "Business Group"
+          ]
+         },
+         "qInitialDataFetch": [
+          {
+           "qWidth": 1,
+           "qHeight": 100
+          }
+         ],
+         "qShowAlternatives": true
+        },
+        "layoutOptions": {
+         "dense": true
+        }
+       },
+       "qChildren": []
+      },
+      {
+       "qProperty": {
+        "qInfo": {
+         "qId": "cr-b-filter-region",
+         "qType": "listbox"
+        },
+        "visualization": "listbox",
+        "qStateName": "B",
+        "showTitles": true,
+        "title": "Region",
+        "qListObjectDef": {
+         "qStateName": "B",
+         "qDef": {
+          "qFieldDefs": [
+           "Region"
+          ],
+          "qFieldLabels": [
+           "Region"
+          ]
+         },
+         "qInitialDataFetch": [
+          {
+           "qWidth": 1,
+           "qHeight": 100
+          }
+         ],
+         "qShowAlternatives": true
+        },
+        "layoutOptions": {
+         "dense": true
+        }
+       },
+       "qChildren": []
+      }
+     ]
+    },
+    {
+     "qProperty": {
+      "qInfo": {
+       "qId": "cr-b-sales",
+       "qType": "kpi"
+      },
+      "visualization": "kpi",
+      "qStateName": "B",
+      "showTitles": true,
+      "title": "Sales YTD",
+      "qHyperCubeDef": {
+       "qStateName": "B",
+       "qMeasures": [
+        {
+         "qLibraryId": "m_sales_ytd",
+         "qDef": {
+          "conditionalColoring": {
+           "useConditionalColoring": false,
+           "paletteSingleColor": {
+            "index": -1,
+            "color": "@comparisonB"
+           }
+          }
+         }
+        }
+       ],
+       "qInitialDataFetch": [
+        {
+         "qLeft": 0,
+         "qTop": 0,
+         "qWidth": 1,
+         "qHeight": 1
+        }
+       ]
+      },
+      "childRefId": "cr-b-sales"
+     },
+     "qChildren": []
+    },
+    {
+     "qProperty": {
+      "qInfo": {
+       "qId": "cr-b-growth",
+       "qType": "kpi"
+      },
+      "visualization": "kpi",
+      "qStateName": "B",
+      "showTitles": true,
+      "title": "Sales vs Prior Year",
+      "qHyperCubeDef": {
+       "qStateName": "B",
+       "qMeasures": [
+        {
+         "qLibraryId": "m_sales_ytd_vs_prior_year_pct",
+         "qDef": {
+          "conditionalColoring": {
+           "useConditionalColoring": true,
+           "paletteSingleColor": {
+            "index": -1,
+            "color": "#e6eeea"
+           },
+           "segments": {
+            "limits": [
+             {
+              "value": 0,
+              "gradient": false
+             }
+            ],
+            "paletteColors": [
+             {
+              "index": -1,
+              "color": "@neg"
+             },
+             {
+              "index": -1,
+              "color": "@pos"
+             }
+            ]
+           }
+          }
+         }
+        }
+       ],
+       "qInitialDataFetch": [
+        {
+         "qLeft": 0,
+         "qTop": 0,
+         "qWidth": 1,
+         "qHeight": 1
+        }
+       ]
+      },
+      "childRefId": "cr-b-growth"
+     },
+     "qChildren": []
+    },
+    {
+     "qProperty": {
+      "qInfo": {
+       "qId": "cr-b-margin",
+       "qType": "kpi"
+      },
+      "visualization": "kpi",
+      "qStateName": "B",
+      "showTitles": true,
+      "title": "Gross Margin YTD",
+      "qHyperCubeDef": {
+       "qStateName": "B",
+       "qMeasures": [
+        {
+         "qLibraryId": "m_gross_margin_ytd",
+         "qDef": {
+          "conditionalColoring": {
+           "useConditionalColoring": false,
+           "paletteSingleColor": {
+            "index": -1,
+            "color": "@comparisonB"
+           }
+          }
+         }
+        }
+       ],
+       "qInitialDataFetch": [
+        {
+         "qLeft": 0,
+         "qTop": 0,
+         "qWidth": 1,
+         "qHeight": 1
+        }
+       ]
+      },
+      "childRefId": "cr-b-margin"
+     },
+     "qChildren": []
+    },
+    {
+     "qProperty": {
+      "qInfo": {
+       "qId": "cr-b-budget",
+       "qType": "kpi"
+      },
+      "visualization": "kpi",
+      "qStateName": "B",
+      "showTitles": true,
+      "title": "Budget Attainment",
+      "qHyperCubeDef": {
+       "qStateName": "B",
+       "qMeasures": [
+        {
+         "qLibraryId": "m_budget_attainment_ytd",
+         "qDef": {
+          "conditionalColoring": {
+           "useConditionalColoring": false,
+           "paletteSingleColor": {
+            "index": -1,
+            "color": "@comparisonB"
+           }
+          }
+         }
+        }
+       ],
+       "qInitialDataFetch": [
+        {
+         "qLeft": 0,
+         "qTop": 0,
+         "qWidth": 1,
+         "qHeight": 1
+        }
+       ]
+      },
+      "childRefId": "cr-b-budget"
+     },
+     "qChildren": []
+    }
+   ]
+  }
+ ]
+}

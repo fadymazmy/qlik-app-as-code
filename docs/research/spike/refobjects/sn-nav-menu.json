@@ -1,0 +1,37 @@
+{
+ "qProperty": {
+  "qInfo": {
+   "qId": "gJWrJ",
+   "qType": "sn-nav-menu"
+  },
+  "qMetaDef": {},
+  "showTitles": false,
+  "title": "",
+  "subtitle": "",
+  "footnote": "",
+  "disableNavMenu": true,
+  "showDetails": false,
+  "showDetailsExpression": false,
+  "layoutOptions": {
+   "drawerMode": false,
+   "showDrawerIcon": true,
+   "drawerPanelPosition": "left",
+   "orientation": "vertical",
+   "layout": "fill",
+   "alignment": "top-center",
+   "sameItemWidth": true,
+   "separateItems": false,
+   "useDivider": false,
+   "dividerColor": {
+    "color": "#404040",
+    "index": -1
+   },
+   "largeItems": false,
+   "showItemIcons": false
+  },
+  "visualization": "sn-nav-menu",
+  "version": "\"0.16.0\"",
+  "components": []
+ },
+ "qChildren": []
+}

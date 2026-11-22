@@ -1,0 +1,31 @@
+{
+ "visualization": "kpi",
+ "qHyperCubeDef": {
+  "qDimensions": [],
+  "qMeasures": [],
+  "qInterColumnSortOrder": [],
+  "qInitialDataFetch": [
+   {
+    "qLeft": 0,
+    "qTop": 0,
+    "qWidth": 1,
+    "qHeight": 1
+   }
+  ],
+  "qReductionMode": "N",
+  "qMode": "S",
+  "qPseudoDimPos": -1,
+  "qNoOfLeftDims": -1,
+  "qMaxStackedCells": 5000,
+  "qCalcCond": {},
+  "qTitle": {},
+  "qCalcCondition": {
+   "qCond": {},
+   "qMsg": {}
+  },
+  "qColumnOrder": [],
+  "qExpansionState": [],
+  "qDynamicScript": []
+ },
+ "showTitles": true
+}

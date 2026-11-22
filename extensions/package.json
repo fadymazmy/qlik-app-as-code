@@ -1,0 +1,12 @@
+{
+  "name": "valtera-extensions",
+  "private": true,
+  "description": "Build tooling for the Custom Extensions; each subfolder is one extension.",
+  "engines": { "node": ">=24" },
+  "devDependencies": {
+    "@nebula.js/cli": "7.9.0",
+    "@nebula.js/cli-build": "7.9.0",
+    "@nebula.js/cli-sense": "7.9.0",
+    "@nebula.js/stardust": "7.9.0"
+  }
+}

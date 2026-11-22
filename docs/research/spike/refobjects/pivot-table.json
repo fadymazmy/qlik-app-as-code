@@ -1,0 +1,53 @@
+{
+ "qProperty": {
+  "qInfo": {
+   "qId": "wpySAD",
+   "qType": "pivot-table"
+  },
+  "qMetaDef": {},
+  "qHyperCubeDef": {
+   "qDimensions": [],
+   "qMeasures": [],
+   "qInterColumnSortOrder": [],
+   "qSuppressMissing": true,
+   "qInitialDataFetch": [
+    {
+     "qLeft": 0,
+     "qTop": 0,
+     "qWidth": 50,
+     "qHeight": 50
+    }
+   ],
+   "qReductionMode": "N",
+   "qMode": "P",
+   "qPseudoDimPos": -1,
+   "qNoOfLeftDims": -1,
+   "qMaxStackedCells": 5000,
+   "qShowTotalsAbove": true,
+   "qIndentMode": true,
+   "qCalcCond": {},
+   "qTitle": {},
+   "qCalcCondition": {
+    "qCond": {},
+    "qMsg": {}
+   },
+   "qColumnOrder": [],
+   "qExpansionState": [],
+   "qDynamicScript": [],
+   "columnWidths": []
+  },
+  "filter": null,
+  "search": {
+   "sorting": "auto"
+  },
+  "showTitles": true,
+  "title": "",
+  "subtitle": "",
+  "footnote": "",
+  "disableNavMenu": false,
+  "showDetails": true,
+  "showDetailsExpression": false,
+  "visualization": "pivot-table"
+ },
+ "qChildren": []
+}

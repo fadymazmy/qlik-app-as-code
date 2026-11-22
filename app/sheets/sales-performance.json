@@ -1,0 +1,682 @@
+{
+ "qProperty": {
+  "qInfo": {
+   "qId": "sales-performance",
+   "qType": "sheet"
+  },
+  "qMetaDef": {
+   "title": "Sales Performance",
+   "description": ""
+  },
+  "rank": 1,
+  "columns": 24,
+  "rows": 12,
+  "cells": [
+   {
+    "name": "sp-trend",
+    "type": "combochart",
+    "col": 0,
+    "row": 2,
+    "colspan": 16,
+    "rowspan": 6
+   },
+   {
+    "name": "sp-rolling-12-months-sales",
+    "type": "kpi",
+    "col": 16,
+    "row": 2,
+    "colspan": 8,
+    "rowspan": 2
+   },
+   {
+    "name": "sp-rolling-12-months-vs-prior-year",
+    "type": "kpi",
+    "col": 16,
+    "row": 4,
+    "colspan": 8,
+    "rowspan": 2
+   },
+   {
+    "name": "sp-rolling-12-months-vs-budget",
+    "type": "kpi",
+    "col": 16,
+    "row": 6,
+    "colspan": 8,
+    "rowspan": 2
+   },
+   {
+    "name": "sp-by-business-group",
+    "type": "sn-table",
+    "col": 0,
+    "row": 8,
+    "colspan": 8,
+    "rowspan": 4
+   },
+   {
+    "name": "sp-by-region",
+    "type": "sn-table",
+    "col": 8,
+    "row": 8,
+    "colspan": 8,
+    "rowspan": 4
+   },
+   {
+    "name": "sp-by-channel",
+    "type": "sn-table",
+    "col": 16,
+    "row": 8,
+    "colspan": 8,
+    "rowspan": 4
+   }
+  ]
+ },
+ "qChildren": [
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "sp-trend",
+     "qType": "combochart"
+    },
+    "visualization": "combochart",
+    "title": "Sales vs Budget and Prior Year by month",
+    "subtitle": {
+     "qStringExpression": {
+      "qExpr": "=Year($(vLatestDate)) & ' YTD by month, EUR bn' & If(IsNull([Budget YTD]), '. No Budget by Customer or Production Site', '')"
+     }
+    },
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {
+       "qLibraryId": "d_month",
+       "qDef": {}
+      }
+     ],
+     "qMeasures": [
+      {
+       "qLibraryId": "m_sales_ytd",
+       "qDef": {
+        "qLabelExpression": "='Sales'",
+        "series": {
+         "type": "bar",
+         "axis": 0
+        }
+       }
+      },
+      {
+       "qLibraryId": "m_budget_ytd",
+       "qDef": {
+        "qLabelExpression": "='Budget'",
+        "series": {
+         "type": "line",
+         "axis": 0
+        }
+       }
+      },
+      {
+       "qLibraryId": "m_sales_ytd_prior_year",
+       "qDef": {
+        "qLabelExpression": "='Prior Year'",
+        "series": {
+         "type": "line",
+         "axis": 0
+        }
+       }
+      }
+     ],
+     "qSuppressZero": true,
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 4,
+       "qHeight": 500
+      }
+     ]
+    },
+    "legend": {
+     "show": true,
+     "dock": "top",
+     "showTitle": false
+    },
+    "preferContinuousAxis": false
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "sp-rolling-12-months-sales",
+     "qType": "kpi"
+    },
+    "visualization": "kpi",
+    "showTitles": true,
+    "title": "Sales",
+    "subtitle": "Rolling 12 Months",
+    "showMeasureTitle": false,
+    "qHyperCubeDef": {
+     "qMeasures": [
+      {
+       "qLibraryId": "m_sales_rolling_12_months",
+       "qDef": {
+        "conditionalColoring": {
+         "useConditionalColoring": false,
+         "paletteSingleColor": {
+          "index": -1,
+          "color": "#e6eeea"
+         }
+        }
+       }
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 1,
+       "qHeight": 1
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "sp-rolling-12-months-vs-prior-year",
+     "qType": "kpi"
+    },
+    "visualization": "kpi",
+    "showTitles": true,
+    "title": "vs Prior Year",
+    "subtitle": "Sales, Rolling 12 Months",
+    "showMeasureTitle": false,
+    "qHyperCubeDef": {
+     "qMeasures": [
+      {
+       "qLibraryId": "m_sales_rolling_12_months_vs_prior_year_pct",
+       "qDef": {
+        "conditionalColoring": {
+         "useConditionalColoring": true,
+         "segments": {
+          "limits": [
+           {
+            "value": 0,
+            "gradient": false
+           }
+          ],
+          "paletteColors": [
+           {
+            "index": -1,
+            "color": "@neg"
+           },
+           {
+            "index": -1,
+            "color": "@pos"
+           }
+          ]
+         }
+        }
+       }
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 1,
+       "qHeight": 1
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "sp-rolling-12-months-vs-budget",
+     "qType": "kpi"
+    },
+    "visualization": "kpi",
+    "showTitles": true,
+    "title": "vs Budget",
+    "subtitle": {
+     "qStringExpression": {
+      "qExpr": "=If(IsNull([Sales Rolling 12 Months vs Budget %]), 'No Budget by Customer or Production Site', 'Sales, Rolling 12 Months')"
+     }
+    },
+    "showMeasureTitle": false,
+    "qHyperCubeDef": {
+     "qMeasures": [
+      {
+       "qLibraryId": "m_sales_rolling_12_months_vs_budget_pct",
+       "qDef": {
+        "conditionalColoring": {
+         "useConditionalColoring": true,
+         "segments": {
+          "limits": [
+           {
+            "value": 0,
+            "gradient": false
+           }
+          ],
+          "paletteColors": [
+           {
+            "index": -1,
+            "color": "@neg"
+           },
+           {
+            "index": -1,
+            "color": "@pos"
+           }
+          ]
+         }
+        }
+       }
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 1,
+       "qHeight": 1
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "sp-by-business-group",
+     "qType": "sn-table"
+    },
+    "visualization": "sn-table",
+    "title": "By Business Group",
+    "subtitle": {
+     "qStringExpression": {
+      "qExpr": "=Year($(vLatestDate)) & ' YTD'"
+     }
+    },
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {
+       "qLibraryId": "d_business_group",
+       "qDef": {
+        "columnWidth": {
+         "type": "percentage",
+         "percentage": 30
+        }
+       }
+      }
+     ],
+     "qMeasures": [
+      {
+       "qLibraryId": "m_sales_ytd",
+       "qDef": {
+        "qLabelExpression": "='Sales'",
+        "columnWidth": {
+         "type": "percentage",
+         "percentage": 18
+        }
+       },
+       "qSortBy": {
+        "qSortByNumeric": -1
+       }
+      },
+      {
+       "qLibraryId": "m_sales_ytd_vs_budget_pct",
+       "qDef": {
+        "qLabelExpression": "='vs Budget'",
+        "columnWidth": {
+         "type": "percentage",
+         "percentage": 18
+        },
+        "numFormatFromTemplate": false,
+        "isCustomFormatted": true,
+        "qNumFormat": {
+         "qType": "F",
+         "qnDec": 1,
+         "qUseThou": 0,
+         "qFmt": "▲ 0.0%;▼ 0.0%",
+         "qDec": ".",
+         "qThou": ","
+        }
+       },
+       "qAttributeExpressions": [
+        {
+         "qExpression": "If([Sales YTD vs Budget %] < 0, '@neg', '@pos')",
+         "id": "cellForegroundColor"
+        }
+       ]
+      },
+      {
+       "qLibraryId": "m_sales_ytd_vs_prior_year_pct",
+       "qDef": {
+        "qLabelExpression": "='vs Prior Year'",
+        "columnWidth": {
+         "type": "percentage",
+         "percentage": 19
+        },
+        "numFormatFromTemplate": false,
+        "isCustomFormatted": true,
+        "qNumFormat": {
+         "qType": "F",
+         "qnDec": 1,
+         "qUseThou": 0,
+         "qFmt": "▲ 0.0%;▼ 0.0%",
+         "qDec": ".",
+         "qThou": ","
+        }
+       },
+       "qAttributeExpressions": [
+        {
+         "qExpression": "If([Sales YTD vs Prior Year %] < 0, '@neg', '@pos')",
+         "id": "cellForegroundColor"
+        }
+       ]
+      },
+      {
+       "qLibraryId": "m_gross_margin_ytd",
+       "qDef": {
+        "qLabelExpression": "='Gross Margin'",
+        "columnWidth": {
+         "type": "percentage",
+         "percentage": 15
+        }
+       }
+      }
+     ],
+     "qInterColumnSortOrder": [
+      1,
+      0,
+      2,
+      3,
+      4
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 5,
+       "qHeight": 50
+      }
+     ]
+    },
+    "totals": {
+     "show": true,
+     "position": "top",
+     "label": "Total"
+    },
+    "multiline": {
+     "wrapTextInHeaders": true,
+     "wrapTextInCells": false
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "sp-by-region",
+     "qType": "sn-table"
+    },
+    "visualization": "sn-table",
+    "title": "By Region",
+    "subtitle": {
+     "qStringExpression": {
+      "qExpr": "=Year($(vLatestDate)) & ' YTD'"
+     }
+    },
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {
+       "qLibraryId": "d_region",
+       "qDef": {
+        "columnWidth": {
+         "type": "percentage",
+         "percentage": 30
+        }
+       }
+      }
+     ],
+     "qMeasures": [
+      {
+       "qLibraryId": "m_sales_ytd",
+       "qDef": {
+        "qLabelExpression": "='Sales'",
+        "columnWidth": {
+         "type": "percentage",
+         "percentage": 18
+        }
+       },
+       "qSortBy": {
+        "qSortByNumeric": -1
+       }
+      },
+      {
+       "qLibraryId": "m_sales_ytd_vs_budget_pct",
+       "qDef": {
+        "qLabelExpression": "='vs Budget'",
+        "columnWidth": {
+         "type": "percentage",
+         "percentage": 18
+        },
+        "numFormatFromTemplate": false,
+        "isCustomFormatted": true,
+        "qNumFormat": {
+         "qType": "F",
+         "qnDec": 1,
+         "qUseThou": 0,
+         "qFmt": "▲ 0.0%;▼ 0.0%",
+         "qDec": ".",
+         "qThou": ","
+        }
+       },
+       "qAttributeExpressions": [
+        {
+         "qExpression": "If([Sales YTD vs Budget %] < 0, '@neg', '@pos')",
+         "id": "cellForegroundColor"
+        }
+       ]
+      },
+      {
+       "qLibraryId": "m_sales_ytd_vs_prior_year_pct",
+       "qDef": {
+        "qLabelExpression": "='vs Prior Year'",
+        "columnWidth": {
+         "type": "percentage",
+         "percentage": 19
+        },
+        "numFormatFromTemplate": false,
+        "isCustomFormatted": true,
+        "qNumFormat": {
+         "qType": "F",
+         "qnDec": 1,
+         "qUseThou": 0,
+         "qFmt": "▲ 0.0%;▼ 0.0%",
+         "qDec": ".",
+         "qThou": ","
+        }
+       },
+       "qAttributeExpressions": [
+        {
+         "qExpression": "If([Sales YTD vs Prior Year %] < 0, '@neg', '@pos')",
+         "id": "cellForegroundColor"
+        }
+       ]
+      },
+      {
+       "qLibraryId": "m_gross_margin_ytd",
+       "qDef": {
+        "qLabelExpression": "='Gross Margin'",
+        "columnWidth": {
+         "type": "percentage",
+         "percentage": 15
+        }
+       }
+      }
+     ],
+     "qInterColumnSortOrder": [
+      1,
+      0,
+      2,
+      3,
+      4
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 5,
+       "qHeight": 50
+      }
+     ]
+    },
+    "totals": {
+     "show": true,
+     "position": "top",
+     "label": "Total"
+    },
+    "multiline": {
+     "wrapTextInHeaders": true,
+     "wrapTextInCells": false
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "sp-by-channel",
+     "qType": "sn-table"
+    },
+    "visualization": "sn-table",
+    "title": "By Channel",
+    "subtitle": {
+     "qStringExpression": {
+      "qExpr": "=Year($(vLatestDate)) & ' YTD'"
+     }
+    },
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {
+       "qLibraryId": "d_channel",
+       "qDef": {
+        "columnWidth": {
+         "type": "percentage",
+         "percentage": 30
+        }
+       }
+      }
+     ],
+     "qMeasures": [
+      {
+       "qLibraryId": "m_sales_ytd",
+       "qDef": {
+        "qLabelExpression": "='Sales'",
+        "columnWidth": {
+         "type": "percentage",
+         "percentage": 18
+        }
+       },
+       "qSortBy": {
+        "qSortByNumeric": -1
+       }
+      },
+      {
+       "qLibraryId": "m_sales_ytd_vs_budget_pct",
+       "qDef": {
+        "qLabelExpression": "='vs Budget'",
+        "columnWidth": {
+         "type": "percentage",
+         "percentage": 18
+        },
+        "numFormatFromTemplate": false,
+        "isCustomFormatted": true,
+        "qNumFormat": {
+         "qType": "F",
+         "qnDec": 1,
+         "qUseThou": 0,
+         "qFmt": "▲ 0.0%;▼ 0.0%",
+         "qDec": ".",
+         "qThou": ","
+        }
+       },
+       "qAttributeExpressions": [
+        {
+         "qExpression": "If([Sales YTD vs Budget %] < 0, '@neg', '@pos')",
+         "id": "cellForegroundColor"
+        }
+       ]
+      },
+      {
+       "qLibraryId": "m_sales_ytd_vs_prior_year_pct",
+       "qDef": {
+        "qLabelExpression": "='vs Prior Year'",
+        "columnWidth": {
+         "type": "percentage",
+         "percentage": 19
+        },
+        "numFormatFromTemplate": false,
+        "isCustomFormatted": true,
+        "qNumFormat": {
+         "qType": "F",
+         "qnDec": 1,
+         "qUseThou": 0,
+         "qFmt": "▲ 0.0%;▼ 0.0%",
+         "qDec": ".",
+         "qThou": ","
+        }
+       },
+       "qAttributeExpressions": [
+        {
+         "qExpression": "If([Sales YTD vs Prior Year %] < 0, '@neg', '@pos')",
+         "id": "cellForegroundColor"
+        }
+       ]
+      },
+      {
+       "qLibraryId": "m_gross_margin_ytd",
+       "qDef": {
+        "qLabelExpression": "='Gross Margin'",
+        "columnWidth": {
+         "type": "percentage",
+         "percentage": 15
+        }
+       }
+      }
+     ],
+     "qInterColumnSortOrder": [
+      1,
+      0,
+      2,
+      3,
+      4
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 5,
+       "qHeight": 50
+      }
+     ]
+    },
+    "totals": {
+     "show": true,
+     "position": "top",
+     "label": "Total"
+    },
+    "multiline": {
+     "wrapTextInHeaders": true,
+     "wrapTextInCells": false
+    }
+   },
+   "qChildren": []
+  }
+ ]
+}

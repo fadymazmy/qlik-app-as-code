@@ -1,0 +1,39 @@
+{
+ "qProperty": {
+  "qInfo": {"qId": "broken-objects", "qType": "sheet"},
+  "qMetaDef": {"title": "Broken objects (capture check fixture)", "description": ""},
+  "rank": 99,
+  "columns": 24,
+  "rows": 12,
+  "cells": [
+   {"name": "bo-ok", "type": "kpi", "col": 0, "row": 0, "colspan": 6, "rowspan": 3},
+   {"name": "bo-bad-expression", "type": "kpi", "col": 6, "row": 0, "colspan": 6, "rowspan": 3},
+   {"name": "bo-partial-tree", "type": "barchart", "col": 12, "row": 0, "colspan": 12, "rowspan": 6},
+   {"name": "bo-no-object", "type": "kpi", "col": 0, "row": 3, "colspan": 6, "rowspan": 3},
+   {"name": "bo-no-data", "type": "kpi", "col": 6, "row": 3, "colspan": 6, "rowspan": 3}
+  ]
+ },
+ "qChildren": [
+  {"qProperty": {"qInfo": {"qId": "bo-ok", "qType": "kpi"}, "visualization": "kpi", "showTitles": true,
+                 "title": "Control: renders",
+                 "qHyperCubeDef": {"qMeasures": [{"qLibraryId": "m_sales", "qDef": {}}],
+                                   "qInitialDataFetch": [{"qWidth": 1, "qHeight": 1}]}},
+   "qChildren": []},
+  {"qProperty": {"qInfo": {"qId": "bo-bad-expression", "qType": "kpi"}, "visualization": "kpi", "showTitles": true,
+                 "title": "Error: bad expression",
+                 "qHyperCubeDef": {"qMeasures": [{"qDef": {"qDef": "Sum(Sales", "qLabel": "Broken"}}],
+                                   "qInitialDataFetch": [{"qWidth": 1, "qHeight": 1}]}},
+   "qChildren": []},
+  {"qProperty": {"qInfo": {"qId": "bo-partial-tree", "qType": "barchart"}, "visualization": "barchart",
+                 "showTitles": true, "title": "Error: partial property tree",
+                 "qHyperCubeDef": {"qDimensions": [{"qDef": {"qFieldDefs": ["Business Group"]}}],
+                                   "qMeasures": [{"qLibraryId": "m_sales", "qDef": {}}],
+                                   "qInitialDataFetch": [{"qWidth": 2, "qHeight": 50}]}},
+   "qChildren": []},
+  {"qProperty": {"qInfo": {"qId": "bo-no-data", "qType": "kpi"}, "visualization": "kpi", "showTitles": true,
+                 "title": "Control: zero is not empty",
+                 "qHyperCubeDef": {"qMeasures": [{"qDef": {"qDef": "Sum({<Year={1900}>} Sales)", "qLabel": "None"}}],
+                                   "qInitialDataFetch": [{"qWidth": 1, "qHeight": 1}]}},
+   "qChildren": []}
+ ]
+}

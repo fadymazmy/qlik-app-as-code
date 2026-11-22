@@ -1,0 +1,37 @@
+{
+ "qProperty": {
+  "qMetaDef": {},
+  "showTitles": true,
+  "title": "Growth (vGrowth)",
+  "subtitle": "",
+  "footnote": "",
+  "disableNavMenu": true,
+  "showDetails": false,
+  "showDetailsExpression": false,
+  "components": null,
+  "variableName": "vGrowth",
+  "render": "l",
+  "buttonMode": "rowfill",
+  "updateondrag": false,
+  "valueType": "x",
+  "dynamicvalues": "",
+  "alternatives": [],
+  "min": 0,
+  "max": 0.2,
+  "step": 0.01,
+  "rangelabel": true,
+  "visualization": "qlik-variable-input",
+  "variableValue": {
+   "qStringExpression": {
+    "qExpr": "=vGrowth"
+   }
+  },
+  "style": "qlik",
+  "version": "v6.28.0",
+  "qInfo": {
+   "qId": "perf-vinput",
+   "qType": "qlik-variable-input"
+  }
+ },
+ "qChildren": []
+}

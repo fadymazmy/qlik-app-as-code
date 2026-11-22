@@ -1,0 +1,10 @@
+{
+  "name": "hero-kpi-strip",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hero KPI Strip: Sales, Gross Margin, Order Intake and Budget Attainment YTD, each with a sparkline and its variances",
+  "author": "claude",
+  "license": "UNLICENSED",
+  "main": "dist/hero-kpi-strip.js",
+  "peerDependencies": { "@nebula.js/stardust": "7.9.0" }
+}

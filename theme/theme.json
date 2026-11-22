@@ -1,0 +1,169 @@
+{
+ "_inherit": true,
+ "_cards": true,
+ "type": "dark",
+ "_variables": {
+  "@sheet": "#0a0f0d",
+  "@surface": "#111815",
+  "@raised": "#0e1412",
+  "@border": "#1d2723",
+  "@border2": "#26332e",
+  "@divider": "#18211e",
+  "@hover": "#17211d",
+  "@text": "#e6eeea",
+  "@text2": "#a3b1ab",
+  "@muted": "#6c7a74",
+  "@grid": "#1c2622",
+  "@accent": "#2fd38a",
+  "@sales": "#1aa865",
+  "@budget": "#3987e5",
+  "@prioryear": "#d95926",
+  "@pos": "#4ade9b",
+  "@neg": "#ff7a7a",
+  "@comparisonA": "#4fc1c9",
+  "@comparisonB": "#f08fb8",
+  "@synthetic": "#f2b84b",
+  "@selected": "#5b4bd6",
+  "@alternative": "#2a3430",
+  "@excluded": "#161d1a",
+  "@selectedExcluded": "#3b3656"
+ },
+ "customStyles": [{"cssRef": "theme.css"}],
+ "color": "@text",
+ "fontFamily": "\"Valtera Inter\", Inter, \"SF Pro Text\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", system-ui, sans-serif",
+ "fontSize": "12px",
+ "backgroundColor": "@surface",
+ "sheet": {
+  "backgroundColor": "@sheet",
+  "margin": "8px"
+ },
+ "dataColors": {
+  "primaryColor": "@sales",
+  "othersColor": "#5f6f68",
+  "nullColor": "#3a4540",
+  "errorColor": "@neg",
+  "selected": "@selected",
+  "alternative": "@alternative",
+  "excluded": "@excluded",
+  "selectedExcluded": "@selectedExcluded",
+  "possible": "@surface"
+ },
+ "palettes": {
+  "data": [
+   {
+    "name": "Valtera series",
+    "propertyValue": "valtera-series",
+    "type": "row",
+    "scale": ["#1aa865", "#3987e5", "#d95926", "#b18be8", "#e0b341", "#4fc1c9", "#7f918a"]
+   }
+  ],
+  "ui": [
+   {
+    "name": "Valtera UI",
+    "colors": ["#1aa865", "#3987e5", "#d95926", "#4ade9b", "#ff7a7a", "#e6eeea", "#a3b1ab", "#6c7a74", "#111815", "#0a0f0d"]
+   }
+  ]
+ },
+ "object": {
+  "backgroundColor": "@surface",
+  "padding": "12px 14px",
+  "borderWidth": "1px",
+  "borderColor": "@border",
+  "borderRadius": "10px",
+  "shadow": {
+   "boxShadow": "0 6px 20px",
+   "boxShadowColor": "rgba(0,0,0,0.35)"
+  },
+  "title": {
+   "main": {"color": "@text", "fontSize": "13px"},
+   "subTitle": {"color": "@text2", "fontSize": "11px"},
+   "footer": {"color": "@muted", "fontSize": "10.5px"}
+  },
+  "label": {
+   "name": {"color": "@text2"},
+   "value": {"color": "@text"}
+  },
+  "axis": {
+   "title": {"color": "@text2"},
+   "label": {"name": {"color": "@text2"}},
+   "line": {"major": {"color": "@border2"}, "minor": {"color": "@grid"}}
+  },
+  "grid": {
+   "line": {"major": {"color": "@grid"}, "minor": {"color": "@grid"}}
+  },
+  "legend": {
+   "title": {"color": "@text2"},
+   "label": {"color": "@text2"}
+  },
+  "referenceLine": {
+   "label": {"name": {"color": "@text2"}}
+  },
+  "kpi": {
+   "label": {"name": {"color": "@text2"}}
+  },
+  "listBox": {
+   "backgroundColor": "@raised",
+   "title": {"main": {"color": "@text2", "fontSize": "11px"}},
+   "content": {"color": "@text", "fontSize": "13px"},
+   "dataColors": {
+    "selected": "@selected",
+    "alternative": "@alternative",
+    "excluded": "@excluded",
+    "selectedExcluded": "@selectedExcluded",
+    "possible": "@raised"
+   }
+  },
+  "straightTableV2": {
+   "backgroundColor": "@surface",
+   "dimension": {
+    "label": {
+     "name": {"color": "@text2", "backgroundColor": "@surface"},
+     "value": {"color": "@text"}
+    }
+   },
+   "measure": {
+    "label": {"value": {"color": "@text"}}
+   },
+   "total": {
+    "label": {"value": {"color": "@text"}}
+   },
+   "subTotal": {
+    "label": {"value": {"color": "@text"}}
+   },
+   "null": {
+    "label": {"value": {"color": "@muted", "backgroundColor": "@surface"}}
+   },
+   "grid": {
+    "borderColor": "@border2",
+    "divider": {"borderColor": "@divider"},
+    "hover": {"backgroundColor": "@hover", "color": "@text"}
+   }
+  },
+  "pivotTableV2": {
+   "dimension": {
+    "label": {
+     "name": {"color": "@text2", "backgroundColor": "@surface"},
+     "value": {"color": "@text", "backgroundColor": "@surface"}
+    }
+   },
+   "measure": {
+    "label": {
+     "name": {"color": "@text2", "backgroundColor": "@surface"},
+     "value": {"color": "@text", "backgroundColor": "@surface"}
+    }
+   },
+   "total": {
+    "label": {"value": {"color": "@text", "backgroundColor": "@surface"}}
+   },
+   "null": {
+    "label": {"value": {"color": "@muted", "backgroundColor": "@surface"}}
+   },
+   "grid": {
+    "borderColor": "@border2",
+    "divider": {"borderColor": "@divider"},
+    "backgroundColor": "@surface",
+    "hover": {"backgroundColor": "@hover", "color": "@text"}
+   }
+  }
+ }
+}

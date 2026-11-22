@@ -1,0 +1,92 @@
+{
+ "cells": [
+  {"name": "navigation-bar", "type": "navigation-bar", "col": 0, "row": 0, "colspan": 24, "rowspan": 1},
+  {"name": "filters", "type": "filterpane", "col": 0, "row": 1, "colspan": 24, "rowspan": 1}
+ ],
+ "qChildren": [
+  {
+   "qProperty": {
+    "qInfo": {"qId": "navigation-bar", "qType": "navigation-bar"},
+    "visualization": "navigation-bar",
+    "showTitles": false,
+    "disableNavMenu": true,
+    "qSelectionObjectDef": {}
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {"qId": "filters", "qType": "filterpane"},
+    "visualization": "filterpane",
+    "version": "1.11.0",
+    "qMetaDef": {},
+    "showTitles": false,
+    "title": "",
+    "subtitle": "",
+    "footnote": "",
+    "disableNavMenu": true,
+    "showDetails": true,
+    "showDetailsExpression": false,
+    "qChildListDef": {"qData": {}}
+   },
+   "qChildren": [
+    {
+     "qProperty": {
+      "qInfo": {"qId": "filter-year", "qType": "listbox"},
+      "visualization": "listbox",
+      "showTitles": true,
+      "title": "Year",
+      "qListObjectDef": {
+       "qDef": {"qFieldDefs": ["Year"], "qFieldLabels": ["Year"]},
+       "qInitialDataFetch": [{"qWidth": 1, "qHeight": 100}],
+       "qShowAlternatives": true
+      }
+     },
+     "qChildren": []
+    },
+    {
+     "qProperty": {
+      "qInfo": {"qId": "filter-business-group", "qType": "listbox"},
+      "visualization": "listbox",
+      "showTitles": true,
+      "title": "Business Group",
+      "qListObjectDef": {
+       "qDef": {"qFieldDefs": ["Business Group"], "qFieldLabels": ["Business Group"]},
+       "qInitialDataFetch": [{"qWidth": 1, "qHeight": 100}],
+       "qShowAlternatives": true
+      }
+     },
+     "qChildren": []
+    },
+    {
+     "qProperty": {
+      "qInfo": {"qId": "filter-region", "qType": "listbox"},
+      "visualization": "listbox",
+      "showTitles": true,
+      "title": "Region",
+      "qListObjectDef": {
+       "qDef": {"qFieldDefs": ["Region"], "qFieldLabels": ["Region"]},
+       "qInitialDataFetch": [{"qWidth": 1, "qHeight": 100}],
+       "qShowAlternatives": true
+      }
+     },
+     "qChildren": []
+    },
+    {
+     "qProperty": {
+      "qInfo": {"qId": "filter-channel", "qType": "listbox"},
+      "visualization": "listbox",
+      "showTitles": true,
+      "title": "Channel",
+      "qListObjectDef": {
+       "qDef": {"qFieldDefs": ["Channel"], "qFieldLabels": ["Channel"]},
+       "qInitialDataFetch": [{"qWidth": 1, "qHeight": 100}],
+       "qShowAlternatives": true
+      }
+     },
+     "qChildren": []
+    }
+   ]
+  }
+ ]
+}

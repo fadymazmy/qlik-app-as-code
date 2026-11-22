@@ -1,0 +1,65 @@
+{
+ "qProperty": {
+  "qInfo": {
+   "qId": "Jsjmz",
+   "qType": "sn-table"
+  },
+  "qMetaDef": {},
+  "columns": null,
+  "filter": null,
+  "qHyperCubeDef": {
+   "qDimensions": [],
+   "qMeasures": [],
+   "qInterColumnSortOrder": [],
+   "qInitialDataFetch": [
+    {
+     "qLeft": 0,
+     "qTop": 0,
+     "qWidth": 50,
+     "qHeight": 100
+    }
+   ],
+   "qReductionMode": "N",
+   "qMode": "S",
+   "qPseudoDimPos": -1,
+   "qNoOfLeftDims": -1,
+   "qMaxStackedCells": 5000,
+   "qCalcCond": {},
+   "qTitle": {},
+   "qCalcCondition": {
+    "qCond": {},
+    "qMsg": {}
+   },
+   "qColumnOrder": [],
+   "qExpansionState": [],
+   "qDynamicScript": []
+  },
+  "showTitles": true,
+  "title": "",
+  "subtitle": "",
+  "footnote": "",
+  "disableNavMenu": false,
+  "showDetails": true,
+  "showDetailsExpression": false,
+  "components": [],
+  "totals": {
+   "show": true,
+   "position": "noTotals",
+   "label": "Totals"
+  },
+  "usePagination": false,
+  "accessibleHeader": false,
+  "multiline": {
+   "wrapTextInHeaders": true,
+   "wrapTextInCells": true
+  },
+  "hideHeader": false,
+  "enableChartExploration": false,
+  "chartExploration": {
+   "menuVisibility": "auto"
+  },
+  "visualization": "sn-table",
+  "version": "\"6.78.0\""
+ },
+ "qChildren": []
+}

@@ -1,0 +1,80 @@
+{
+ "qMetaDef": {},
+ "runtimeExpressionEvaluation": false,
+ "actions": [],
+ "navigation": {
+  "action": "none",
+  "appId": "",
+  "sheet": "",
+  "chartId": "",
+  "story": "",
+  "websiteUrl": "",
+  "sameWindow": false,
+  "odagLink": ""
+ },
+ "useEnabledCondition": false,
+ "enabledCondition": 1,
+ "showTitles": false,
+ "title": "",
+ "subtitle": "",
+ "footnote": "",
+ "disableNavMenu": true,
+ "showDetails": false,
+ "showDetailsExpression": false,
+ "style": {
+  "label": "Button",
+  "showLabel": true,
+  "icon": {
+   "useIcon": false,
+   "iconType": "",
+   "position": "left"
+  },
+  "font": {
+   "fontFamily": "\"Valtera Inter\", Inter, sans-serif",
+   "useColorExpression": false,
+   "color": {
+    "index": -1,
+    "color": "#e6eeea"
+   },
+   "colorExpression": "",
+   "size": 0.5,
+   "sizeFixed": 13,
+   "sizeBehavior": "fixed",
+   "style": {
+    "bold": false,
+    "italic": false,
+    "underline": false
+   },
+   "align": "center"
+  },
+  "background": {
+   "useColorExpression": false,
+   "color": {
+    "index": -1,
+    "color": "#17211d"
+   },
+   "colorExpression": "",
+   "mode": "none",
+   "useImage": false,
+   "url": {
+    "qStaticContentUrlDef": {}
+   },
+   "size": "auto",
+   "position": "centerCenter"
+  },
+  "border": {
+   "useColorExpression": false,
+   "color": {
+    "index": -1,
+    "color": "none"
+   },
+   "colorExpression": "",
+   "useBorder": false,
+   "radius": 0,
+   "width": 0
+  }
+ },
+ "components": null,
+ "visualization": "action-button",
+ "version": "2.7.0"
+}

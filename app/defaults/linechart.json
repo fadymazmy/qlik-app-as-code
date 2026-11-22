@@ -1,0 +1,124 @@
+{
+ "qMetaDef": {},
+ "qHyperCubeDef": {
+  "qDimensions": [],
+  "qMeasures": [],
+  "qInterColumnSortOrder": [],
+  "qSuppressMissing": true,
+  "qInitialDataFetch": [
+   {
+    "qLeft": 0,
+    "qTop": 0,
+    "qWidth": 17,
+    "qHeight": 500
+   }
+  ],
+  "qReductionMode": "N",
+  "qMode": "S",
+  "qPseudoDimPos": -1,
+  "qNoOfLeftDims": -1,
+  "qAlwaysFullyExpanded": true,
+  "qMaxStackedCells": 5000,
+  "qCalcCond": {},
+  "qTitle": {},
+  "qCalcCondition": {
+   "qCond": {},
+   "qMsg": {}
+  },
+  "qColumnOrder": [],
+  "qExpansionState": [],
+  "qDynamicScript": []
+ },
+ "filter": null,
+ "refLine": {
+  "refLines": [],
+  "dimRefLines": []
+ },
+ "plugins": [],
+ "showTitles": true,
+ "title": "",
+ "subtitle": "",
+ "footnote": "",
+ "disableNavMenu": false,
+ "showDetails": true,
+ "showDetailsExpression": false,
+ "showDisclaimer": true,
+ "lineType": "line",
+ "stackedArea": false,
+ "separateStacking": true,
+ "orientation": "horizontal",
+ "scrollbar": "miniChart",
+ "scrollStartPos": 0,
+ "nullMode": "gap",
+ "dataPoint": {
+  "show": false,
+  "showLabels": false
+ },
+ "maxNumPoints": 2000,
+ "maxNumLines": 12,
+ "gridLine": {
+  "auto": true,
+  "spacing": 2
+ },
+ "color": {
+  "auto": true,
+  "mode": "primary",
+  "formatting": {
+   "numFormatFromTemplate": true
+  },
+  "useBaseColors": "off",
+  "paletteColor": {
+   "index": 6
+  },
+  "useDimColVal": true,
+  "useMeasureGradient": true,
+  "persistent": false,
+  "expressionIsColor": true,
+  "expressionLabel": "",
+  "measureScheme": "sg",
+  "reverseScheme": false,
+  "dimensionScheme": "12",
+  "autoMinMax": true,
+  "measureMin": 0,
+  "measureMax": 10
+ },
+ "legend": {
+  "show": true,
+  "dock": "auto",
+  "showTitle": false
+ },
+ "dimensionAxis": {
+  "continuousAuto": true,
+  "show": "labels",
+  "label": "auto",
+  "dock": "near",
+  "axisDisplayMode": "auto",
+  "maxVisibleItems": 10
+ },
+ "preferContinuousAxis": true,
+ "measureAxis": {
+  "show": "labels",
+  "dock": "near",
+  "spacing": 1,
+  "autoMinMax": true,
+  "minMax": "min",
+  "min": 0,
+  "max": 10,
+  "logarithmic": false
+ },
+ "tooltip": {
+  "auto": true,
+  "hideBasic": false,
+  "chart": {
+   "style": {
+    "size": "medium"
+   }
+  },
+  "title": "",
+  "description": ""
+ },
+ "visualization": "linechart",
+ "version": "3.0.0",
+ "components": [],
+ "showMiniChartForContinuousAxis": true
+}

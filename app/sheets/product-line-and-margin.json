@@ -1,0 +1,463 @@
+{
+ "qProperty": {
+  "qInfo": {
+   "qId": "product-line-and-margin",
+   "qType": "sheet"
+  },
+  "qMetaDef": {
+   "title": "Product Line and Margin",
+   "description": ""
+  },
+  "rank": 3,
+  "columns": 24,
+  "rows": 12,
+  "cells": [
+   {
+    "name": "plm-product-channel",
+    "type": "sn-pivot-table",
+    "col": 0,
+    "row": 2,
+    "colspan": 13,
+    "rowspan": 7
+   },
+   {
+    "name": "plm-margin-change",
+    "type": "sn-pivot-table",
+    "col": 0,
+    "row": 9,
+    "colspan": 13,
+    "rowspan": 3
+   },
+   {
+    "name": "plm-trend",
+    "type": "combochart",
+    "col": 13,
+    "row": 6,
+    "colspan": 11,
+    "rowspan": 6
+   },
+   {
+    "name": "plm-business-group",
+    "type": "filterpane",
+    "col": 13,
+    "row": 2,
+    "colspan": 3,
+    "rowspan": 4
+   },
+   {
+    "name": "plm-bridge",
+    "type": "sales-bridge",
+    "col": 16,
+    "row": 2,
+    "colspan": 8,
+    "rowspan": 4
+   }
+  ]
+ },
+ "qChildren": [
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "plm-product-channel",
+     "qType": "sn-pivot-table"
+    },
+    "visualization": "sn-pivot-table",
+    "title": "Gross Margin by Product Line and Channel",
+    "subtitle": "YTD, as an amount in EUR m and as % of Sales; change against Prior Year in percentage points",
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {
+       "qLibraryId": "d_business_group",
+       "qDef": {
+        "qSortCriterias": [
+         {
+          "qSortByExpression": -1,
+          "qExpression": {
+           "qv": "Sum({<$(vYTD)>} Sales)"
+          }
+         }
+        ],
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 130
+        }
+       },
+       "qNullSuppression": true
+      },
+      {
+       "qLibraryId": "d_product_line",
+       "qDef": {
+        "qSortCriterias": [
+         {
+          "qSortByExpression": -1,
+          "qExpression": {
+           "qv": "Sum({<$(vYTD)>} Sales)"
+          }
+         }
+        ],
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 176
+        }
+       },
+       "qNullSuppression": true
+      },
+      {
+       "qLibraryId": "d_channel",
+       "qDef": {
+        "qSortCriterias": [
+         {
+          "qSortByExpression": -1,
+          "qExpression": {
+           "qv": "Sum({<$(vYTD)>} Sales)"
+          }
+         }
+        ]
+       },
+       "qNullSuppression": true
+      }
+     ],
+     "qMeasures": [
+      {
+       "qLibraryId": "m_gross_margin_amount_ytd_in_eur_m",
+       "qDef": {
+        "qLabelExpression": "='Amount'",
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 76
+        }
+       }
+      },
+      {
+       "qLibraryId": "m_gross_margin_ytd",
+       "qDef": {
+        "qLabelExpression": "='%'",
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 60
+        }
+       }
+      },
+      {
+       "qLibraryId": "m_gross_margin_ytd_vs_prior_year",
+       "qDef": {
+        "qLabelExpression": "='Change'",
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 70
+        }
+       },
+       "qAttributeExpressions": [
+        {
+         "qExpression": "If([Gross Margin YTD vs Prior Year] <= -0.5, '@neg', If([Gross Margin YTD vs Prior Year] >= 0.5, '@pos'))",
+         "id": "cellForegroundColor"
+        }
+       ]
+      }
+     ],
+     "qMode": "P",
+     "qNoOfLeftDims": 2,
+     "qAlwaysFullyExpanded": true,
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 6,
+       "qHeight": 100
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "plm-margin-change",
+     "qType": "sn-pivot-table"
+    },
+    "visualization": "sn-pivot-table",
+    "title": "Gross Margin change by Business Group and Region",
+    "subtitle": "YTD against Prior Year, in percentage points",
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {
+       "qLibraryId": "d_business_group",
+       "qDef": {
+        "qSortCriterias": [
+         {
+          "qSortByExpression": -1,
+          "qExpression": {
+           "qv": "Sum({<$(vYTD)>} Sales)"
+          }
+         }
+        ],
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 150
+        }
+       },
+       "qNullSuppression": true
+      },
+      {
+       "qLibraryId": "d_region",
+       "qDef": {
+        "qSortCriterias": [
+         {
+          "qSortByExpression": -1,
+          "qExpression": {
+           "qv": "Sum({<$(vYTD)>} Sales)"
+          }
+         }
+        ]
+       },
+       "qNullSuppression": true
+      }
+     ],
+     "qMeasures": [
+      {
+       "qLibraryId": "m_gross_margin_ytd_vs_prior_year",
+       "qDef": {
+        "qLabelExpression": "='Change'",
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 104
+        }
+       },
+       "qAttributeExpressions": [
+        {
+         "qExpression": "If([Gross Margin YTD vs Prior Year] <= -1, '#ffd6d6', If([Gross Margin YTD vs Prior Year] >= 1, '#d6ffe7'))",
+         "id": "cellForegroundColor"
+        },
+        {
+         "qExpression": "If([Gross Margin YTD vs Prior Year] <= -3, '#7a2626', If([Gross Margin YTD vs Prior Year] <= -1, '#4a2222', If([Gross Margin YTD vs Prior Year] >= 3, '#1f5a3c', If([Gross Margin YTD vs Prior Year] >= 1, '#1a3a2a'))))",
+         "id": "cellBackgroundColor"
+        }
+       ]
+      }
+     ],
+     "qMode": "P",
+     "qNoOfLeftDims": 1,
+     "qAlwaysFullyExpanded": true,
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 4,
+       "qHeight": 10
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "plm-business-group",
+     "qType": "filterpane"
+    },
+    "visualization": "filterpane"
+   },
+   "qChildren": [
+    {
+     "qProperty": {
+      "qInfo": {
+       "qId": "plm-business-group-listbox",
+       "qType": "listbox"
+      },
+      "visualization": "listbox",
+      "showTitles": true,
+      "title": "Business Group",
+      "qListObjectDef": {
+       "qDef": {
+        "qFieldDefs": [
+         "Business Group"
+        ],
+        "qFieldLabels": [
+         "Business Group"
+        ],
+        "qSortCriterias": [
+         {
+          "qSortByState": 0,
+          "qSortByExpression": -1,
+          "qExpression": {
+           "qv": "Sum({1<$(vYTD)>} Sales)"
+          }
+         }
+        ]
+       },
+       "qInitialDataFetch": [
+        {
+         "qWidth": 1,
+         "qHeight": 10
+        }
+       ],
+       "qShowAlternatives": true
+      }
+     },
+     "qChildren": []
+    }
+   ]
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "plm-bridge",
+     "qType": "sales-bridge"
+    },
+    "visualization": "sales-bridge",
+    "showTitles": true,
+    "title": {
+     "qStringExpression": {
+      "qExpr": "='Sales Bridge: ' & If(Count(DISTINCT [Business Group]) = 1, [Business Group], 'all Business Groups')"
+     }
+    },
+    "subtitle": {
+     "qStringExpression": {
+      "qExpr": "=Year($(vLatestDate)) & ' YTD vs Prior Year YTD, EUR m. Pick a Business Group on the left to drill in'"
+     }
+    },
+    "disableNavMenu": true,
+    "qHyperCubeDef": {
+     "qMeasures": [
+      {
+       "qLibraryId": "m_sales_ytd_prior_year_in_eur_m",
+       "qDef": {}
+      },
+      {
+       "qLibraryId": "m_volume_effect_ytd_vs_prior_year_in_eur_m",
+       "qDef": {}
+      },
+      {
+       "qLibraryId": "m_price_effect_ytd_vs_prior_year_in_eur_m",
+       "qDef": {}
+      },
+      {
+       "qLibraryId": "m_mix_effect_ytd_vs_prior_year_in_eur_m",
+       "qDef": {}
+      },
+      {
+       "qLibraryId": "m_sales_ytd_in_eur_m",
+       "qDef": {}
+      },
+      {
+       "qDef": {
+        "qDef": "Year($(vLatestDate))"
+       }
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 6,
+       "qHeight": 1
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "plm-trend",
+     "qType": "combochart"
+    },
+    "visualization": "combochart",
+    "title": "Gross Margin and Sales by month",
+    "subtitle": "Gross Margin as % of Sales (blue, right axis) and Sales in EUR m (green, left axis)",
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {
+       "qLibraryId": "d_year_month",
+       "qDef": {
+        "qSortCriterias": [
+         {
+          "qSortByNumeric": 1
+         }
+        ]
+       }
+      }
+     ],
+     "qMeasures": [
+      {
+       "qLibraryId": "m_sales_in_eur_m",
+       "qDef": {
+        "series": {
+         "type": "line",
+         "axis": 0
+        },
+        "qLabelExpression": "='Sales'"
+       }
+      },
+      {
+       "qLibraryId": "m_gross_margin",
+       "qDef": {
+        "series": {
+         "type": "line",
+         "axis": 1
+        },
+        "qLabelExpression": "='Gross Margin'"
+       }
+      }
+     ],
+     "qSuppressZero": true,
+     "qInterColumnSortOrder": [
+      0,
+      1,
+      2
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 3,
+       "qHeight": 500
+      }
+     ]
+    },
+    "legend": {
+     "show": false
+    },
+    "preferContinuousAxis": true,
+    "dimensionAxis": {
+     "continuousAuto": true,
+     "show": "labels",
+     "label": "auto",
+     "dock": "near"
+    },
+    "showMiniChartForContinuousAxis": false,
+    "components": [
+     {
+      "key": "line",
+      "style": {
+       "lineCurve": "linear",
+       "lineThickness": 2
+      }
+     }
+    ],
+    "measureAxes": [
+     {
+      "show": "labels",
+      "dock": "near",
+      "spacing": 1,
+      "autoMinMax": false,
+      "minMax": "min",
+      "min": 0
+     },
+     {
+      "show": "labels",
+      "dock": "far",
+      "spacing": 1,
+      "autoMinMax": false,
+      "minMax": "min",
+      "min": 0
+     }
+    ]
+   },
+   "qChildren": []
+  }
+ ]
+}

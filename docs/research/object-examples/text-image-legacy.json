@@ -1,0 +1,50 @@
+{
+ "qProperty": {
+  "qMetaDef": {},
+  "qHyperCubeDef": {
+   "qDimensions": [],
+   "qMeasures": [],
+   "qInterColumnSortOrder": [],
+   "qInitialDataFetch": [],
+   "qReductionMode": "N",
+   "qMode": "S",
+   "qPseudoDimPos": -1,
+   "qNoOfLeftDims": -1,
+   "qMaxStackedCells": 5000,
+   "qCalcCond": {},
+   "qTitle": {},
+   "qCalcCondition": {
+    "qCond": {},
+    "qMsg": {}
+   },
+   "qColumnOrder": [],
+   "qExpansionState": [],
+   "qDynamicScript": [],
+   "qSuppressMeasureTotals": true
+  },
+  "filter": null,
+  "showTitles": false,
+  "title": "",
+  "subtitle": "",
+  "footnote": "",
+  "disableNavMenu": false,
+  "showDetails": true,
+  "showDetailsExpression": false,
+  "components": null,
+  "responsive": "none",
+  "markdown": "**Synthetic Data** (text-image, markdown)",
+  "images": [],
+  "background": {
+   "isUsed": false,
+   "size": "auto",
+   "position": "topLeft",
+   "url": {}
+  },
+  "visualization": "text-image",
+  "qInfo": {
+   "qId": "exec-textimage",
+   "qType": "text-image"
+  }
+ },
+ "qChildren": []
+}

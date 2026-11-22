@@ -1,0 +1,198 @@
+{
+ "_inherit": true,
+ "_cards": true,
+ "customStyles": [
+  {
+   "cssRef": "theme.css",
+   "classRef": "claude-dark"
+  }
+ ],
+ "_variables": {
+  "@bg": "#0b0f0d",
+  "@surface": "#141b17",
+  "@border": "#27302b",
+  "@text": "#e6ece9",
+  "@muted": "#8fa199",
+  "@accent": "#1aa865"
+ },
+ "claude": {
+  "accent": "#1aa865"
+ },
+ "color": "@text",
+ "fontFamily": "ClaudeTestFont, Georgia, serif",
+ "fontSize": "12px",
+ "backgroundColor": "@surface",
+ "sheet": {
+  "backgroundColor": "@bg",
+  "margin": "8px"
+ },
+ "dataColors": {
+  "primaryColor": "#1aa865",
+  "othersColor": "#5b6b63",
+  "nullColor": "#3a4540",
+  "selected": "#e0a526",
+  "alternative": "#2c3a33",
+  "excluded": "#1b211e",
+  "selectedExcluded": "#3a2f15",
+  "possible": "#141b17"
+ },
+ "palettes": {
+  "data": [
+   {
+    "name": "Claude series",
+    "propertyValue": "claude-series",
+    "type": "row",
+    "scale": [
+     "#1aa865",
+     "#3987e5",
+     "#d95926",
+     "#b18be8"
+    ]
+   }
+  ],
+  "ui": [
+   {
+    "name": "Claude UI",
+    "colors": [
+     "#1aa865",
+     "#3987e5",
+     "#d95926",
+     "#e6ece9",
+     "#8fa199",
+     "#0b0f0d"
+    ]
+   }
+  ]
+ },
+ "object": {
+  "backgroundColor": "@surface",
+  "padding": "16px",
+  "borderWidth": "1px",
+  "borderColor": "#ff00ff",
+  "borderRadius": "14px",
+  "shadow": {
+   "boxShadow": "0 0 0 3px",
+   "boxShadowColor": "#3987e5"
+  },
+  "title": {
+   "main": {
+    "color": "#ffd34d",
+    "fontSize": "15px",
+    "fontFamily": "ClaudeTestFont, Georgia, serif"
+   },
+   "subTitle": {
+    "color": "@muted",
+    "fontSize": "11px"
+   },
+   "footer": {
+    "color": "@muted"
+   }
+  },
+  "label": {
+   "name": {
+    "color": "@muted"
+   },
+   "value": {
+    "color": "@text"
+   }
+  },
+  "axis": {
+   "title": {
+    "color": "@muted"
+   },
+   "label": {
+    "name": {
+     "color": "@muted"
+    }
+   },
+   "line": {
+    "major": {
+     "color": "@border"
+    }
+   }
+  },
+  "grid": {
+   "line": {
+    "major": {
+     "color": "@border"
+    },
+    "minor": {
+     "color": "@border"
+    }
+   }
+  },
+  "legend": {
+   "title": {
+    "color": "@muted"
+   },
+   "label": {
+    "color": "@text"
+   }
+  },
+  "kpi": {
+   "label": {
+    "name": {
+     "color": "@muted"
+    }
+   }
+  },
+  "listBox": {
+   "backgroundColor": "#10261b",
+   "title": {
+    "main": {
+     "color": "#7fe0ac",
+     "fontSize": "13px"
+    }
+   },
+   "content": {
+    "color": "#cfe8da",
+    "fontSize": "12px"
+   },
+   "dataColors": {
+    "selected": "#1aa865",
+    "alternative": "#2c3a33",
+    "excluded": "#1b211e",
+    "selectedExcluded": "#3a2f15",
+    "possible": "#10261b"
+   }
+  },
+  "filterpane": {
+   "padding": "4px"
+  },
+  "straightTableV2": {
+   "dimension": {
+    "color": "@text"
+   },
+   "measure": {
+    "color": "@text"
+   },
+   "grid": {
+    "borderColor": "@border",
+    "backgroundColor": "@surface",
+    "divider": "@border"
+   }
+  },
+  "claude-nav": {
+   "accent": "#1aa865"
+  },
+  "straightTable": {
+   "backgroundColor": "@surface",
+   "header": {
+    "color": "@muted",
+    "fontSize": "12px"
+   },
+   "content": {
+    "color": "@text",
+    "fontSize": "13px"
+   }
+  },
+  "pivotTableV2": {
+   "dimension": {
+    "color": "@text"
+   },
+   "measure": {
+    "color": "@text"
+   }
+  }
+ }
+}

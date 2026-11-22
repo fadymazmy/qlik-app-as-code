@@ -1,0 +1,62 @@
+[
+ {
+  "qInfo": {"qId": "d_date", "qType": "dimension"},
+  "qDim": {"qGrouping": "N", "qFieldDefs": ["Date"], "qFieldLabels": ["Date"], "title": "Date"},
+  "qMetaDef": {"title": "Date", "description": "", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "d_year", "qType": "dimension"},
+  "qDim": {"qGrouping": "N", "qFieldDefs": ["Year"], "qFieldLabels": ["Year"], "title": "Year"},
+  "qMetaDef": {"title": "Year", "description": "", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "d_quarter", "qType": "dimension"},
+  "qDim": {"qGrouping": "N", "qFieldDefs": ["Quarter"], "qFieldLabels": ["Quarter"], "title": "Quarter"},
+  "qMetaDef": {"title": "Quarter", "description": "", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "d_month", "qType": "dimension"},
+  "qDim": {"qGrouping": "N", "qFieldDefs": ["Month"], "qFieldLabels": ["Month"], "title": "Month"},
+  "qMetaDef": {"title": "Month", "description": "", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "d_year_month", "qType": "dimension"},
+  "qDim": {"qGrouping": "N", "qFieldDefs": ["Year Month"], "qFieldLabels": ["Year Month"], "title": "Year Month"},
+  "qMetaDef": {"title": "Year Month", "description": "", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "d_business_group", "qType": "dimension"},
+  "qDim": {"qGrouping": "N", "qFieldDefs": ["Business Group"], "qFieldLabels": ["Business Group"], "title": "Business Group"},
+  "qMetaDef": {"title": "Business Group", "description": "", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "d_product_line", "qType": "dimension"},
+  "qDim": {"qGrouping": "N", "qFieldDefs": ["Product Line"], "qFieldLabels": ["Product Line"], "title": "Product Line"},
+  "qMetaDef": {"title": "Product Line", "description": "", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "d_customer", "qType": "dimension"},
+  "qDim": {"qGrouping": "N", "qFieldDefs": ["Customer"], "qFieldLabels": ["Customer"], "title": "Customer"},
+  "qMetaDef": {"title": "Customer", "description": "", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "d_region", "qType": "dimension"},
+  "qDim": {"qGrouping": "N", "qFieldDefs": ["Region"], "qFieldLabels": ["Region"], "title": "Region"},
+  "qMetaDef": {"title": "Region", "description": "", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "d_country", "qType": "dimension"},
+  "qDim": {"qGrouping": "N", "qFieldDefs": ["Country"], "qFieldLabels": ["Country"], "title": "Country"},
+  "qMetaDef": {"title": "Country", "description": "", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "d_production_site", "qType": "dimension"},
+  "qDim": {"qGrouping": "N", "qFieldDefs": ["Production Site"], "qFieldLabels": ["Production Site"], "title": "Production Site"},
+  "qMetaDef": {"title": "Production Site", "description": "", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "d_channel", "qType": "dimension"},
+  "qDim": {"qGrouping": "N", "qFieldDefs": ["Channel"], "qFieldLabels": ["Channel"], "title": "Channel"},
+  "qMetaDef": {"title": "Channel", "description": "", "tags": []}
+ }
+]

@@ -1,0 +1,10 @@
+{
+  "name": "sales-bridge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sales Bridge: Sales YTD from Prior Year through the volume, price and mix effects",
+  "author": "claude",
+  "license": "UNLICENSED",
+  "main": "dist/sales-bridge.js",
+  "peerDependencies": { "@nebula.js/stardust": "7.9.0" }
+}

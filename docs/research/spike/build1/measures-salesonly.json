@@ -1,0 +1,28 @@
+[
+ {
+  "qInfo": {
+   "qId": "m_sales",
+   "qType": "measure"
+  },
+  "qMeasure": {
+   "qLabel": "Sales",
+   "qDef": "Sum(Sales)",
+   "qNumFormat": {
+    "qType": "M",
+    "qFmt": "\u20ac#,##0.00",
+    "qDec": ".",
+    "qThou": ","
+   },
+   "coloring": {
+    "baseColor": {
+     "color": "#1aa865"
+    }
+   }
+  },
+  "qMetaDef": {
+   "title": "Sales",
+   "description": "Invoiced revenue in EUR",
+   "tags": []
+  }
+ }
+]

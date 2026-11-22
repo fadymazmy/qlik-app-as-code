@@ -1,0 +1,93 @@
+{
+ "qProperty": {
+  "qMetaDef": {},
+  "runtimeExpressionEvaluation": false,
+  "actions": [
+   {
+    "actionType": "clearAll",
+    "softLock": false,
+    "cId": "a1"
+   }
+  ],
+  "navigation": {
+   "action": "goToSheet",
+   "appId": "",
+   "sheet": "perf",
+   "chartId": "",
+   "story": "",
+   "websiteUrl": "",
+   "sameWindow": false,
+   "odagLink": ""
+  },
+  "useEnabledCondition": false,
+  "enabledCondition": 1,
+  "showTitles": false,
+  "title": "",
+  "subtitle": "",
+  "footnote": "",
+  "disableNavMenu": true,
+  "showDetails": false,
+  "showDetailsExpression": false,
+  "style": {
+   "label": "Go to Sales Performance",
+   "showLabel": true,
+   "icon": {
+    "useIcon": false,
+    "iconType": "",
+    "position": "left"
+   },
+   "font": {
+    "fontFamily": "Source Sans Pro",
+    "useColorExpression": false,
+    "color": {
+     "index": -1,
+     "color": "#ffffff"
+    },
+    "colorExpression": "",
+    "size": 0.5,
+    "sizeFixed": 20,
+    "sizeBehavior": "responsive",
+    "style": {
+     "bold": true,
+     "italic": false,
+     "underline": false
+    },
+    "align": "center"
+   },
+   "background": {
+    "useColorExpression": false,
+    "color": {
+     "index": -1,
+     "color": "none"
+    },
+    "colorExpression": "",
+    "mode": "none",
+    "useImage": false,
+    "url": {
+     "qStaticContentUrlDef": {}
+    },
+    "size": "auto",
+    "position": "centerCenter"
+   },
+   "border": {
+    "useColorExpression": false,
+    "color": {
+     "index": -1,
+     "color": "none"
+    },
+    "colorExpression": "",
+    "useBorder": false,
+    "radius": 0,
+    "width": 0
+   }
+  },
+  "components": null,
+  "visualization": "action-button",
+  "version": "2.7.0",
+  "qInfo": {
+   "qId": "exec-btn",
+   "qType": "action-button"
+  }
+ },
+ "qChildren": []
+}

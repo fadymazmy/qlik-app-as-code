@@ -1,0 +1,543 @@
+{
+ "qProperty": {
+  "qInfo": {
+   "qId": "what-if-simulator",
+   "qType": "sheet"
+  },
+  "qMetaDef": {
+   "title": "What-If Simulator",
+   "description": ""
+  },
+  "rank": 4,
+  "columns": 24,
+  "rows": 12,
+  "cells": [
+   {
+    "name": "wi-controls",
+    "type": "what-if-controls",
+    "col": 0,
+    "row": 2,
+    "colspan": 6,
+    "rowspan": 10
+   },
+   {
+    "name": "wi-sales",
+    "type": "kpi",
+    "col": 6,
+    "row": 2,
+    "colspan": 6,
+    "rowspan": 2
+   },
+   {
+    "name": "wi-simulated-sales",
+    "type": "kpi",
+    "col": 6,
+    "row": 4,
+    "colspan": 6,
+    "rowspan": 2
+   },
+   {
+    "name": "wi-gross-margin-amount",
+    "type": "kpi",
+    "col": 12,
+    "row": 2,
+    "colspan": 6,
+    "rowspan": 2
+   },
+   {
+    "name": "wi-simulated-gross-margin-amount",
+    "type": "kpi",
+    "col": 12,
+    "row": 4,
+    "colspan": 6,
+    "rowspan": 2
+   },
+   {
+    "name": "wi-gross-margin",
+    "type": "kpi",
+    "col": 18,
+    "row": 2,
+    "colspan": 6,
+    "rowspan": 2
+   },
+   {
+    "name": "wi-simulated-gross-margin",
+    "type": "kpi",
+    "col": 18,
+    "row": 4,
+    "colspan": 6,
+    "rowspan": 2
+   },
+   {
+    "name": "wi-by-business-group",
+    "type": "barchart",
+    "col": 6,
+    "row": 6,
+    "colspan": 7,
+    "rowspan": 6
+   },
+   {
+    "name": "wi-by-region",
+    "type": "sn-table",
+    "col": 13,
+    "row": 6,
+    "colspan": 11,
+    "rowspan": 6
+   }
+  ]
+ },
+ "qChildren": [
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "wi-controls",
+     "qType": "what-if-controls"
+    },
+    "visualization": "what-if-controls",
+    "showTitles": true,
+    "title": "What-If scenario",
+    "subtitle": "Changes against Actual, applied to YTD",
+    "disableNavMenu": true,
+    "price": {
+     "qValueExpression": {
+      "qExpr": "$(vPriceChange)"
+     }
+    },
+    "volume": {
+     "qValueExpression": {
+      "qExpr": "$(vVolumeChange)"
+     }
+    },
+    "exchangeRate": {
+     "qValueExpression": {
+      "qExpr": "$(vExchangeRateChange)"
+     }
+    },
+    "localCostShare": {
+     "qValueExpression": {
+      "qExpr": "$(vLocalCostShare)"
+     }
+    },
+    "euroArea": {
+     "qStringExpression": {
+      "qExpr": "='$(vEuroArea)'"
+     }
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "wi-sales",
+     "qType": "kpi"
+    },
+    "visualization": "kpi",
+    "showTitles": true,
+    "title": "Actual Sales YTD",
+    "qHyperCubeDef": {
+     "qMeasures": [
+      {
+       "qLibraryId": "m_sales_ytd",
+       "qDef": {
+        "conditionalColoring": {
+         "useConditionalColoring": false,
+         "paletteSingleColor": {
+          "index": -1,
+          "color": "#e6eeea"
+         }
+        },
+        "qLabelExpression": "='Actual'"
+       }
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 1,
+       "qHeight": 1
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "wi-simulated-sales",
+     "qType": "kpi"
+    },
+    "visualization": "kpi",
+    "showTitles": true,
+    "title": "Simulated Sales YTD",
+    "qHyperCubeDef": {
+     "qMeasures": [
+      {
+       "qLibraryId": "m_simulated_sales_ytd",
+       "qDef": {
+        "conditionalColoring": {
+         "useConditionalColoring": false,
+         "paletteSingleColor": {
+          "index": -1,
+          "color": "#b18be8"
+         }
+        },
+        "qLabelExpression": "='Simulated'"
+       }
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 1,
+       "qHeight": 1
+      }
+     ]
+    },
+    "subtitle": {
+     "qStringExpression": {
+      "qExpr": "=[Simulated Sales YTD vs Actual] & '  (' & [Simulated Sales YTD vs Actual %] & ')  vs Actual'"
+     }
+    },
+    "showMeasureTitle": false
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "wi-gross-margin-amount",
+     "qType": "kpi"
+    },
+    "visualization": "kpi",
+    "showTitles": true,
+    "title": "Actual Gross Margin Amount YTD",
+    "qHyperCubeDef": {
+     "qMeasures": [
+      {
+       "qLibraryId": "m_gross_margin_amount_ytd",
+       "qDef": {
+        "conditionalColoring": {
+         "useConditionalColoring": false,
+         "paletteSingleColor": {
+          "index": -1,
+          "color": "#e6eeea"
+         }
+        },
+        "qLabelExpression": "='Actual'"
+       }
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 1,
+       "qHeight": 1
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "wi-simulated-gross-margin-amount",
+     "qType": "kpi"
+    },
+    "visualization": "kpi",
+    "showTitles": true,
+    "title": "Simulated Gross Margin Amount YTD",
+    "qHyperCubeDef": {
+     "qMeasures": [
+      {
+       "qLibraryId": "m_simulated_gross_margin_amount_ytd",
+       "qDef": {
+        "conditionalColoring": {
+         "useConditionalColoring": false,
+         "paletteSingleColor": {
+          "index": -1,
+          "color": "#b18be8"
+         }
+        },
+        "qLabelExpression": "='Simulated'"
+       }
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 1,
+       "qHeight": 1
+      }
+     ]
+    },
+    "subtitle": {
+     "qStringExpression": {
+      "qExpr": "=[Simulated Gross Margin Amount YTD vs Actual] & '  vs Actual'"
+     }
+    },
+    "showMeasureTitle": false
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "wi-gross-margin",
+     "qType": "kpi"
+    },
+    "visualization": "kpi",
+    "showTitles": true,
+    "title": "Actual Gross Margin YTD",
+    "qHyperCubeDef": {
+     "qMeasures": [
+      {
+       "qLibraryId": "m_gross_margin_ytd",
+       "qDef": {
+        "conditionalColoring": {
+         "useConditionalColoring": false,
+         "paletteSingleColor": {
+          "index": -1,
+          "color": "#e6eeea"
+         }
+        },
+        "qLabelExpression": "='Actual'"
+       }
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 1,
+       "qHeight": 1
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "wi-simulated-gross-margin",
+     "qType": "kpi"
+    },
+    "visualization": "kpi",
+    "showTitles": true,
+    "title": "Simulated Gross Margin YTD",
+    "qHyperCubeDef": {
+     "qMeasures": [
+      {
+       "qLibraryId": "m_simulated_gross_margin_ytd",
+       "qDef": {
+        "conditionalColoring": {
+         "useConditionalColoring": false,
+         "paletteSingleColor": {
+          "index": -1,
+          "color": "#b18be8"
+         }
+        },
+        "qLabelExpression": "='Simulated'"
+       }
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 1,
+       "qHeight": 1
+      }
+     ]
+    },
+    "subtitle": {
+     "qStringExpression": {
+      "qExpr": "=[Simulated Gross Margin YTD vs Actual] & '  vs Actual'"
+     }
+    },
+    "showMeasureTitle": false
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "wi-by-business-group",
+     "qType": "barchart"
+    },
+    "visualization": "barchart",
+    "showTitles": true,
+    "title": "Sales YTD by Business Group",
+    "subtitle": "Actual (green) and Simulated (purple)",
+    "orientation": "horizontal",
+    "barGrouping": {
+     "grouping": "grouped"
+    },
+    "dataPoint": {
+     "showLabels": true
+    },
+    "legend": {
+     "show": true,
+     "dock": "top",
+     "showTitle": false
+    },
+    "color": {
+     "auto": false,
+     "mode": "primary",
+     "useBaseColors": "measure"
+    },
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {
+       "qLibraryId": "d_business_group",
+       "qDef": {}
+      }
+     ],
+     "qMeasures": [
+      {
+       "qLibraryId": "m_sales_ytd",
+       "qDef": {}
+      },
+      {
+       "qLibraryId": "m_simulated_sales_ytd",
+       "qDef": {}
+      }
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 3,
+       "qHeight": 500
+      }
+     ]
+    }
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "wi-by-region",
+     "qType": "sn-table"
+    },
+    "visualization": "sn-table",
+    "showTitles": true,
+    "title": "Scenario by Region",
+    "subtitle": "YTD. The exchange rate moves only Sales outside the euro area",
+    "totals": {
+     "show": true,
+     "position": "top",
+     "label": "Total"
+    },
+    "qHyperCubeDef": {
+     "qDimensions": [
+      {
+       "qLibraryId": "d_region",
+       "qDef": {
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 112
+        }
+       }
+      }
+     ],
+     "qMeasures": [
+      {
+       "qLibraryId": "m_sales_ytd",
+       "qDef": {
+        "qLabelExpression": "='Sales YTD'",
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 84
+        }
+       },
+       "qSortBy": {
+        "qSortByNumeric": -1
+       }
+      },
+      {
+       "qLibraryId": "m_simulated_sales_ytd",
+       "qDef": {
+        "qLabelExpression": "='Simulated'",
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 86
+        }
+       }
+      },
+      {
+       "qLibraryId": "m_simulated_sales_ytd_vs_actual_pct",
+       "qDef": {
+        "qLabelExpression": "='vs Actual'",
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 80
+        }
+       }
+      },
+      {
+       "qLibraryId": "m_gross_margin_ytd",
+       "qDef": {
+        "qLabelExpression": "='Gross Margin YTD'",
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 72
+        }
+       }
+      },
+      {
+       "qLibraryId": "m_simulated_gross_margin_ytd",
+       "qDef": {
+        "qLabelExpression": "='Simulated'",
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 86
+        }
+       }
+      },
+      {
+       "qLibraryId": "m_simulated_gross_margin_ytd_vs_actual",
+       "qDef": {
+        "qLabelExpression": "='vs Actual'",
+        "columnWidth": {
+         "type": "pixels",
+         "pixels": 80
+        }
+       }
+      }
+     ],
+     "qInterColumnSortOrder": [
+      1,
+      0,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "qInitialDataFetch": [
+      {
+       "qLeft": 0,
+       "qTop": 0,
+       "qWidth": 7,
+       "qHeight": 50
+      }
+     ]
+    },
+    "multiline": {
+     "wrapTextInHeaders": true,
+     "wrapTextInCells": false
+    }
+   },
+   "qChildren": []
+  }
+ ]
+}

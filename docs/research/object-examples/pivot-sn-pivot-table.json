@@ -1,0 +1,100 @@
+{
+ "qProperty": {
+  "qMetaDef": {},
+  "qHyperCubeDef": {
+   "qDimensions": [
+    {
+     "qDef": {
+      "qFieldDefs": [
+       "Region"
+      ],
+      "qFieldLabels": [
+       "Region"
+      ]
+     }
+    },
+    {
+     "qDef": {
+      "qFieldDefs": [
+       "BusinessGroup"
+      ],
+      "qFieldLabels": [
+       "Business Group"
+      ]
+     }
+    }
+   ],
+   "qMeasures": [
+    {
+     "qDef": {
+      "qDef": "Sum({<Year={2026}>} Sales)/1e9",
+      "qLabel": "Sales",
+      "numFormatFromTemplate": false,
+      "isCustomFormatted": true,
+      "qNumFormat": {
+       "qType": "F",
+       "qFmt": "\u20ac#,##0.00 bn",
+       "qDec": ".",
+       "qThou": ","
+      }
+     }
+    }
+   ],
+   "qInterColumnSortOrder": [],
+   "qSuppressMissing": true,
+   "qInitialDataFetch": [
+    {
+     "qWidth": 10,
+     "qHeight": 50
+    }
+   ],
+   "qReductionMode": "N",
+   "qMode": "P",
+   "qPseudoDimPos": -1,
+   "qNoOfLeftDims": 1,
+   "qMaxStackedCells": 5000,
+   "qShowTotalsAbove": true,
+   "qCalcCond": {},
+   "qTitle": {},
+   "qCalcCondition": {
+    "qCond": {},
+    "qMsg": {}
+   },
+   "qColumnOrder": [],
+   "qExpansionState": [],
+   "qDynamicScript": [],
+   "indentModeColumnWidth": {
+    "type": "auto",
+    "pixels": 200,
+    "percentage": 20
+   },
+   "qAlwaysFullyExpanded": true
+  },
+  "filter": null,
+  "search": {
+   "sorting": "auto"
+  },
+  "showTitles": true,
+  "title": "Sales by Region and Business Group",
+  "subtitle": "",
+  "footnote": "",
+  "disableNavMenu": false,
+  "showDetails": true,
+  "showDetailsExpression": false,
+  "components": [],
+  "enableChartExploration": null,
+  "chartExploration": {
+   "menuVisibility": "auto"
+  },
+  "visualization": "sn-pivot-table",
+  "version": "7.78.0",
+  "nullValueRepresentation": {
+   "text": "-"
+  },
+  "qInfo": {
+   "qId": "perf-pivot",
+   "qType": "sn-pivot-table"
+  }
+ },
+ "qChildren": []
+}

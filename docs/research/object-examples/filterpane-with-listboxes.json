@@ -1,0 +1,139 @@
+{
+ "qProperty": {
+  "qMetaDef": {},
+  "showTitles": false,
+  "title": "",
+  "subtitle": "",
+  "footnote": "",
+  "disableNavMenu": true,
+  "showDetails": true,
+  "showDetailsExpression": false,
+  "visualization": "filterpane",
+  "version": "1.11.0",
+  "qChildListDef": {
+   "qData": {}
+  },
+  "qInfo": {
+   "qId": "exec-filters",
+   "qType": "filterpane"
+  }
+ },
+ "qChildren": [
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "exec-lb-year",
+     "qType": "listbox"
+    },
+    "visualization": "listbox",
+    "qListObjectDef": {
+     "qDef": {
+      "qFieldDefs": [
+       "Year"
+      ],
+      "qFieldLabels": [
+       "Year"
+      ]
+     },
+     "qInitialDataFetch": [
+      {
+       "qWidth": 1,
+       "qHeight": 100
+      }
+     ],
+     "qShowAlternatives": true
+    },
+    "showTitles": true,
+    "title": "Year"
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "exec-lb-businessgroup",
+     "qType": "listbox"
+    },
+    "visualization": "listbox",
+    "qListObjectDef": {
+     "qDef": {
+      "qFieldDefs": [
+       "BusinessGroup"
+      ],
+      "qFieldLabels": [
+       "Business Group"
+      ]
+     },
+     "qInitialDataFetch": [
+      {
+       "qWidth": 1,
+       "qHeight": 100
+      }
+     ],
+     "qShowAlternatives": true
+    },
+    "showTitles": true,
+    "title": "Business Group"
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "exec-lb-region",
+     "qType": "listbox"
+    },
+    "visualization": "listbox",
+    "qListObjectDef": {
+     "qDef": {
+      "qFieldDefs": [
+       "Region"
+      ],
+      "qFieldLabels": [
+       "Region"
+      ]
+     },
+     "qInitialDataFetch": [
+      {
+       "qWidth": 1,
+       "qHeight": 100
+      }
+     ],
+     "qShowAlternatives": true
+    },
+    "showTitles": true,
+    "title": "Region"
+   },
+   "qChildren": []
+  },
+  {
+   "qProperty": {
+    "qInfo": {
+     "qId": "exec-lb-customer",
+     "qType": "listbox"
+    },
+    "visualization": "listbox",
+    "qListObjectDef": {
+     "qDef": {
+      "qFieldDefs": [
+       "Customer"
+      ],
+      "qFieldLabels": [
+       "Customer"
+      ]
+     },
+     "qInitialDataFetch": [
+      {
+       "qWidth": 1,
+       "qHeight": 100
+      }
+     ],
+     "qShowAlternatives": true
+    },
+    "showTitles": true,
+    "title": "Customer"
+   },
+   "qChildren": []
+  }
+ ]
+}

@@ -1,0 +1,80 @@
+{
+ "qProperty": {
+  "qInfo": {
+   "qId": "kpi1",
+   "qType": "kpi"
+  },
+  "qMetaDef": {},
+  "visualization": "kpi",
+  "qHyperCubeDef": {
+   "qDimensions": [],
+   "qMeasures": [
+    {
+     "qLibraryId": "m_sales",
+     "qDef": {
+      "qTags": [],
+      "qGrouping": "N",
+      "qAccumulate": 0,
+      "qActiveExpression": 0,
+      "qExpressions": []
+     },
+     "qSortBy": {
+      "qExpression": {}
+     },
+     "qAttributeExpressions": [],
+     "qAttributeDimensions": [],
+     "qCalcCond": {},
+     "qCalcCondition": {
+      "qCond": {},
+      "qMsg": {}
+     },
+     "qTrendLines": [],
+     "qMiniChartDef": {
+      "qSortBy": {
+       "qExpression": {}
+      },
+      "qOtherTotalSpec": {
+       "qOtherMode": "OTHER_OFF",
+       "qOtherCounted": {},
+       "qOtherLimit": {},
+       "qOtherLimitMode": "OTHER_GT_LIMIT",
+       "qForceBadValueKeeping": true,
+       "qApplyEvenWhenPossiblyWrongResult": true,
+       "qOtherSortMode": "OTHER_SORT_DESCENDING",
+       "qTotalMode": "TOTAL_OFF",
+       "qReferencedExpression": {}
+      },
+      "qMaxNumberPoints": -1,
+      "qAttributeExpressions": []
+     }
+    }
+   ],
+   "qInterColumnSortOrder": [],
+   "qInitialDataFetch": [
+    {
+     "qLeft": 0,
+     "qTop": 0,
+     "qWidth": 1,
+     "qHeight": 1
+    }
+   ],
+   "qReductionMode": "N",
+   "qMode": "S",
+   "qPseudoDimPos": -1,
+   "qNoOfLeftDims": -1,
+   "qMaxStackedCells": 5000,
+   "qCalcCond": {},
+   "qTitle": {},
+   "qCalcCondition": {
+    "qCond": {},
+    "qMsg": {}
+   },
+   "qColumnOrder": [],
+   "qExpansionState": [],
+   "qDynamicScript": []
+  },
+  "title": "Sales",
+  "showTitles": true
+ },
+ "qChildren": []
+}

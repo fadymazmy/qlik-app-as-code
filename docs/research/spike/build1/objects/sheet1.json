@@ -1,0 +1,20 @@
+{
+  "qProperty": {
+    "qInfo": {"qId": "sheet1", "qType": "sheet"},
+    "qMetaDef": {"title": "Overview", "description": ""},
+    "rank": 0,
+    "columns": 24, "rows": 12,
+    "cells": [
+      {"name": "kpi1", "type": "kpi", "col": 0, "row": 0, "colspan": 6, "rowspan": 3,
+       "bounds": {"x": 0, "y": 0, "width": 25, "height": 25}}
+    ],
+    "qChildListDef": {"qData": {"title": "/title"}}
+  },
+  "qChildren": [
+    {"qProperty": {"qInfo": {"qId": "kpi1", "qType": "kpi"}, "visualization": "kpi",
+       "qHyperCubeDef": {"qMeasures": [{"qLibraryId": "m_sales", "qDef": {}}],
+                         "qInitialDataFetch": [{"qWidth": 1, "qHeight": 1}]},
+       "title": "Sales", "showTitles": true},
+     "qChildren": []}
+  ]
+}

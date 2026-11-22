@@ -1,0 +1,79 @@
+{
+ "qProperty": {
+  "qInfo": {
+   "qId": "QjHVk",
+   "qType": "sn-slider"
+  },
+  "qMetaDef": {},
+  "dataType": "field",
+  "sliderType": "single",
+  "qListObjectDef": {
+   "qDef": {
+    "qGrouping": "N",
+    "qFieldDefs": [],
+    "qFieldLabels": [],
+    "qSortCriterias": [
+     {
+      "qSortByNumeric": 1,
+      "qSortByAscii": 1,
+      "qSortByExpression": 1,
+      "qExpression": {}
+     }
+    ],
+    "qNumberPresentations": [],
+    "qActiveField": 0,
+    "autoSort": true
+   },
+   "qFrequencyMode": "N",
+   "qShowAlternatives": true,
+   "qInitialDataFetch": [
+    {
+     "qLeft": 0,
+     "qTop": 0,
+     "qWidth": 1,
+     "qHeight": 10000
+    }
+   ],
+   "qExpressions": []
+  },
+  "variables": {
+   "startVariable": {
+    "name": "",
+    "value": ""
+   },
+   "endVariable": {
+    "name": "",
+    "value": ""
+   }
+  },
+  "qDef": {
+   "numFormatFromTemplate": true
+  },
+  "showTitles": false,
+  "title": "",
+  "subtitle": "",
+  "footnote": "",
+  "disableNavMenu": true,
+  "showDetails": false,
+  "showDetailsExpression": false,
+  "components": null,
+  "layoutOptions": {
+   "orientation": "horizontal",
+   "manualEntry": false,
+   "autoPositionTextField": true,
+   "textFieldPosition": "right",
+   "valueDistribution": "regular",
+   "minRange": 0,
+   "maxRange": 100,
+   "snap": true,
+   "stepSize": 1,
+   "offset": "zero",
+   "valueLabelInterval": 10,
+   "scale": "all",
+   "showSelectedValues": true
+  },
+  "visualization": "sn-slider",
+  "version": "0.22.0"
+ },
+ "qChildren": []
+}

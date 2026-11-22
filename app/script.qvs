@@ -1,0 +1,79 @@
+///$tab Main
+// vDataFolder is set by the build to the shared folder of this data set in the space's DataFiles,
+// lib://:DataFiles/valtera-data-<hash>/ (blank space name = the app's own space).
+SET ThousandSep=',';
+SET DecimalSep='.';
+SET MoneyThousandSep=',';
+SET MoneyDecimalSep='.';
+SET MoneyFormat='€#,##0.00;-€#,##0.00';
+SET DateFormat='YYYY-MM-DD';
+SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
+SET NumericalAbbreviation='3: k;6: M;9: bn;12: T';
+
+///$tab Facts
+// Sales (daily), Budget (first day of each month) and Order Intake (daily) in one table, so that
+// facts at different grains share the dimensions through single keys: no synthetic keys, no loops.
+// Each row carries only its own amounts; the others are null.
+Facts:
+LOAD
+    Date(Date#(Date, 'YYYY-MM-DD')) as Date,
+    [Product Line ID],
+    [Customer ID],
+    [Country ID],
+    [Production Site ID],
+    [Channel ID],
+    Volume,
+    [List Price],
+    [Net Price],
+    Sales,
+    Cost
+FROM [$(vDataFolder)sales.csv] (txt, utf8, embedded labels, delimiter is ',');
+
+Concatenate (Facts)
+LOAD
+    Date(Date#(Date, 'YYYY-MM-DD')) as Date,
+    [Product Line ID],
+    [Country ID],
+    [Channel ID],
+    Budget
+FROM [$(vDataFolder)budget.csv] (txt, utf8, embedded labels, delimiter is ',');
+
+Concatenate (Facts)
+LOAD
+    Date(Date#(Date, 'YYYY-MM-DD')) as Date,
+    [Product Line ID],
+    [Customer ID],
+    [Country ID],
+    [Channel ID],
+    [Order Intake]
+FROM [$(vDataFolder)order_intake.csv] (txt, utf8, embedded labels, delimiter is ',');
+
+///$tab Dimensions
+Calendar:
+LOAD
+    Date(Date#(Date, 'YYYY-MM-DD')) as Date,
+    Year,
+    Quarter,
+    Month(Date#(Date, 'YYYY-MM-DD')) as Month,
+    Date(MonthStart(Date#(Date, 'YYYY-MM-DD')), 'YYYY-MMM') as [Year Month]
+FROM [$(vDataFolder)calendar.csv] (txt, utf8, embedded labels, delimiter is ',');
+
+[Product Lines]:
+LOAD [Product Line ID], [Product Line], [Business Group]
+FROM [$(vDataFolder)product_lines.csv] (txt, utf8, embedded labels, delimiter is ',');
+
+Customers:
+LOAD [Customer ID], Customer
+FROM [$(vDataFolder)customers.csv] (txt, utf8, embedded labels, delimiter is ',');
+
+Countries:
+LOAD [Country ID], Country, Region
+FROM [$(vDataFolder)countries.csv] (txt, utf8, embedded labels, delimiter is ',');
+
+[Production Sites]:
+LOAD [Production Site ID], [Production Site]
+FROM [$(vDataFolder)production_sites.csv] (txt, utf8, embedded labels, delimiter is ',');
+
+Channels:
+LOAD [Channel ID], Channel
+FROM [$(vDataFolder)channels.csv] (txt, utf8, embedded labels, delimiter is ',');

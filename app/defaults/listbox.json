@@ -1,0 +1,41 @@
+{
+ "qMetaDef": {},
+ "qListObjectDef": {
+  "qDef": {
+   "qGrouping": "N",
+   "qFieldDefs": [],
+   "qFieldLabels": [],
+   "qSortCriterias": [
+    {
+     "qSortByState": 1,
+     "qSortByNumeric": 1,
+     "qSortByAscii": 1,
+     "qSortByLoadOrder": 1,
+     "qExpression": {}
+    }
+   ],
+   "qNumberPresentations": [],
+   "qActiveField": 0,
+   "autoSort": true
+  },
+  "qFrequencyMode": "N",
+  "qShowAlternatives": true,
+  "qInitialDataFetch": [],
+  "qExpressions": [],
+  "showTitles": true,
+  "title": "",
+  "subtitle": "",
+  "footnote": "",
+  "disableNavMenu": false,
+  "showDetails": true,
+  "showDetailsExpression": false,
+  "qOtherTotalSpec": {}
+ },
+ "showTitles": true,
+ "subtitle": "",
+ "footnote": "",
+ "disableNavMenu": false,
+ "showDetails": true,
+ "showDetailsExpression": false,
+ "visualization": "listbox"
+}

@@ -1,0 +1,357 @@
+[
+ {
+  "qInfo": {"qId": "m_sales", "qType": "measure"},
+  "qMeasure": {"qLabel": "Sales", "qDef": "Num((Sum(Sales)) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true, "coloring": {"baseColor": {"color": "#1aa865", "index": -1}}},
+  "qMetaDef": {"title": "Sales", "description": "Invoiced revenue in EUR in the current selection.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_gross_margin_amount", "qType": "measure"},
+  "qMeasure": {"qLabel": "Gross Margin Amount", "qDef": "Num((Sum(Sales) - Sum(Cost)) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Gross Margin Amount", "description": "Sales minus the cost of the goods sold, in EUR in the current selection.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_gross_margin", "qType": "measure"},
+  "qMeasure": {"qLabel": "Gross Margin", "qDef": "Num((Sum(Sales) - Sum(Cost)) / Sum(Sales), '0.0%')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Gross Margin", "description": "Gross Margin Amount as a percentage of Sales in the current selection.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_order_intake", "qType": "measure"},
+  "qMeasure": {"qLabel": "Order Intake", "qDef": "Num((Sum([Order Intake])) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Order Intake", "description": "Value of new orders booked, in EUR in the current selection.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_budget", "qType": "measure"},
+  "qMeasure": {"qLabel": "Budget", "qDef": "If($(vBudgetDefined), Num((Sum(Budget)) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn'))", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Budget", "description": "Planned Sales in EUR, whole months in the current selection.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_budget_attainment", "qType": "measure"},
+  "qMeasure": {"qLabel": "Budget Attainment", "qDef": "If($(vBudgetDefined), Num(Sum(Sales) / Sum(Budget), '0.0%'))", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Budget Attainment", "description": "Sales as a percentage of Budget in the current selection.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_sales_ytd", "qType": "measure"},
+  "qMeasure": {"qLabel": "Sales YTD", "qDef": "Num((Sum({<$(vYTD)>} Sales)) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Sales YTD", "description": "Sales from 1 January through the Latest Date.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_gross_margin_amount_ytd", "qType": "measure"},
+  "qMeasure": {"qLabel": "Gross Margin Amount YTD", "qDef": "Num((Sum({<$(vYTD)>} Sales) - Sum({<$(vYTD)>} Cost)) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Gross Margin Amount YTD", "description": "Gross Margin Amount from 1 January through the Latest Date.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_gross_margin_ytd", "qType": "measure"},
+  "qMeasure": {"qLabel": "Gross Margin YTD", "qDef": "Num((Sum({<$(vYTD)>} Sales) - Sum({<$(vYTD)>} Cost)) / Sum({<$(vYTD)>} Sales), '0.0%')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Gross Margin YTD", "description": "Gross Margin (percentage of Sales) from 1 January through the Latest Date.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_order_intake_ytd", "qType": "measure"},
+  "qMeasure": {"qLabel": "Order Intake YTD", "qDef": "Num((Sum({<$(vYTD)>} [Order Intake])) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Order Intake YTD", "description": "Order Intake from 1 January through the Latest Date.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_budget_ytd", "qType": "measure"},
+  "qMeasure": {"qLabel": "Budget YTD", "qDef": "If($(vBudgetDefined), Num(($(vBudget($(vYTDFirstDay), $(vLastDay)))) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn'))", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Budget YTD", "description": "Budget from 1 January through the Latest Date, each month's Budget spread evenly over its days.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_budget_attainment_ytd", "qType": "measure"},
+  "qMeasure": {"qLabel": "Budget Attainment YTD", "qDef": "If($(vBudgetDefined), Num(Sum({<$(vYTD)>} Sales) / $(vBudget($(vYTDFirstDay), $(vLastDay))), '0.0%'))", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Budget Attainment YTD", "description": "Sales as a percentage of Budget from 1 January through the Latest Date.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_sales_ytd_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Sales YTD Prior Year", "qDef": "Num((Sum({<$(vYTDPriorYear)>} Sales)) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Sales YTD Prior Year", "description": "Sales for the same days one year earlier than YTD.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_gross_margin_amount_ytd_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Gross Margin Amount YTD Prior Year", "qDef": "Num((Sum({<$(vYTDPriorYear)>} Sales) - Sum({<$(vYTDPriorYear)>} Cost)) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Gross Margin Amount YTD Prior Year", "description": "Gross Margin Amount for the same days one year earlier than YTD.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_gross_margin_ytd_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Gross Margin YTD Prior Year", "qDef": "Num((Sum({<$(vYTDPriorYear)>} Sales) - Sum({<$(vYTDPriorYear)>} Cost)) / Sum({<$(vYTDPriorYear)>} Sales), '0.0%')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Gross Margin YTD Prior Year", "description": "Gross Margin (percentage of Sales) for the same days one year earlier than YTD.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_order_intake_ytd_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Order Intake YTD Prior Year", "qDef": "Num((Sum({<$(vYTDPriorYear)>} [Order Intake])) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Order Intake YTD Prior Year", "description": "Order Intake for the same days one year earlier than YTD.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_budget_ytd_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Budget YTD Prior Year", "qDef": "If($(vBudgetDefined), Num(($(vBudget($(vYTDPriorYearFirstDay), $(vPriorYearLastDay)))) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn'))", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Budget YTD Prior Year", "description": "Budget for the same days one year earlier than YTD, each month's Budget spread evenly over its days.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_budget_attainment_ytd_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Budget Attainment YTD Prior Year", "qDef": "If($(vBudgetDefined), Num(Sum({<$(vYTDPriorYear)>} Sales) / $(vBudget($(vYTDPriorYearFirstDay), $(vPriorYearLastDay))), '0.0%'))", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Budget Attainment YTD Prior Year", "description": "Sales as a percentage of Budget for the same days one year earlier than YTD.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_sales_ytd_vs_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Sales YTD vs Prior Year", "qDef": "Num((Sum({<$(vYTD)>} Sales) - Sum({<$(vYTDPriorYear)>} Sales)) / 1e9, '+€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Sales YTD vs Prior Year", "description": "Sales YTD minus Sales YTD Prior Year.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_sales_ytd_vs_prior_year_pct", "qType": "measure"},
+  "qMeasure": {"qLabel": "Sales YTD vs Prior Year %", "qDef": "Num(Sum({<$(vYTD)>} Sales) / Sum({<$(vYTDPriorYear)>} Sales) - 1, '+0.0%;-0.0%')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+0.0%;-0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Sales YTD vs Prior Year %", "description": "Change of Sales YTD against Sales YTD Prior Year, as a percentage.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_sales_ytd_vs_budget", "qType": "measure"},
+  "qMeasure": {"qLabel": "Sales YTD vs Budget", "qDef": "If($(vBudgetDefined), Num((Sum({<$(vYTD)>} Sales) - $(vBudget($(vYTDFirstDay), $(vLastDay)))) / 1e9, '+€#,##0.00 bn;-€#,##0.00 bn'))", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Sales YTD vs Budget", "description": "Sales YTD minus Budget YTD.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_sales_ytd_vs_budget_pct", "qType": "measure"},
+  "qMeasure": {"qLabel": "Sales YTD vs Budget %", "qDef": "If($(vBudgetDefined), Num(Sum({<$(vYTD)>} Sales) / $(vBudget($(vYTDFirstDay), $(vLastDay))) - 1, '+0.0%;-0.0%'))", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+0.0%;-0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Sales YTD vs Budget %", "description": "Sales YTD against Budget YTD, as a percentage above or below it.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_gross_margin_amount_ytd_vs_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Gross Margin Amount YTD vs Prior Year", "qDef": "Num((Sum({<$(vYTD)>} Sales) - Sum({<$(vYTD)>} Cost) - (Sum({<$(vYTDPriorYear)>} Sales) - Sum({<$(vYTDPriorYear)>} Cost))) / 1e9, '+€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Gross Margin Amount YTD vs Prior Year", "description": "Gross Margin Amount YTD minus Gross Margin Amount YTD Prior Year.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_gross_margin_amount_ytd_vs_prior_year_pct", "qType": "measure"},
+  "qMeasure": {"qLabel": "Gross Margin Amount YTD vs Prior Year %", "qDef": "Num((Sum({<$(vYTD)>} Sales) - Sum({<$(vYTD)>} Cost)) / (Sum({<$(vYTDPriorYear)>} Sales) - Sum({<$(vYTDPriorYear)>} Cost)) - 1, '+0.0%;-0.0%')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+0.0%;-0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Gross Margin Amount YTD vs Prior Year %", "description": "Change of Gross Margin Amount YTD against YTD Prior Year, as a percentage.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_gross_margin_ytd_vs_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Gross Margin YTD vs Prior Year", "qDef": "Num(((Sum({<$(vYTD)>} Sales) - Sum({<$(vYTD)>} Cost)) / Sum({<$(vYTD)>} Sales) - (Sum({<$(vYTDPriorYear)>} Sales) - Sum({<$(vYTDPriorYear)>} Cost)) / Sum({<$(vYTDPriorYear)>} Sales)) * 100, '+0.0 pp;-0.0 pp')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+0.0 pp;-0.0 pp", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Gross Margin YTD vs Prior Year", "description": "Gross Margin YTD minus Gross Margin YTD Prior Year, in percentage points.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_order_intake_ytd_vs_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Order Intake YTD vs Prior Year", "qDef": "Num((Sum({<$(vYTD)>} [Order Intake]) - Sum({<$(vYTDPriorYear)>} [Order Intake])) / 1e9, '+€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Order Intake YTD vs Prior Year", "description": "Order Intake YTD minus Order Intake YTD Prior Year.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_order_intake_ytd_vs_prior_year_pct", "qType": "measure"},
+  "qMeasure": {"qLabel": "Order Intake YTD vs Prior Year %", "qDef": "Num(Sum({<$(vYTD)>} [Order Intake]) / Sum({<$(vYTDPriorYear)>} [Order Intake]) - 1, '+0.0%;-0.0%')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+0.0%;-0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Order Intake YTD vs Prior Year %", "description": "Change of Order Intake YTD against YTD Prior Year, as a percentage.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_budget_attainment_ytd_vs_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Budget Attainment YTD vs Prior Year", "qDef": "If($(vBudgetDefined), Num((Sum({<$(vYTD)>} Sales) / $(vBudget($(vYTDFirstDay), $(vLastDay))) - Sum({<$(vYTDPriorYear)>} Sales) / $(vBudget($(vYTDPriorYearFirstDay), $(vPriorYearLastDay)))) * 100, '+0.0 pp;-0.0 pp'))", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+0.0 pp;-0.0 pp", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Budget Attainment YTD vs Prior Year", "description": "Budget Attainment YTD minus Budget Attainment YTD Prior Year, in percentage points.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_sales_rolling_12_months", "qType": "measure"},
+  "qMeasure": {"qLabel": "Sales Rolling 12 Months", "qDef": "Num((Sum({<$(vRolling12Months)>} Sales)) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Sales Rolling 12 Months", "description": "Sales for the 12 months ending on the Latest Date.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_gross_margin_amount_rolling_12_months", "qType": "measure"},
+  "qMeasure": {"qLabel": "Gross Margin Amount Rolling 12 Months", "qDef": "Num((Sum({<$(vRolling12Months)>} Sales) - Sum({<$(vRolling12Months)>} Cost)) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Gross Margin Amount Rolling 12 Months", "description": "Gross Margin Amount for the 12 months ending on the Latest Date.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_gross_margin_rolling_12_months", "qType": "measure"},
+  "qMeasure": {"qLabel": "Gross Margin Rolling 12 Months", "qDef": "Num((Sum({<$(vRolling12Months)>} Sales) - Sum({<$(vRolling12Months)>} Cost)) / Sum({<$(vRolling12Months)>} Sales), '0.0%')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Gross Margin Rolling 12 Months", "description": "Gross Margin (percentage of Sales) for the 12 months ending on the Latest Date.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_order_intake_rolling_12_months", "qType": "measure"},
+  "qMeasure": {"qLabel": "Order Intake Rolling 12 Months", "qDef": "Num((Sum({<$(vRolling12Months)>} [Order Intake])) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Order Intake Rolling 12 Months", "description": "Order Intake for the 12 months ending on the Latest Date.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_budget_rolling_12_months", "qType": "measure"},
+  "qMeasure": {"qLabel": "Budget Rolling 12 Months", "qDef": "If($(vBudgetDefined), Num(($(vBudget($(vRolling12MonthsFirstDay), $(vLastDay)))) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn'))", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Budget Rolling 12 Months", "description": "Budget for the 12 months ending on the Latest Date, each month's Budget spread evenly over its days.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_budget_attainment_rolling_12_months", "qType": "measure"},
+  "qMeasure": {"qLabel": "Budget Attainment Rolling 12 Months", "qDef": "If($(vBudgetDefined), Num(Sum({<$(vRolling12Months)>} Sales) / $(vBudget($(vRolling12MonthsFirstDay), $(vLastDay))), '0.0%'))", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Budget Attainment Rolling 12 Months", "description": "Sales as a percentage of Budget for the 12 months ending on the Latest Date.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_sales_rolling_12_months_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Sales Rolling 12 Months Prior Year", "qDef": "Num((Sum({<$(vRolling12MonthsPriorYear)>} Sales)) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Sales Rolling 12 Months Prior Year", "description": "Sales for the 12 months ending one year before the Latest Date.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_gross_margin_amount_rolling_12_months_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Gross Margin Amount Rolling 12 Months Prior Year", "qDef": "Num((Sum({<$(vRolling12MonthsPriorYear)>} Sales) - Sum({<$(vRolling12MonthsPriorYear)>} Cost)) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Gross Margin Amount Rolling 12 Months Prior Year", "description": "Gross Margin Amount for the 12 months ending one year before the Latest Date.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_gross_margin_rolling_12_months_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Gross Margin Rolling 12 Months Prior Year", "qDef": "Num((Sum({<$(vRolling12MonthsPriorYear)>} Sales) - Sum({<$(vRolling12MonthsPriorYear)>} Cost)) / Sum({<$(vRolling12MonthsPriorYear)>} Sales), '0.0%')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Gross Margin Rolling 12 Months Prior Year", "description": "Gross Margin (percentage of Sales) for the 12 months ending one year before the Latest Date.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_order_intake_rolling_12_months_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Order Intake Rolling 12 Months Prior Year", "qDef": "Num((Sum({<$(vRolling12MonthsPriorYear)>} [Order Intake])) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Order Intake Rolling 12 Months Prior Year", "description": "Order Intake for the 12 months ending one year before the Latest Date.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_budget_rolling_12_months_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Budget Rolling 12 Months Prior Year", "qDef": "If($(vBudgetDefined), Num(($(vBudget($(vRolling12MonthsPriorYearFirstDay), $(vPriorYearLastDay)))) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn'))", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Budget Rolling 12 Months Prior Year", "description": "Budget for the 12 months ending one year before the Latest Date, each month's Budget spread evenly over its days.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_budget_attainment_rolling_12_months_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Budget Attainment Rolling 12 Months Prior Year", "qDef": "If($(vBudgetDefined), Num(Sum({<$(vRolling12MonthsPriorYear)>} Sales) / $(vBudget($(vRolling12MonthsPriorYearFirstDay), $(vPriorYearLastDay))), '0.0%'))", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Budget Attainment Rolling 12 Months Prior Year", "description": "Sales as a percentage of Budget for the 12 months ending one year before the Latest Date.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_sales_rolling_12_months_vs_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Sales Rolling 12 Months vs Prior Year", "qDef": "Num((Sum({<$(vRolling12Months)>} Sales) - Sum({<$(vRolling12MonthsPriorYear)>} Sales)) / 1e9, '+€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Sales Rolling 12 Months vs Prior Year", "description": "Sales Rolling 12 Months minus Sales Rolling 12 Months Prior Year.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_sales_rolling_12_months_vs_prior_year_pct", "qType": "measure"},
+  "qMeasure": {"qLabel": "Sales Rolling 12 Months vs Prior Year %", "qDef": "Num(Sum({<$(vRolling12Months)>} Sales) / Sum({<$(vRolling12MonthsPriorYear)>} Sales) - 1, '+0.0%;-0.0%')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+0.0%;-0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Sales Rolling 12 Months vs Prior Year %", "description": "Change of Sales Rolling 12 Months against Sales Rolling 12 Months Prior Year, as a percentage.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_sales_rolling_12_months_vs_budget", "qType": "measure"},
+  "qMeasure": {"qLabel": "Sales Rolling 12 Months vs Budget", "qDef": "If($(vBudgetDefined), Num((Sum({<$(vRolling12Months)>} Sales) - $(vBudget($(vRolling12MonthsFirstDay), $(vLastDay)))) / 1e9, '+€#,##0.00 bn;-€#,##0.00 bn'))", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Sales Rolling 12 Months vs Budget", "description": "Sales Rolling 12 Months minus Budget Rolling 12 Months.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_sales_rolling_12_months_vs_budget_pct", "qType": "measure"},
+  "qMeasure": {"qLabel": "Sales Rolling 12 Months vs Budget %", "qDef": "If($(vBudgetDefined), Num(Sum({<$(vRolling12Months)>} Sales) / $(vBudget($(vRolling12MonthsFirstDay), $(vLastDay))) - 1, '+0.0%;-0.0%'))", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+0.0%;-0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Sales Rolling 12 Months vs Budget %", "description": "Sales Rolling 12 Months against Budget Rolling 12 Months, as a percentage above or below it.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_gross_margin_amount_rolling_12_months_vs_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Gross Margin Amount Rolling 12 Months vs Prior Year", "qDef": "Num((Sum({<$(vRolling12Months)>} Sales) - Sum({<$(vRolling12Months)>} Cost) - (Sum({<$(vRolling12MonthsPriorYear)>} Sales) - Sum({<$(vRolling12MonthsPriorYear)>} Cost))) / 1e9, '+€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Gross Margin Amount Rolling 12 Months vs Prior Year", "description": "Gross Margin Amount Rolling 12 Months minus Gross Margin Amount Rolling 12 Months Prior Year.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_gross_margin_amount_rolling_12_months_vs_prior_year_pct", "qType": "measure"},
+  "qMeasure": {"qLabel": "Gross Margin Amount Rolling 12 Months vs Prior Year %", "qDef": "Num((Sum({<$(vRolling12Months)>} Sales) - Sum({<$(vRolling12Months)>} Cost)) / (Sum({<$(vRolling12MonthsPriorYear)>} Sales) - Sum({<$(vRolling12MonthsPriorYear)>} Cost)) - 1, '+0.0%;-0.0%')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+0.0%;-0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Gross Margin Amount Rolling 12 Months vs Prior Year %", "description": "Change of Gross Margin Amount Rolling 12 Months against Rolling 12 Months Prior Year, as a percentage.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_gross_margin_rolling_12_months_vs_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Gross Margin Rolling 12 Months vs Prior Year", "qDef": "Num(((Sum({<$(vRolling12Months)>} Sales) - Sum({<$(vRolling12Months)>} Cost)) / Sum({<$(vRolling12Months)>} Sales) - (Sum({<$(vRolling12MonthsPriorYear)>} Sales) - Sum({<$(vRolling12MonthsPriorYear)>} Cost)) / Sum({<$(vRolling12MonthsPriorYear)>} Sales)) * 100, '+0.0 pp;-0.0 pp')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+0.0 pp;-0.0 pp", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Gross Margin Rolling 12 Months vs Prior Year", "description": "Gross Margin Rolling 12 Months minus Gross Margin Rolling 12 Months Prior Year, in percentage points.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_order_intake_rolling_12_months_vs_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Order Intake Rolling 12 Months vs Prior Year", "qDef": "Num((Sum({<$(vRolling12Months)>} [Order Intake]) - Sum({<$(vRolling12MonthsPriorYear)>} [Order Intake])) / 1e9, '+€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Order Intake Rolling 12 Months vs Prior Year", "description": "Order Intake Rolling 12 Months minus Order Intake Rolling 12 Months Prior Year.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_order_intake_rolling_12_months_vs_prior_year_pct", "qType": "measure"},
+  "qMeasure": {"qLabel": "Order Intake Rolling 12 Months vs Prior Year %", "qDef": "Num(Sum({<$(vRolling12Months)>} [Order Intake]) / Sum({<$(vRolling12MonthsPriorYear)>} [Order Intake]) - 1, '+0.0%;-0.0%')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+0.0%;-0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Order Intake Rolling 12 Months vs Prior Year %", "description": "Change of Order Intake Rolling 12 Months against Rolling 12 Months Prior Year, as a percentage.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_budget_attainment_rolling_12_months_vs_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Budget Attainment Rolling 12 Months vs Prior Year", "qDef": "If($(vBudgetDefined), Num((Sum({<$(vRolling12Months)>} Sales) / $(vBudget($(vRolling12MonthsFirstDay), $(vLastDay))) - Sum({<$(vRolling12MonthsPriorYear)>} Sales) / $(vBudget($(vRolling12MonthsPriorYearFirstDay), $(vPriorYearLastDay)))) * 100, '+0.0 pp;-0.0 pp'))", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+0.0 pp;-0.0 pp", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Budget Attainment Rolling 12 Months vs Prior Year", "description": "Budget Attainment Rolling 12 Months minus Budget Attainment Rolling 12 Months Prior Year, in percentage points.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_customer_share", "qType": "measure"},
+  "qMeasure": {"qLabel": "Customer Share", "qDef": "Num(Sum({<$(vYTD)>} Sales) / Sum({<$(vYTD)>} TOTAL Sales), '0.0%')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Customer Share", "description": "A Customer's Sales YTD as a share of the Sales YTD of all Customers in the selection.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_customer_cumulative_share", "qType": "measure"},
+  "qMeasure": {"qLabel": "Customer Cumulative Share", "qDef": "If(Dimensionality() > 0, Num(Sum(TOTAL <Customer> Aggr(RangeSum(Above(Sum({<$(vYTD)>} Sales), 0, RowNo())), (Customer, (=Sum({<$(vYTD)>} Sales), Descending)))) / Sum({<$(vYTD)>} TOTAL Sales), '0.0%'))", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Customer Cumulative Share", "description": "In a chart by Customer: the Customer's share of Sales YTD plus that of every Customer with larger Sales YTD, whatever order the chart shows them in. Null outside a chart.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_customer_abc_class", "qType": "measure"},
+  "qMeasure": {"qLabel": "Customer ABC Class", "qDef": "If(Dimensionality() > 0, If([Customer Cumulative Share] <= 0.8, Dual('A', 1), If([Customer Cumulative Share] <= 0.95, Dual('B', 2), Dual('C', 3))))", "numFormatFromTemplate": true, "isCustomFormatted": false},
+  "qMetaDef": {"title": "Customer ABC Class", "description": "In a chart by Customer sorted by Sales YTD, largest first: A while the cumulative share is up to 80%, B up to 95%, C the rest (a dual: A = 1, B = 2, C = 3). Null outside a chart.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_volume_effect_ytd_vs_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Volume Effect YTD vs Prior Year", "qDef": "Num($(vVolumeEffectYTD) / 1e9, '+€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Volume Effect YTD vs Prior Year", "description": "The part of Sales YTD vs Prior Year due to the change in Volume, at the Prior Year average price (Product Line by Customer). See docs/measures.md, Sales Bridge.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_price_effect_ytd_vs_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Price Effect YTD vs Prior Year", "qDef": "Num($(vPriceEffectYTD) / 1e9, '+€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Price Effect YTD vs Prior Year", "description": "The part of Sales YTD vs Prior Year due to the change in price within each Product Line by Customer. See docs/measures.md, Sales Bridge.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_mix_effect_ytd_vs_prior_year", "qType": "measure"},
+  "qMeasure": {"qLabel": "Mix Effect YTD vs Prior Year", "qDef": "Num((Sum({<$(vYTD)>} Sales) - Sum({<$(vYTDPriorYear)>} Sales) - $(vVolumeEffectYTD) - $(vPriceEffectYTD)) / 1e9, '+€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Mix Effect YTD vs Prior Year", "description": "The part of Sales YTD vs Prior Year due to the change in the Product Line by Customer shares of Volume: Sales YTD vs Prior Year minus the Volume and Price Effects, so the three sum exactly. See docs/measures.md, Sales Bridge.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_simulated_sales_ytd", "qType": "measure"},
+  "qMeasure": {"qLabel": "Simulated Sales YTD", "qDef": "Num(($(vSimulatedSalesYTD)) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true, "coloring": {"baseColor": {"color": "#b18be8", "index": -1}}},
+  "qMetaDef": {"title": "Simulated Sales YTD", "description": "Sales YTD under the What-If scenario: price and volume changes applied, Sales outside the euro area translated at the changed EUR exchange rate.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_simulated_sales_ytd_vs_actual", "qType": "measure"},
+  "qMeasure": {"qLabel": "Simulated Sales YTD vs Actual", "qDef": "Num((($(vSimulatedSalesYTD)) - Sum({<$(vYTD)>} Sales)) / 1e9, '+€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Simulated Sales YTD vs Actual", "description": "Simulated Sales YTD minus Sales YTD.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_simulated_sales_ytd_vs_actual_pct", "qType": "measure"},
+  "qMeasure": {"qLabel": "Simulated Sales YTD vs Actual %", "qDef": "Num(($(vSimulatedSalesYTD)) / Sum({<$(vYTD)>} Sales) - 1, '+0.0%;-0.0%')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+0.0%;-0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Simulated Sales YTD vs Actual %", "description": "Change of Simulated Sales YTD against Sales YTD, as a percentage.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_simulated_gross_margin_amount_ytd", "qType": "measure"},
+  "qMeasure": {"qLabel": "Simulated Gross Margin Amount YTD", "qDef": "Num((($(vSimulatedSalesYTD)) - ($(vSimulatedCostYTD))) / 1e9, '€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Simulated Gross Margin Amount YTD", "description": "Simulated Sales YTD minus the simulated cost YTD (cost moves with volume and, for its local share outside the euro area, with the exchange rate; not with price).", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_simulated_gross_margin_amount_ytd_vs_actual", "qType": "measure"},
+  "qMeasure": {"qLabel": "Simulated Gross Margin Amount YTD vs Actual", "qDef": "Num((($(vSimulatedSalesYTD)) - ($(vSimulatedCostYTD)) - (Sum({<$(vYTD)>} Sales) - Sum({<$(vYTD)>} Cost))) / 1e9, '+€#,##0.00 bn;-€#,##0.00 bn')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+€#,##0.00 bn;-€#,##0.00 bn", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Simulated Gross Margin Amount YTD vs Actual", "description": "Simulated Gross Margin Amount YTD minus Gross Margin Amount YTD.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_simulated_gross_margin_ytd", "qType": "measure"},
+  "qMeasure": {"qLabel": "Simulated Gross Margin YTD", "qDef": "Num((($(vSimulatedSalesYTD)) - ($(vSimulatedCostYTD))) / ($(vSimulatedSalesYTD)), '0.0%')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "0.0%", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Simulated Gross Margin YTD", "description": "Simulated Gross Margin Amount YTD as a percentage of Simulated Sales YTD.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_simulated_gross_margin_ytd_vs_actual", "qType": "measure"},
+  "qMeasure": {"qLabel": "Simulated Gross Margin YTD vs Actual", "qDef": "Num(((($(vSimulatedSalesYTD)) - ($(vSimulatedCostYTD))) / ($(vSimulatedSalesYTD)) - (Sum({<$(vYTD)>} Sales) - Sum({<$(vYTD)>} Cost)) / Sum({<$(vYTD)>} Sales)) * 100, '+0.0 pp;-0.0 pp')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+0.0 pp;-0.0 pp", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Simulated Gross Margin YTD vs Actual", "description": "Simulated Gross Margin YTD minus Gross Margin YTD, in percentage points.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_book_to_bill_ytd", "qType": "measure"},
+  "qMeasure": {"qLabel": "Book-to-bill YTD", "qDef": "Num(Sum({<$(vYTD)>} [Order Intake]) / Sum({<$(vYTD)>} Sales), '0.00')", "qNumFormat": {"qType": "F", "qnDec": 2, "qUseThou": 0, "qFmt": "0.00", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Book-to-bill YTD", "description": "Order Intake YTD divided by Sales YTD: above 1 means more was ordered than invoiced from 1 January through the Latest Date.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_sales_in_eur_m", "qType": "measure"},
+  "qMeasure": {"qLabel": "Sales in EUR m", "qDef": "Num((Sum(Sales)) / 1e6, '€#,##0.0 m;-€#,##0.0 m')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.0 m;-€#,##0.0 m", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true, "coloring": {"baseColor": {"color": "#1aa865", "index": -1}}},
+  "qMetaDef": {"title": "Sales in EUR m", "description": "Sales in EUR m instead of EUR bn, for small amounts.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_sales_ytd_in_eur_m", "qType": "measure"},
+  "qMeasure": {"qLabel": "Sales YTD in EUR m", "qDef": "Num((Sum({<$(vYTD)>} Sales)) / 1e6, '€#,##0.0 m;-€#,##0.0 m')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.0 m;-€#,##0.0 m", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Sales YTD in EUR m", "description": "Sales YTD in EUR m instead of EUR bn, for small amounts.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_sales_ytd_prior_year_in_eur_m", "qType": "measure"},
+  "qMeasure": {"qLabel": "Sales YTD Prior Year in EUR m", "qDef": "Num((Sum({<$(vYTDPriorYear)>} Sales)) / 1e6, '€#,##0.0 m;-€#,##0.0 m')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.0 m;-€#,##0.0 m", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Sales YTD Prior Year in EUR m", "description": "Sales YTD Prior Year in EUR m instead of EUR bn, for small amounts.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_gross_margin_amount_ytd_in_eur_m", "qType": "measure"},
+  "qMeasure": {"qLabel": "Gross Margin Amount YTD in EUR m", "qDef": "Num((Sum({<$(vYTD)>} Sales) - Sum({<$(vYTD)>} Cost)) / 1e6, '€#,##0.0 m;-€#,##0.0 m')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "€#,##0.0 m;-€#,##0.0 m", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Gross Margin Amount YTD in EUR m", "description": "Gross Margin Amount YTD in EUR m instead of EUR bn, for small amounts.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_volume_effect_ytd_vs_prior_year_in_eur_m", "qType": "measure"},
+  "qMeasure": {"qLabel": "Volume Effect YTD vs Prior Year in EUR m", "qDef": "Num($(vVolumeEffectYTD) / 1e6, '+€#,##0.0 m;-€#,##0.0 m')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+€#,##0.0 m;-€#,##0.0 m", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Volume Effect YTD vs Prior Year in EUR m", "description": "Volume Effect YTD vs Prior Year in EUR m instead of EUR bn, for small amounts.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_price_effect_ytd_vs_prior_year_in_eur_m", "qType": "measure"},
+  "qMeasure": {"qLabel": "Price Effect YTD vs Prior Year in EUR m", "qDef": "Num($(vPriceEffectYTD) / 1e6, '+€#,##0.0 m;-€#,##0.0 m')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+€#,##0.0 m;-€#,##0.0 m", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Price Effect YTD vs Prior Year in EUR m", "description": "Price Effect YTD vs Prior Year in EUR m instead of EUR bn, for small amounts.", "tags": []}
+ },
+ {
+  "qInfo": {"qId": "m_mix_effect_ytd_vs_prior_year_in_eur_m", "qType": "measure"},
+  "qMeasure": {"qLabel": "Mix Effect YTD vs Prior Year in EUR m", "qDef": "Num((Sum({<$(vYTD)>} Sales) - Sum({<$(vYTDPriorYear)>} Sales) - $(vVolumeEffectYTD) - $(vPriceEffectYTD)) / 1e6, '+€#,##0.0 m;-€#,##0.0 m')", "qNumFormat": {"qType": "F", "qnDec": 1, "qUseThou": 0, "qFmt": "+€#,##0.0 m;-€#,##0.0 m", "qDec": ".", "qThou": ","}, "numFormatFromTemplate": false, "isCustomFormatted": true},
+  "qMetaDef": {"title": "Mix Effect YTD vs Prior Year in EUR m", "description": "Mix Effect YTD vs Prior Year in EUR m instead of EUR bn, for small amounts.", "tags": []}
+ }
+]

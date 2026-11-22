@@ -1,0 +1,16 @@
+{
+ "qMetaDef": {},
+ "showTitles": false,
+ "title": "",
+ "subtitle": "",
+ "footnote": "",
+ "disableNavMenu": true,
+ "showDetails": true,
+ "showDetailsExpression": false,
+ "visualization": "filterpane",
+ "version": "1.11.0",
+ "components": [{"key": "theme", "listboxBorder": {"color": {"index": -1, "color": "#26332e"}}}],
+ "qChildListDef": {
+  "qData": {}
+ }
+}
